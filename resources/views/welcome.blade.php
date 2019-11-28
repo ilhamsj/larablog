@@ -36,7 +36,7 @@
                   {{ \Faker\Factory::create()->name }}
               </a>
               {{-- on September 24, 2019 --}}
-              on {{ \Faker\Factory::create()->date('MMM d, y') }}
+              on {{ \Faker\Factory::create()->date('F d, Y') }}
             </p>
           </div>
           <hr>
