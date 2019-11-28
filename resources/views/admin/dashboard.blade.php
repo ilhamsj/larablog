@@ -1,7 +1,13 @@
 @extends('layouts.admin')
 
-@section('content')
+@section('title_page', 'Dashboard')
+@section('title_content')
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+  </a>
+@endsection
 
+@section('content')
 <div class="row">
   @for ($i = 0; $i < 2; $i++)
     <div class="col-xl-3 col-md-6 mb-4">

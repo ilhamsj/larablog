@@ -26,14 +26,11 @@
           $menu = [
             'Dashboard' => [
               'icon'  => 'fas fa-fw fa-tachometer-alt',
-              'link'  => '#linksadk',
+              'link'  => route('admin.dashboard'),
             ],
             'Publikasi' => [
               'icon'  => 'fas fa-newspaper',
-              'link'  => [
-                'Kegiatan'   => '#linkb',
-                'Pengumuman'   => '#linkb',
-              ],
+              'link'  => route('artikel.index')
             ],
             'Galeri Foto' => [
               'icon'  => 'fas fa-image',
@@ -58,9 +55,10 @@
             ],
           ];
           @endphp
+          
         <hr class="sidebar-divider my-0">
         @foreach ($menu as $key => $val)
-          <li class="nav-item"> <!-- active -->
+          <li class="nav-item {{ url()->current() == $val['link'] ? 'active' : ''}}">
             @if (!is_array($val['link']))
               <a class="nav-link" href="{{ $val['link'] }}">
                 <i class="{{ $val['icon'] }}"></i>
@@ -230,8 +228,8 @@
         <div class="container-fluid">
 
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <h1 class="h3 mb-0 text-gray-800">@yield('title_page')</h1>
+            @yield('title_content')
           </div>
           @yield('content')
 

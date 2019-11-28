@@ -9,13 +9,12 @@
 @endsection
 @section('content')
 <div class="row">
-@for ($i = 0; $i < 10; $i++)
-  <div class="col-4">
+  <div class="col">
     <div class="card border-0 shadow mb-4">
-      <a href="#collapse{{ $i }}" class="d-block card-header py-3 border-0" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapse{{ $i }}">
+      <a href="#collapseCardExample" class="d-block card-header py-3 border-0" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
         <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
       </a>
-      <div class="collapse show" id="collapse{{ $i }}">
+      <div class="collapse show" id="collapseCardExample">
         <div class="card-body">
           This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
           This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
@@ -25,6 +24,5 @@
       </div>
     </div>
   </div>
-@endfor
 </div>
 @endsection
