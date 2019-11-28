@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Resources\TestResource;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-
+        return datatables()->collection(Article::all())->toJson();
     }
 
     public function create()
