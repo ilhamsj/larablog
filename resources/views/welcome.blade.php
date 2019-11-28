@@ -1,22 +1,15 @@
 @extends('layouts.user')
 
-@section('content')
-      <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+@section('title_page', 'Ini halaman title')
 
-  <!-- Main Content -->
+@section('header_content')
+<div class="site-heading">
+  <h1>Clean Blog</h1>
+  <span class="subheading">A Blog Theme by Start Bootstrap</span>
+</div>
+@endsection
+
+@section('content')
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
@@ -24,7 +17,6 @@
           <div class="post-preview">
             <a href="/berita">
               <h2 class="post-title">
-                {{-- Man must explore, and this is exploration at its greatest --}}
                 {{ \Faker\Factory::create()->realText($maxNbChars = 70, $indexSize = 1)}}
               </h2>
               <h3 class="post-subtitle">
@@ -35,13 +27,11 @@
               <a href="#">
                   {{ \Faker\Factory::create()->name }}
               </a>
-              {{-- on September 24, 2019 --}}
               on {{ \Faker\Factory::create()->date('F d, Y') }}
             </p>
           </div>
           <hr>
         @endfor
-        <!-- Pager -->
         <div class="clearfix">
           <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
         </div>

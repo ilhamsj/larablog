@@ -19,6 +19,5 @@ Route::get('/berita', function () {
     return view('show');
 });
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
+Route::get('/admin', 'AdminController@dashboard');
+Route::resource('/admin/artikel', 'ArticleController');
