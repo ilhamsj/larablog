@@ -21,3 +21,6 @@ Route::get('/berita', function () {
 
 Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
 Route::resource('/admin/artikel', 'ArticleController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
