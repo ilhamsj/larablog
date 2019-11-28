@@ -12,12 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->with(['items' => \App\Article::paginate()]);
 });
 
 Route::get('/berita', function () {
     return view('show');
 });
 
+Route::get('/artikel/{id}', function ($id) {
+    return view('show')->with(['item' => \App\Article::find($id)]);
+})->name('artikel.show');
+
 Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
-Route::resource('/admin/artikel', 'ArticleController');
+Route::resource('/admin/artikel', 'ArticleController', [
+    'except' => ['show']
+]);
