@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello</h1>
+    <h1>Company Name</h1>
+    <h2>Compan</h2>
 </body>
 </html>
