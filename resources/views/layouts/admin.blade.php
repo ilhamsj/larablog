@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>{{ env('app_name') }}</title>
-  <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
+  <link rel="stylesheet" href="{{ secure_url('css/admin.css') }}">
 </head>
 
 <body id="page-top">
@@ -20,7 +20,7 @@
         <div class="sidebar-brand-icon">
           <i class="fa fa-cog fa-spin"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">{{ env('app_name') }} <sup>2</sup></div>
       </a>
       @php
           $menu = [
@@ -50,7 +50,7 @@
               'link'  => '#kritik',
             ],
             'Pengaturan' => [
-              'icon'  => 'fas fa-fw fa-cog',
+              'icon'  => 'fa fa-wrench',
               'link'  => [
                 'Admin'   => '#linkb',
                 'Cover Halaman'   => '#linkb',
@@ -289,7 +289,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script> --}}
-  <script src="{{ secure_url('js/app.js') }}"></script>
+  <script src="{{ secure_url('js/admin.js') }}"></script>
 </body>
 
 </html>
