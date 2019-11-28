@@ -10,6 +10,7 @@
   <meta name="author" content="">
   <title>{{ env('app_name') }}</title>
   <link rel="stylesheet" href="{{ secure_url('css/admin.css') }}">
+  @stack('styles')
 </head>
 
 <body id="page-top">
@@ -278,17 +279,7 @@
       </div>
     </div>
   </div>
-
-  {{-- <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script> --}}
   <script src="{{ secure_url('js/admin.js') }}"></script>
+  @stack('scripts')
 </body>
-
 </html>
