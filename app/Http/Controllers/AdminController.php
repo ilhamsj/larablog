@@ -10,4 +10,11 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+  
+    public function artikel()
+    {
+        return view('admin.article.index')->with([
+            'items' => \App\Article::paginate()
+        ]);
+    }
 }

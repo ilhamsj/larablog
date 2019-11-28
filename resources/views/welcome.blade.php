@@ -15,12 +15,12 @@
       <div class="col-lg-8 col-md-10 mx-auto">
         @foreach ($items as $item)
         <div class="post-preview">
-            <a href="{{ route('artikel.show', $item->id) }}">
+            <a href="{{ route('user.artikel.show', $item->id) }}">
               <h2 class="post-title">
                 {{ $item->title }}
               </h2>
               <h3 class="post-subtitle">
-                {{                Str::limit($item->content, 100)              }}
+                {{ Str::limit($item->content, 100) }}
               </h3>
             </a>
             <p class="post-meta">Posted by

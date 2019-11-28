@@ -9,9 +9,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        return view('admin.article.index')->with([
-            'items' => \App\Article::paginate()
-        ]);
+
     }
 
     public function create()

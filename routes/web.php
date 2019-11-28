@@ -11,19 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome')->with(['items' => \App\Article::paginate()]);
-});
-
-Route::get('/berita', function () {
-    return view('show');
-});
-
-Route::get('/artikel/{id}', function ($id) {
-    return view('show')->with(['item' => \App\Article::find($id)]);
-})->name('artikel.show');
+Route::get('/', 'PageController@welcome')->name('welcome');
+Route::get('/artikel', 'PageController@artikel_index')->name('user.artikel.index');
+Route::get('/artikel/{id}', 'PageController@artikel_show')->name('user.artikel.show');
 
 Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
-Route::resource('/admin/artikel', 'ArticleController', [
-    'except' => ['show']
-]);
+Route::get('/admin/artikel', 'AdminController@artikel')->name('admin.artikel');

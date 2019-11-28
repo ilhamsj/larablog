@@ -31,7 +31,7 @@
             ],
             'Publikasi' => [
               'icon'  => 'fas fa-newspaper',
-              'link'  => route('artikel.index')
+              'link'  => route('admin.artikel')
             ],
             'Galeri Foto' => [
               'icon'  => 'fas fa-image',
