@@ -25,14 +25,18 @@
             <a href="/berita">
               <h2 class="post-title">
                 {{-- Man must explore, and this is exploration at its greatest --}}
+                {{ \Faker\Factory::create()->realText($maxNbChars = 70, $indexSize = 1)}}
               </h2>
               <h3 class="post-subtitle">
+                {{ \Faker\Factory::create()->realText($maxNbChars = 50, $indexSize = 1)}}
               </h3>
             </a>
             <p class="post-meta">Posted by
               <a href="#">
+                  {{ \Faker\Factory::create()->name }}
               </a>
-              on September 24, 2019
+              {{-- on September 24, 2019 --}}
+              on {{ \Faker\Factory::create()->date('MMM d, y') }}
             </p>
           </div>
           <hr>
