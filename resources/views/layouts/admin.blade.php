@@ -16,11 +16,11 @@
   <div id="wrapper">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ env('app_url') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ env('APP_URL') }}">
         <div class="sidebar-brand-icon">
           <i class="fa fa-cog fa-spin"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">{{ env('app_name') }} <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">{{ env('APP_NAME') }} <sup>2</sup></div>
       </a>
       @php
           $menu = [
