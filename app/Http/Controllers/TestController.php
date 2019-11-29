@@ -15,7 +15,7 @@ class TestController extends Controller
 
         if($request->hasFile('file')) {
             $request->file('file')->storeAs('', $request->file('file')->getClientOriginalName(), 'public_uploads');
-            return response()->json(env('app_url').'images/'.$request->file('file')->getClientOriginalName());
+            return response()->json(env('APP_URL').'images/'.$request->file('file')->getClientOriginalName());
         }
     }
 }
