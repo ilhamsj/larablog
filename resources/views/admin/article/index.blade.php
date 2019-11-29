@@ -85,11 +85,11 @@
           responsive: true,
           processing: true,
           serverSide: true,
-          ajax: "{{ route('artikel.index') }}",
+          ajax: "/api/v1/artikel",
           columns: [
               { data: 'title', name: 'title' },
               { data: 'created_at', name: 'created_at' },
-              { data: 'action', name: 'action' },
+              { data: 'action', name: 'action' }
           ]
       });
 

@@ -10,7 +10,6 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        
         $items = Article::all();
         return datatables($items)
             ->addIndexColumn()
