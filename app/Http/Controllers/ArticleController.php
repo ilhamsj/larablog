@@ -21,9 +21,6 @@ class ArticleController extends Controller
                     <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-url="'.route('artikel.destroy', $items->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>
                 ';
             })
-            // ->editColumn('created_at', function($items) {
-            //     return $items->created_at->format('d F Y');
-            // })
             ->toJson();
     }
 

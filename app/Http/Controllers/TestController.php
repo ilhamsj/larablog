@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function upload(Request $request)
+    public function file_upload(Request $request)
     {
         if($request->hasFile('file')) {
             $request->file('file')->storeAs('', $request->file('file')->getClientOriginalName(), 'public_uploads');
@@ -20,7 +20,7 @@ class TestController extends Controller
     {
         $items = array_diff(scandir(public_path().'\images'), array('.', '..'));
         return datatables($items)
-        ->addIndexColumn()
+            ->addIndexColumn()
             ->addColumn('image', function ($items) {
                 return '<img class="img-fluid" src="'.secure_url('images/'.$items).'"/>';
             })
