@@ -103,9 +103,11 @@
         e.preventDefault();
         $.ajax({
           type: "POST",
-          url: "{{ route('artikel.store') }}",
+          url: "/api/v1/artikel",
           data: $('#modelId').find('form').serialize(),
           success: function (response) {
+            console.log(response);
+            
             $('#modelId').modal('hide')
             table.draw()
           }
