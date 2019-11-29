@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 
-@section('title_page', 'Publikasi')
 @section('title_content')
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="tambah_data">
     <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>
@@ -21,7 +20,8 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                          <th>Title</th>
+                          <th>No</th>
+                          <th>Foto</th>
                         </tr>
                     </thead>
                 </table>
@@ -85,8 +85,9 @@
           serverSide: true,
           ajax: "/api/v1/file",
           columns: [
-              { data: 'image', name: 'image' }
-          ]
+              { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+              { data: 'image', name: 'image' },
+            ]
       });
 
     }); // end doc ready

@@ -20,6 +20,7 @@ class TestController extends Controller
     {
         $items = array_diff(scandir(public_path().'\images'), array('.', '..'));
         return datatables($items)
+        ->addIndexColumn()
             ->addColumn('image', function ($items) {
                 return '<img class="img-fluid" src="'.secure_url('images/'.$items).'"/>';
             })

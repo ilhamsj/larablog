@@ -38,6 +38,7 @@
               'icon'  => 'fas fa-image',
               'link'  => [
                 'Kegiatan'   => '#linkb',
+                'Semua Foto'   => route('admin.foto'),
               ],
             ],
             'Unduhan File' => [
