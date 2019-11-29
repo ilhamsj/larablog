@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('v1/artikel', 'ArticleController');
+Route::post('v1/file', 'TestController@upload');

@@ -24,9 +24,12 @@
     },
     "dependencies": {
         "bootstrap": "^4.4.0",
+        "bs4-summernote": "^0.8.10",
+        "ckeditor": "^4.12.1",
         "jquery": "^3.4.1",
         "popper": "^1.0.1",
         "startbootstrap-clean-blog": "^5.0.8",
-        "startbootstrap-sb-admin-2": "^4.0.7"
+        "startbootstrap-sb-admin-2": "^4.0.7",
+        "summernote": "^0.8.12"
     }
 }

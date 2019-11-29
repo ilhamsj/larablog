@@ -10,7 +10,7 @@
 @section('content')
 
 <div class="row">
-  <div class="col">
+  <div class="col-8">
     <div class="card border-0 shadow mb-4">
       <a href="#collapseCardExample" class="d-block card-header py-3 border-0" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
         <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
@@ -36,7 +36,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-  <div class="modal-dialog modal-md" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Modal Title</h5>
@@ -70,12 +70,13 @@
 
 @push('styles')
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
 @endpush
 
 @push('scripts')
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> 
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
   <script>
     $(document).ready(function () {
 
@@ -118,6 +119,28 @@
           var form = $('#modelId form');
           form.trigger('reset');
       });
-    });
+
+      $('form').find('#content').summernote({
+        placeholder: 'Hello bootstrap 4',
+        tabsize: 2,
+        height: 500,
+        codemirror: { // codemirror options
+          theme: 'monokai'
+        },
+        // airMode: true
+        placeholder: 'type with apple, orange, watermelon and lemon',
+        hint: {
+          words: ['apple', 'orange', 'watermelon', 'lemon'],
+          match: /\b(\w{1,})$/,
+          search: function (keyword, callback) {
+            callback($.grep(this.words, function (item) {
+              return item.indexOf(keyword) === 0;
+            }));
+          }
+        }
+      });
+
+
+    }); // end doc ready
   </script>
 @endpush

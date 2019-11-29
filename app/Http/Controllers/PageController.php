@@ -8,7 +8,7 @@ class PageController extends Controller
 {
     public function welcome()
     {
-        return view('welcome')->with(['items' => \App\Article::paginate()]);
+        return view('welcome')->with(['items' => \App\Article::orderBy('created_at', 'desc')->get()]);
     }
 
     public function artikel_index()

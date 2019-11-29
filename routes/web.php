@@ -17,3 +17,4 @@ Route::get('/artikel/{id}', 'PageController@artikel_show')->name('user.artikel.s
 
 Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
 Route::get('/admin/artikel', 'AdminController@artikel')->name('admin.artikel');
+Route::get('/admin/artikel/create', 'ArticleController@create')->name('admin.artikel.create');
