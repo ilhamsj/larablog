@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use League\Flysystem\File;
 
 class AdminController extends Controller
 {
@@ -16,5 +17,10 @@ class AdminController extends Controller
         return view('admin.article.index')->with([
             'items' => \App\Article::paginate()
         ]);
+    }
+  
+    public function foto()
+    {
+        return view('admin.foto');
     }
 }
