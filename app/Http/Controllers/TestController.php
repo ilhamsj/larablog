@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -18,14 +16,15 @@ class TestController extends Controller
 
     public function file_index()
     {
-        $items = array_diff(scandir(public_path().'\images'), array('.', '..'));
-        return datatables($items)
-            ->addIndexColumn()
-            ->addColumn('image', function ($items) {
-                return '<img class="img-fluid" src="'.secure_url('images/'.$items).'"/>';
-            })
-            ->rawColumns(['image'])
-            ->toJson();
+        // $items = array_diff(scandir(public_path().'\images'), array('.', '..'));
+        // return datatables($items)
+        //     ->addIndexColumn()
+        //     ->addColumn('image', function ($items) {
+        //         return '<img class="img-fluid" src="'.secure_url('images/'.$items).'"/>';
+        //     })
+        //     ->rawColumns(['image'])
+        //     ->toJson();
+        dd(scandir(\public_path()));
     }
 
 }
