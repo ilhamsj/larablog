@@ -108,6 +108,7 @@
     </div>
   </footer>
   <script src="{{ secure_url('js/app.js') }}"></script>
+  @stack('scripts')
 </body>
 
 </html>

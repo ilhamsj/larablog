@@ -27,3 +27,13 @@
     </div>
   </article>
 @endsection
+
+
+@push('scripts')
+    <script>
+      $('img').click(function (e) { 
+        e.preventDefault();
+        $(this).addClass('rounded-circle');
+      });
+    </script>
+@endpush
