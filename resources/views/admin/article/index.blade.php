@@ -36,7 +36,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Modal Title</h5>
@@ -45,11 +45,21 @@
           </button>
       </div>
       <div class="modal-body">
-        Body
+        <form action="" method="post">
+            <div class="form-group">
+              <label for="">Title</label>
+              <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="" value="{{ old('email') ? old('email') : \Faker\Factory::create()->realText(50, 1) }}">
+            </div>
+
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea class="form-control" name="content" id="content" rows="10">{{ old('content') ? old('content') : \Faker\Factory::create()->realText(200, 1) }}</textarea>
+            </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" id="publishContent">Save</button>
       </div>
     </div>
   </div>
@@ -70,6 +80,7 @@
 
       // read
       var table = $('table').DataTable({
+          order : [[1,'desc']],
           responsive: true,
           processing: true,
           serverSide: true,
@@ -81,9 +92,28 @@
           ]
       });
 
+      // modal show
       $('#tambah_data').click(function (e) { 
         e.preventDefault();
         $('#modelId').modal('show');
+      });
+
+      $('#publishContent').click(function (e) { 
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: "{{ route('artikel.store') }}",
+          data: $('#modelId').find('form').serialize(),
+          success: function (response) {
+            $('#modelId').modal('hide')
+            table.draw()
+          }
+        });
+      });
+
+      $('#modelId').on('hidden.bs.modal', function () {
+          var form = $('#modelId form');
+          form.trigger('reset');
       });
     });
   </script>
