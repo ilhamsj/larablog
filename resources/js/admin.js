@@ -2,4 +2,4 @@ require('./bootstrap');
 require('startbootstrap-sb-admin-2/js/sb-admin-2');
 require('startbootstrap-sb-admin-2/vendor/jquery-easing/jquery.easing');
 
-require('summernote/dist/summernote-bs4')
+// require('summernote/dist/summernote-bs4')

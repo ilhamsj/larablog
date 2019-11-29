@@ -10,7 +10,7 @@
 @section('content')
 
 <div class="row">
-  <div class="col-8">
+  <div class="col">
     <div class="card border-0 shadow mb-4">
       <a href="#collapseCardExample" class="d-block card-header py-3 border-0" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
         <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
@@ -94,52 +94,72 @@
           ]
       });
 
+      $('table').on('click', '.btnDelete', function (e) {
+        e.preventDefault()
+
+        var url = $(this).attr('data-url');
+        $.ajax({
+          type: "DELETE",
+          url: url,
+          success: function (response) {
+            console.log(response);
+            table.draw()
+          }
+        });
+      });
+
       // modal show
       $('#tambah_data').click(function (e) { 
         e.preventDefault();
         $('#modelId').modal('show');
       });
 
+      // store data
       $('#publishContent').click(function (e) { 
         e.preventDefault();
+        var x = $('form').serialize()
         $.ajax({
           type: "POST",
           url: "/api/v1/artikel",
-          data: $('#modelId').find('form').serialize(),
+          data: x,
           success: function (response) {
             console.log(response);
-            
-            $('#modelId').modal('hide')
-            table.draw()
+            table.draw();
+            $('#modelId').modal('hide');
           }
         });
       });
 
-      $('#modelId').on('hidden.bs.modal', function () {
-          var form = $('#modelId form');
-          form.trigger('reset');
-      });
-
-      $('form').find('#content').summernote({
-        placeholder: 'Hello bootstrap 4',
-        tabsize: 2,
-        height: 500,
-        codemirror: { // codemirror options
-          theme: 'monokai'
-        },
-        // airMode: true
-        placeholder: 'type with apple, orange, watermelon and lemon',
-        hint: {
-          words: ['apple', 'orange', 'watermelon', 'lemon'],
-          match: /\b(\w{1,})$/,
-          search: function (keyword, callback) {
-            callback($.grep(this.words, function (item) {
-              return item.indexOf(keyword) === 0;
-            }));
+      // summernote
+      $('form') .find('#content').summernote({
+          tabsize: 2,
+          height: 200,
+          followingToolbar: false,
+          callbacks: {
+            onImageUpload: function(files) {
+              uploadImage(files[0])
+            }
           }
-        }
       });
 
+      function uploadImage(files) {
+
+        var data = new FormData();
+        data.append("file", files);
+        
+        $.ajax({
+          type: "POST",
+          url: "/api/v1/file",
+          contentType: false,
+          cache: false,
+          processData: false,
+          data: data,
+          success: function (response) {
+            console.log(response);
+            $('form').find('#content').summernote('insertImage', response);
+          }
+        });
+      }
 
     }); // end doc ready
   </script>

@@ -20,7 +20,7 @@
                 {{ $item->title }}
               </h2>
               <h3 class="post-subtitle">
-                {{ Str::limit($item->content, 100) }}
+                {{ strip_tags(Str::limit($item->content, 100)) }}
               </h3>
             </a>
             <p class="post-meta">Posted by
