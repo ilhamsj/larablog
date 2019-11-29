@@ -46,15 +46,16 @@
       </div>
       <div class="modal-body">
         <form action="" method="post">
-            <div class="form-group">
-              <label for="">Title</label>
-              <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="" value="{{ old('email') ? old('email') : \Faker\Factory::create()->realText(50, 1) }}">
-            </div>
+          @csrf
+          <div class="form-group">
+            <label for="">Title</label>
+            <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="" value="{{ old('email') ? old('email') : \Faker\Factory::create()->realText(50, 1) }}">
+          </div>
 
-            <div class="form-group">
-              <label for="content">Content</label>
-              <textarea class="form-control" name="content" id="content" rows="10">{{ old('content') ? old('content') : \Faker\Factory::create()->realText(200, 1) }}</textarea>
-            </div>
+          <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" name="content" id="content" rows="10">{{ old('content') ? old('content') : \Faker\Factory::create()->realText(200, 1) }}</textarea>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
