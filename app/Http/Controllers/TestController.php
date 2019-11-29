@@ -24,7 +24,11 @@ class TestController extends Controller
         //     })
         //     ->rawColumns(['image'])
         //     ->toJson();
-        dd(scandir(\public_path('images')));
+
+        $items = scandir(\public_path('images'));
+        return response()->json([
+            'data' => $items
+        ]);
     }
 
 }

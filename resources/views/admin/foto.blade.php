@@ -79,15 +79,13 @@
     $(document).ready(function () {
 
       // read
-      var table = $('table').DataTable({
-          responsive: true,
-          processing: true,
-          serverSide: true,
-          ajax: "/api/v1/file",
-          columns: [
-              { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-              { data: 'image', name: 'image' },
-            ]
+      $.ajax({
+        type: "GET",
+        url: "{{ route('file.index') }}",
+        success: function (response) {
+          console.log(response);
+          
+        }
       });
 
     }); // end doc ready
