@@ -27,8 +27,8 @@ class TestController extends Controller
         //     ->toJson();
 
         $items = scandir(\public_path('images'));
-        $val = Arr::pull($items, 'abc');
-        return $val;
+        $items = array_diff($items, ['.', '..']);
+        return response()->json($items);
     }
 
 }
