@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use App\Http\Resources\TestResource;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -16,14 +15,13 @@ class ArticleController extends Controller
             ->addColumn('action', function ($items) {
                 return 
                 '
-                    <a href="'.route('user.artikel.show', $items->id).'" target="_blank" class="btnEdit mx-0 btn btn-info btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fa fa-eye"></i> </span> </a>
-                    <a href="" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                    <a href="'.route('user.artikel.show', $items->id).'" class="mx-0 btn btn-info btn-sm btn-icon-split" target="_blank"> <span class="icon text-white-50"> <i class="fa fa-eye"></i> </span> </a>
+                    <a href="'.route('artikel.show', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
                     <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-url="'.route('artikel.destroy', $items->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>
                 ';
             })
             ->toJson();
     }
-
 
     public function create()
     {
@@ -33,8 +31,8 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'     => 'required',
-            'content'   => 'required'
+            'title'     => 'required|min:20',
+            'content'   => 'required|min:200'
         ]);
 
         $artikel = Article::create($request->all());
@@ -46,7 +44,7 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-
+        return response()->json(Article::find($id));
     }
 
     public function edit($id)

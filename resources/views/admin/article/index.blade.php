@@ -109,6 +109,29 @@
         });
       });
 
+      // edit
+      $('table').on('click', '.btnEdit', function (e) {
+        e.preventDefault()
+        var url   = $(this).attr('href')
+        var modal = $('#modelId').modal('show');
+
+        $.ajax({
+          type: "GET",
+          url: url,
+          success: function (response) {
+            $.each(response, function (index, value) {
+              console.log(index);
+              if(index != 'content') {
+                $('#'+index).val(value)
+              } else {
+                $('.note-editor').find('.note-editable').val('hello '+index);
+              }
+            });
+          }
+        });
+        
+      });
+
       // modal show
       $('#tambah_data').click(function (e) { 
         e.preventDefault();
