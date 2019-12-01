@@ -65,7 +65,7 @@
           url: "../api/v1/file/"+x,
           data: '',
           success: function (response) {
-            console.log(response);
+            showMessage(response + ' Berhasil dihapus')
           }
         });
       });

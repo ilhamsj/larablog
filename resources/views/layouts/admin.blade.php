@@ -230,6 +230,10 @@
 
         <div class="container-fluid">
 
+          <div class="alert alert-success collapse" role="alert">
+            <strong>primary</strong>
+          </div>
+
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">@yield('title_page')</h1>
             @yield('title_content')
@@ -282,6 +286,17 @@
     </div>
   </div>
   <script src="{{ secure_url('js/admin.js') }}"></script>
+  <script>  
+  function showMessage(message) {
+    $('.alert').show()
+    $('.alert').find('strong').text(message);
+
+    $(".alert").delay(2500).slideUp(200, function() {
+        $(this).hide()
+    });
+
+  }
+  </script>
   @stack('scripts')
 </body>
 </html>

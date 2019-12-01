@@ -104,6 +104,7 @@
           success: function (response) {
             console.log(response);
             table.draw()
+            showMessage(response)
           }
         });
       });
@@ -117,7 +118,11 @@
       // store data
       $('#publishContent').click(function (e) { 
         e.preventDefault();
-        var x = $('form').serialize()
+
+        var x = $('form').serialize();
+
+        hapusError()
+
         $.ajax({
           type: "POST",
           url: "/api/v1/artikel",
@@ -126,9 +131,15 @@
             console.log(response);
             table.draw();
             $('#modelId').modal('hide');
+            showMessage(response.status)
+          },
+          error: function (xhr) {
+              displayError(xhr.responseJSON);
+              console.log(xhr.responseText);
           }
         });
       });
+
 
       // summernote
       $('form') .find('#content').summernote({
@@ -138,9 +149,16 @@
           callbacks: {
             onImageUpload: function(files) {
               uploadImage(files[0])
+            },
+            onMediaDelete : function(files) {
+              deleteImage(files[0])
             }
           }
       });
+
+      function deleteImage(files) {
+        console.log(files);
+      }
 
       function uploadImage(files) {
 
@@ -159,6 +177,33 @@
             $('form').find('#content').summernote('insertImage', response);
           }
         });
+      }
+
+      // show error
+      function displayError(res) {
+        if ($.isEmptyObject(res) == false)
+        {
+          $.each(res.errors, function (key, value) {
+            if(key != 'content') {
+              $('#' + key)
+                .closest('.form-group')
+                .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
+                .find('input').addClass("is-invalid")
+            } else {
+              $('.note-editor')
+                .closest('.form-group')
+                .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
+                .find('.note-editor').addClass("is-invalid")
+            }
+          })
+        }
+      }
+
+      function hapusError()
+      {
+        $('.invalid-feedback').remove();
+        $('.form-group').find('input').removeClass("is-invalid");
+        $('.form-group').find('.note-editor').removeClass("is-invalid");
       }
 
     }); // end doc ready

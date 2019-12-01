@@ -32,10 +32,15 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-        Article::create($request->all());
+        $request->validate([
+            'title'     => 'required',
+            'content'   => 'required'
+        ]);
+
+        $artikel = Article::create($request->all());
         
         return response()->json([
-            'status' => $request->all()
+            'status' => $request->title . ' Berhasil ditambahkan'
         ]);
     }
 
@@ -56,7 +61,8 @@ class ArticleController extends Controller
 
     public function destroy($id)
     {
-        Article::destroy($id);
-        return response()->json($id);
+        $item = Article::find($id);
+        $item->delete($item);
+        return response()->json($item->title . ' Berhasil dihapus');
     }
 }

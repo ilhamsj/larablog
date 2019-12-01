@@ -29,4 +29,10 @@ class TestController extends Controller
         return response()->json($id . ' ' . $x);
     }
 
+    public function file_delete($id)
+    {
+        // unlink($id);
+        return response()->json('berhasil');
+    }
+
 }
