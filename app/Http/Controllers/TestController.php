@@ -22,4 +22,11 @@ class TestController extends Controller
         return response()->json($items);
     }
 
+    public function file_destroy($id)
+    {
+        $x = \file_exists(\public_path('images/'.$id));
+        unlink(\public_path('images/'.$id));
+        return response()->json($id . ' ' . $x);
+    }
+
 }
