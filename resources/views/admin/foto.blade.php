@@ -12,7 +12,7 @@
   <div class="col-4">
     <div class="card shadow mb-4">
       <div class="card-header">
-          <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Foto</h6>
       </div>
       <div class="card-body">
         <img class="img-fluid rounded" src="https://an-naba.test/images/516268-PIISNV-188.jpg"/>
@@ -48,7 +48,7 @@
           var no = 1;
           $.map(response, function (value, key) {
             var foto = $('#foto > div:first-child').clone();
-            $(foto).find('h6').text(no++);
+            $(foto).find('h6').text(value);
             $(foto).find('img').attr('src', '../images/'+value);
             $('#foto').append(foto);
           });

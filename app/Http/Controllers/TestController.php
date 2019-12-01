@@ -17,15 +17,6 @@ class TestController extends Controller
 
     public function file_index()
     {
-        // $items = array_diff(scandir(public_path().'\images'), array('.', '..'));
-        // return datatables($items)
-        //     ->addIndexColumn()
-        //     ->addColumn('image', function ($items) {
-        //         return '<img class="img-fluid" src="'.secure_url('images/'.$items).'"/>';
-        //     })
-        //     ->rawColumns(['image'])
-        //     ->toJson();
-
         $items = scandir(\public_path('images'));
         $items = array_diff($items, ['.', '..']);
         return response()->json($items);
