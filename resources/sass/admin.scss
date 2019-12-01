@@ -13,4 +13,7 @@
 // startbootstrap
 @import '~startbootstrap-sb-admin-2/scss/sb-admin-2.scss';
 
-// @import '~summernote/dist/summernote-bs4';
+// disable when offline
+@import '~startbootstrap-sb-admin-2/vendor/datatables/dataTables.bootstrap4';
+
+@import '~summernote/dist/summernote-bs4';

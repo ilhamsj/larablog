@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class TestController extends Controller
 {
@@ -26,9 +27,8 @@ class TestController extends Controller
         //     ->toJson();
 
         $items = scandir(\public_path('images'));
-        return response()->json([
-            'data' => $items
-        ]);
+        $val = Arr::pull($items, 'abc');
+        return $val;
     }
 
 }

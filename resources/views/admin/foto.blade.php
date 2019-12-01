@@ -21,7 +21,6 @@
                     <thead>
                         <tr>
                           <th>No</th>
-                          <th>Foto</th>
                         </tr>
                     </thead>
                 </table>
@@ -79,13 +78,8 @@
     $(document).ready(function () {
 
       // read
-      $.ajax({
-        type: "GET",
-        url: "{{ route('file.index') }}",
-        success: function (response) {
-          console.log(response);
-          
-        }
+      var table = $('table').DataTable({
+          ajax: "{{ route('file.index') }}",
       });
 
     }); // end doc ready
