@@ -228,7 +228,7 @@
         $('.form-group').find('input').removeClass("is-invalid");
         $('.form-group').find('.note-editor').removeClass("is-invalid");
       }
-
+      
     }); // end doc ready
   </script>
 @endpush
