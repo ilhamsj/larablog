@@ -18,10 +18,13 @@
         <img class="img-fluid rounded" src=""/>
       </div>
       <div class="card-footer">
-        <a href="#" class="btn btn-primary btn-icon-split btn-sm">
+
+        <a href="#" class="copyFoto btn btn-primary btn-icon-split btn-sm">
           <span class="icon text-white-50"><i class="fas fa-copy"></i>
           </span>
         </a>
+        <input type="text" value="" class="form-control form-control-sm collapse">
+      
         <a href="#" class="hapusFoto btn btn-danger btn-icon-split btn-sm">
           <span class="icon text-white-50"><i class="fas fa-trash-alt"></i>
           </span>
@@ -38,8 +41,12 @@
 @endpush
 
 @push('scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
   <script>
     $(document).ready(function () {
+
+
+
       showImages()
 
       function showImages() {
@@ -52,6 +59,8 @@
               var foto = $('#foto > div:first-child').clone();
               $(foto).find('h6').text(value);
               $(foto).find('img').attr('src', '../images/'+value);
+              $(foto).find('input').attr('value', '{{ env("APP_URL") }}images/'+value).attr('id', 'foto'+key);
+              $(foto).find('a:first-child').attr('data-clipboard-target', '#foto'+key);
               $(foto).find('.hapusFoto').attr('data-url', value);
               $('#foto').append(foto);
             });
@@ -59,6 +68,12 @@
           }
         });
       } 
+
+      new ClipboardJS('.copyFoto');
+
+      $('#foto').on('click', '.copyFoto', function (e) {
+        console.log($(this).next().attr('value'));
+      });
 
       $('#foto').on('click', '.hapusFoto', function (e) {
         e.preventDefault()
