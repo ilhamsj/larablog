@@ -22,4 +22,4 @@ Route::resource('v1/artikel', 'ArticleController');
 Route::get('v1/file', 'TestController@file_index')->name('file.index');
 Route::post('v1/file', 'TestController@file_upload')->name('file.upload');
 Route::delete('v1/file/{id}', 'TestController@file_destroy')->name('file.destroy');
-Route::post('v1/file/destroy', 'TestController@file_delete')->name('file.destroy');
+Route::post('v1/file/destroy', 'TestController@file_delete')->name('file.delete');

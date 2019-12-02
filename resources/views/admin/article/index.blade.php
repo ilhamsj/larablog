@@ -115,7 +115,7 @@
         e.preventDefault()
 
         var url   = $(this).attr('href')
-        var modal = $('#modelId').modal('show');        
+        var modal = $('#modelId').modal('show');
 
         $('#modelId').find('.modal-footer > button:nth-child(2)').text('updateContent').attr('id', 'updateContent').attr('data-url', url);
 
@@ -192,18 +192,16 @@
           height: 200,
           followingToolbar: false,
           callbacks: {
+            onMediaDelete : function(files) {
+              var file = files[0].src;
+              console.log(file);
+              
+            },
             onImageUpload: function(files) {
               uploadImage(files[0])
             },
-            onMediaDelete : function(files) {
-              deleteImage(files[0])
-            }
           }
       });
-
-      function deleteImage(files) {
-        console.log(files);
-      }
 
       function uploadImage(files) {
 
