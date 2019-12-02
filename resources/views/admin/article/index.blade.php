@@ -124,7 +124,7 @@
               if(index != 'content') {
                 $('#'+index).val(value)
               } else {
-                $('.note-editor').find('.note-editable').val('hello '+index);
+                $('form').find('.note-editor > .note-editing-area > .note-editable').html(value);
               }
             });
           }
@@ -167,7 +167,7 @@
       // summernote
       $('form') .find('#content').summernote({
           tabsize: 2,
-          height: 200,
+          height: '100vh',
           followingToolbar: false,
           callbacks: {
             onImageUpload: function(files) {
