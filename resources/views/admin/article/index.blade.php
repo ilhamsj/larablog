@@ -135,17 +135,19 @@
         });
       });
 
+      // update
       $('#modelId').on('click', '#updateContent', function (e) {
         var url = $(this).attr('data-url');
-        console.log(x);
-        var x = $('form').serialize();
+        var data = $('form').serialize();
 
         $.ajax({
-          type: "UPDATE",
+          type: "PUT",
           url: url,
+          data: data,
           success: function (response) {
             console.log(response);
-            
+            table.draw();
+            $('#modelId').modal('hide');
           }
         });
       });

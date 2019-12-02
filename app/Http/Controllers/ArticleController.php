@@ -31,8 +31,8 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'     => 'required|min:20',
-            'content'   => 'required|min:200'
+            'title'     => 'required|min:20|max:50',
+            'content'   => 'required|min:200|max:2500'
         ]);
 
         $artikel = Article::create($request->all());
@@ -54,7 +54,9 @@ class ArticleController extends Controller
 
     public function update(Request $request, $id)
     {
-        return response()->json('test test');
+        $item = Article::find($id);
+        $item->update($request->all());
+        return response()->json($item->title . ' Berhasil di Update');
     }
 
     public function destroy($id)
