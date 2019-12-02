@@ -56,6 +56,7 @@
             <label for="content">Content</label>
             <textarea class="form-control" name="content" id="content" rows="10">{{ old('content') ? old('content') : \Faker\Factory::create()->realText(500, 2) }}</textarea>
           </div>
+
         </form>
       </div>
       <div class="modal-footer">

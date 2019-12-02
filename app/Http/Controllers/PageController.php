@@ -8,7 +8,14 @@ class PageController extends Controller
 {
     public function welcome()
     {
-        return view('welcome')->with(['items' => \App\Article::orderBy('created_at', 'desc')->get()]);
+        $artikel = \App\Article::paginate(7);
+        $images = scandir(\public_path('images'));
+        $images = array_diff($images, ['.', '..']);
+
+        return view('welcome')->with([
+            'items' => $artikel,
+            'images' => $images,
+        ]);
     }
 
     public function artikel_index()

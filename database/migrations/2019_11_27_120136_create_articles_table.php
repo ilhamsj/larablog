@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title', 100);
             $table->text('content');
+            $table->string('category', 100)->default('blog');
             $table->timestamps();
         });
     }

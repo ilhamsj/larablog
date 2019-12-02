@@ -30,9 +30,13 @@
               'icon'  => 'fas fa-fw fa-tachometer-alt',
               'link'  => route('admin.dashboard'),
             ],
-            'Publikasi' => [
+            'Berita' => [
               'icon'  => 'fas fa-newspaper',
-              'link'  => route('admin.artikel')
+              'link'  => [
+                'Kegiatan'  => route('admin.artikel'),
+                'Pengumumuman'  => route('admin.artikel'),
+                'Blog'        => '#linkb',
+              ],
             ],
             'Galeri Foto' => [
               'icon'  => 'fas fa-image',
