@@ -194,14 +194,24 @@
           callbacks: {
             onMediaDelete : function(files) {
               var file = files[0].src;
-              console.log(file);
-              
+              var nama_file = file.replace('{{ env("APP_URL")}}images/', '')
+              deleteImage(nama_file)
             },
             onImageUpload: function(files) {
               uploadImage(files[0])
             },
           }
       });
+
+      function deleteImage(file) {
+        $.ajax({
+          type: "DELETE",
+          url: "../api/v1/file/"+file,
+          success: function (response) {
+            console.log(response);
+          }
+        });
+      }
 
       function uploadImage(files) {
 
@@ -248,7 +258,10 @@
         $('.form-group').find('input').removeClass("is-invalid");
         $('.form-group').find('.note-editor').removeClass("is-invalid");
       }
-      
+            
+      $('#modelId').modal('show');
+      $('#modelId').find('.modal-footer > button:nth-child(2)').text('publishContent').attr('id', 'publishContent');
+
     }); // end doc ready
   </script>
 @endpush
