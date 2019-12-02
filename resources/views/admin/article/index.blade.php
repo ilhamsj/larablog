@@ -60,7 +60,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="publishContent">Save</button>
+        <button type="button" class="btn btn-primary" id="">Message</button>
       </div>
     </div>
   </div>
@@ -94,6 +94,7 @@
           ]
       });
 
+      // delete content
       $('table').on('click', '.btnDelete', function (e) {
         e.preventDefault()
 
@@ -112,15 +113,18 @@
       // edit
       $('table').on('click', '.btnEdit', function (e) {
         e.preventDefault()
+
         var url   = $(this).attr('href')
-        var modal = $('#modelId').modal('show');
+        var modal = $('#modelId').modal('show');        
+
+        $('#modelId').find('.modal-footer > button:nth-child(2)').text('updateContent').attr('id', 'updateContent').attr('data-url', url);
 
         $.ajax({
           type: "GET",
           url: url,
           success: function (response) {
             $.each(response, function (index, value) {
-              console.log(index);
+              console.log(index + ' :' + value);
               if(index != 'content') {
                 $('#'+index).val(value)
               } else {
@@ -129,17 +133,33 @@
             });
           }
         });
-        
       });
+
+      $('#modelId').on('click', '#updateContent', function (e) {
+        var url = $(this).attr('data-url');
+        console.log(x);
+        var x = $('form').serialize();
+
+        $.ajax({
+          type: "UPDATE",
+          url: url,
+          success: function (response) {
+            console.log(response);
+            
+          }
+        });
+      });
+
 
       // modal show
       $('#tambah_data').click(function (e) { 
         e.preventDefault();
         $('#modelId').modal('show');
+        $('#modelId').find('.modal-footer > button:nth-child(2)').text('publishContent').attr('id', 'publishContent');
       });
 
       // store data
-      $('#publishContent').click(function (e) { 
+      $('#modelId').on('click', '#publishContent', function (e) {
         e.preventDefault();
 
         var x = $('form').serialize();
@@ -167,7 +187,7 @@
       // summernote
       $('form') .find('#content').summernote({
           tabsize: 2,
-          height: '100vh',
+          height: 200,
           followingToolbar: false,
           callbacks: {
             onImageUpload: function(files) {

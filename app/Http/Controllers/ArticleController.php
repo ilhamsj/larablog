@@ -54,7 +54,7 @@ class ArticleController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        return response()->json('test test');
     }
 
     public function destroy($id)
