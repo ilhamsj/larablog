@@ -36,19 +36,19 @@
         $menu = [
           'Home' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  => '#linksadk',
+            'link'  => '/',
           ],
-          'About' => [
+          'Profil' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
             'link'  => '#linksadk',
           ],
-          'Sample Post' => [
+          'Kegiatan' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
             'link'  => '#linksadk',
           ],
-          'Contact' => [
+          'Kontak' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  => '#linksadk',
+            'link'  =>  route("user.kontak.index"),
           ],
         ];
     @endphp

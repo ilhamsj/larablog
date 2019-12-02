@@ -31,4 +31,9 @@ class PageController extends Controller
             'item' => \App\Article::find($id)
         ]);
     }
+
+    public function kontak()
+    {
+        return view('kontak');
+    }
 }

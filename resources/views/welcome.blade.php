@@ -71,6 +71,8 @@
         type: 'image'
         // other options
       });
+
+      $('#galeri').find('img').addClass('rounded');
     });
   </script>
 @endpush

@@ -32,7 +32,7 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title'     => 'required|min:20|max:50',
-            'content'   => 'required|min:200|max:2500'
+            'content'   => 'required|min:200'
         ]);
 
         $artikel = Article::create($request->all());
