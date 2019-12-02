@@ -203,6 +203,7 @@
           }
       });
 
+      // summernote
       function deleteImage(file) {
         $.ajax({
           type: "DELETE",
@@ -213,6 +214,7 @@
         });
       }
 
+      // summernote
       function uploadImage(files) {
 
         var data = new FormData();
@@ -258,9 +260,6 @@
         $('.form-group').find('input').removeClass("is-invalid");
         $('.form-group').find('.note-editor').removeClass("is-invalid");
       }
-            
-      $('#modelId').modal('show');
-      $('#modelId').find('.modal-footer > button:nth-child(2)').text('publishContent').attr('id', 'publishContent');
 
     }); // end doc ready
   </script>
