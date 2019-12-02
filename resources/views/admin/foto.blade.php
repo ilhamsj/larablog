@@ -40,22 +40,25 @@
 @push('scripts')
   <script>
     $(document).ready(function () {
+      showImages()
 
-      $.ajax({
-        type: "GET",
-        url: "{{ route('file.index') }}",
-        success: function (response) {
-          var no = 1;
-          $.map(response, function (value, key) {
-            var foto = $('#foto > div:first-child').clone();
-            $(foto).find('h6').text(value);
-            $(foto).find('img').attr('src', '../images/'+value);
-            $(foto).find('.hapusFoto').attr('data-url', value);
-            $('#foto').append(foto);
-          });
-          $('#foto > div:first-child').remove();
-        }
-      });
+      function showImages() {
+        $.ajax({
+          type: "GET",
+          url: "{{ route('file.index') }}",
+          success: function (response) {
+            var no = 1;
+            $.map(response, function (value, key) {
+              var foto = $('#foto > div:first-child').clone();
+              $(foto).find('h6').text(value);
+              $(foto).find('img').attr('src', '../images/'+value);
+              $(foto).find('.hapusFoto').attr('data-url', value);
+              $('#foto').append(foto);
+            });
+            $('#foto > div:first-child').remove();
+          }
+        });
+      } 
 
       $('#foto').on('click', '.hapusFoto', function (e) {
         e.preventDefault()
@@ -66,6 +69,8 @@
           data: '',
           success: function (response) {
             showMessage(response + ' Berhasil dihapus')
+            $('#foto > div').not(':first-child').remove();
+            showImages()
           }
         });
       });

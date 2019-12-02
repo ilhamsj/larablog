@@ -182,7 +182,7 @@
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="{{ secure_url('images/photo-1458071103673-6a6e4c4a3413.jpg') }}" alt="">
+                    <img class="rounded-circle" src="{{ secure_url('images/photo-1520719627573-5e2c1a6610f0.jpg') }}" alt="">
                     <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
@@ -200,7 +200,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="{{ secure_url('images/photo-1458071103673-6a6e4c4a3413.jpg') }}">
+                <img class="img-profile rounded-circle" src="{{ secure_url('images/photo-1520719627573-5e2c1a6610f0.jpg') }}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
