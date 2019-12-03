@@ -18,7 +18,7 @@ class TestController extends Controller
     public function file_index()
     {
         $items = scandir(\public_path('images'));
-        $items = array_diff($items, ['.', '..']);
+        $items = array_diff($items, ['.', '..', 'photo-1520719627573-5e2c1a6610f0.jpg']);
         return response()->json($items);
     }
 
