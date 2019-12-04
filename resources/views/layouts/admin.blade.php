@@ -32,11 +32,7 @@
             ],
             'Berita' => [
               'icon'  => 'fas fa-newspaper',
-              'link'  => [
-                'Kegiatan'  => route('admin.artikel'),
-                'Pengumumuman'  => route('admin.artikel'),
-                'Blog'        => '#linkb',
-              ],
+              'link'  => route('admin.artikel')
             ],
             'Galeri Foto' => [
               'icon'  => 'fas fa-image',

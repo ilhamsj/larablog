@@ -32,6 +32,7 @@
         "startbootstrap-clean-blog": "^5.0.8",
         "startbootstrap-creative": "^5.1.8",
         "startbootstrap-sb-admin-2": "^4.0.7",
-        "summernote": "^0.8.12"
+        "summernote": "^0.8.12",
+        "swiper": "^5.2.1"
     }
 }
