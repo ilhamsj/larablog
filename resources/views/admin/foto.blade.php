@@ -18,18 +18,25 @@
         <img class="img-fluid rounded" src=""/>
       </div>
       <div class="card-footer">
-
-        <a href="#" class="copyFoto btn btn-primary btn-icon-split btn-sm">
-          <span class="icon text-white-50"><i class="fas fa-copy"></i>
-          </span>
-        </a>
-        <input type="text" value="" class="form-control form-control-sm collapse">
-      
-        <a href="#" class="hapusFoto btn btn-danger btn-icon-split btn-sm">
-          <span class="icon text-white-50"><i class="fas fa-trash-alt"></i>
-          </span>
-        </a>
-
+        <div class="row">
+          <div class="form-group col-12">
+            <input type="text" value="" class="form-control form-control-sm">
+          </div>
+            <div class="col">
+              <button type="button" class="btnCopy btn btn-primary btn-icon-split btn-sm">
+                <span class="icon text-white-50"><i class="fas fa-copy"></i></span>
+              </button>
+              <button type="button" class="hapusFoto btn btn-danger btn-icon-split btn-sm">
+                <span class="icon text-white-50"><i class="fas fa-trash-alt"></i></span>
+              </button>
+        
+              <a target="_blank" href="" class="btn btn-success btn-icon-split btn-sm">
+                <span class="icon text-white-50">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -45,7 +52,7 @@
   <script>
     $(document).ready(function () {
 
-
+      new ClipboardJS('.btnCopy');
 
       showImages()
 
@@ -60,16 +67,15 @@
               $(foto).find('h6').text(value);
               $(foto).find('img').attr('src', '../images/'+value);
               $(foto).find('input').attr('value', '{{ env("APP_URL") }}images/'+value).attr('id', 'foto'+key);
-              $(foto).find('a:first-child').attr('data-clipboard-target', '#foto'+key);
+              $(foto).find('.btnCopy').attr('data-clipboard-target', '#foto'+key);
               $(foto).find('.hapusFoto').attr('data-url', value);
+              $(foto).find('a[target=_blank]').attr('href', '{{ env("APP_URL") }}images/'+value);
               $('#foto').append(foto);
             });
             $('#foto > div:first-child').remove();
           }
         });
       } 
-
-      new ClipboardJS('.copyFoto');
 
       $('#foto').on('click', '.copyFoto', function (e) {
         console.log($(this).next().attr('value'));
