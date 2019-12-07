@@ -51,7 +51,7 @@
     <div class="col">
       <div class="row">
         <div class="col-12">
-            <span class="bg-primary text-light">Popular Posts</span>
+            <span class="bg-primary text-light">Pengumuman Terbaru</span>
             <hr>
             @foreach ($articles as $item)
             <p>
@@ -67,28 +67,17 @@
 <section>
   <div class="container" style="margin: 100px auto">
     <div class="row">
-      <div class="col-8">
+      <div class="col">
         <div class="row">
             <div class="col-12">
                 <span class="bg-primary text-light">Galeri Kegiatan</span>
                 <hr>
             </div>
-            @for ($i = 0; $i < 4; $i++)
-            <div class="col-4 mb-4">
+            @for ($i = 0; $i < 7; $i++)
+            <div class="col-3 mb-4">
               <img class="img-fluid" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
             </div>
             @endfor
-        </div>
-      </div>
-      <div class="col">
-        <div class="row">
-            <div class="col-12">
-                <span class="bg-primary text-light">Download dokumen </span>
-                <hr>
-                @foreach ($articles as $item)
-                  <a href="">{{ $item->title }}</a> <i class="fa fa-download" aria-hidden="true"></i> <br/>
-                @endforeach
-              </div>
         </div>
       </div>
     </div>

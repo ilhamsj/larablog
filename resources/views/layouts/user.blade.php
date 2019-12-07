@@ -13,6 +13,13 @@
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
+  <style>
+    .whatsapp {
+      transform: rotate(-90deg);
+      bottom: 50vh;
+      right: -45px;
+    }
+  </style>
   @stack('styles')
 </head>
 
@@ -78,25 +85,32 @@
   <!-- Footer -->
   <footer class="bg-light">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            @foreach ($sosmed as $key => $val)
-              <li class="list-inline-item">
-                <a href="{{ $val['url'] }}">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="{{ $val['icon'] }}"></i>
-                  </span>
-                </a>
-              </li>
-            @endforeach
-          </ul>
-          <p class="copyright text-muted">Copyright &copy; <a href="{{ env('APP_URL') }}">{{ env('APP_NAME') }}</a> {{ date('Y') }}</p>
+      <div class="row flex-row-reverse">
+        <div class="col-6">
+          Tentang kami
+          <hr>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?
+        </div>
+        <div class="col">
+          Didukung oleh
+          <hr>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?
+        </div>
+        <div class="col">
+          Didukung oleh
+          <hr>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?
+        </div>
+        <div class="col-12">
+          <hr>
+            Copyright © 2019. All Rights Reserved
         </div>
       </div>
     </div>
   </footer>
+  <section class="whatsapp position-fixed rounded-left">
+      <a href="" class="btn btn-primary rounded-top">Whatsapp</a>
+  </section>
   <script src="{{ secure_url('js/app.js') }}"></script>
   @stack('scripts')
 </body>
