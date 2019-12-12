@@ -82,29 +82,43 @@
 
   @yield('content')
   
+  @php
+      $footer = [
+        env("APP_NAME") => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?',
+        'Useful links' => [
+          'Blog' => 'https://an-naba.test/',
+          'Kegiatan' => 'https://an-naba.test/',
+          'Halaman muka' => 'https://an-naba.test/',
+          'Tentang kami' => 'https://an-naba.test/',
+        ],
+        'di dukung oleh' => [
+          'Blog' => 'https://an-naba.test/',
+          'Kegiatan' => 'https://an-naba.test/',
+          'Halaman muka' => 'https://an-naba.test/',
+          'Tentang kami' => 'https://an-naba.test/',
+        ],
+        'Copyright'  => '©' . date(' Y ') . env('APP_NAME').' 2019 All Rights Reserved'
+      ];
+  @endphp
+
   <!-- Footer -->
-  <footer class="bg-light">
+  <footer class="bg-dark text-light">
     <div class="container">
-      <div class="row flex-row-reverse">
-        <div class="col-6">
-          Tentang kami
-          <hr>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?
-        </div>
-        <div class="col">
-          Didukung oleh
-          <hr>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?
-        </div>
-        <div class="col">
-          Didukung oleh
-          <hr>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?
-        </div>
-        <div class="col-12">
-          <hr>
-            Copyright © 2019. All Rights Reserved
-        </div>
+      <div class="row">
+        @foreach ($footer as $key => $val)
+          <div class="col" id="{{ Str::slug($key) }}">
+            <h4>{{ Str::title($key) }}</h4>
+            @if (is_array($val))
+            <ul>
+                @foreach ($val as $k => $v)
+                  <li>{{ $k }}</li>
+                @endforeach
+            </ul>
+            @else
+                {{ $val }}
+            @endif
+          </div>
+        @endforeach
       </div>
     </div>
   </footer>
@@ -112,6 +126,11 @@
       <a href="" class="btn btn-primary rounded-top">Whatsapp</a>
   </section>
   <script src="{{ secure_url('js/app.js') }}"></script>
+  <script>
+    $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-6');
+    $('#copyright').toggleClass('col col-12 mt-4').find('h4').remove();
+
+  </script>
   @stack('scripts')
 </body>
 

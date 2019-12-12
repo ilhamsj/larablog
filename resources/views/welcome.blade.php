@@ -75,7 +75,7 @@
             </div>
             @for ($i = 0; $i < 7; $i++)
             <div class="col-3 mb-4">
-              <img class="img-fluid" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
+              <img class="img-fluid rounded" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
             </div>
             @endfor
         </div>
@@ -94,5 +94,15 @@
 
 @push('scripts')
     <script>
+      var arr = [1, 2, 3];
+      console.log([...arr, 4, 9, 6]);
+      
+      const name = 'puri';
+      setTimeout(() => {
+        console.log(`i call her 
+        ${name} puri puri `);
+      }, 2000)
+
+      
   </script>
 @endpush
