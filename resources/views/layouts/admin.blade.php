@@ -30,20 +30,16 @@
               'icon'  => 'fas fa-fw fa-tachometer-alt',
               'link'  => route('admin.dashboard'),
             ],
-            'Berita' => [
+            'Postingan' => [
               'icon'  => 'fas fa-newspaper',
               'link'  => route('admin.artikel')
             ],
-            'Galeri Foto' => [
+            'Dokumentasi' => [
               'icon'  => 'fas fa-image',
               'link'  => [
-                'Kegiatan'   => '#linkb',
-                'Semua Foto'   => route('admin.foto'),
+                'Dokumen'   => '',
+                'Foto Kegiatan'   => route('admin.foto'),
               ],
-            ],
-            'Unduhan File' => [
-              'icon'  => 'fa fa-download',
-              'link'  => '#kritik',
             ],
             'Kritik dan Saran' => [
               'icon'  => 'fa fa-comments',
@@ -61,6 +57,7 @@
           
         <hr class="sidebar-divider my-0">
         @foreach ($menu as $key => $val)
+
           <li class="nav-item {{ url()->current() == $val['link'] ? 'active' : ''}}">
             @if (!is_array($val['link']))
               <a class="nav-link" href="{{ $val['link'] }}">
@@ -76,7 +73,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu {{ $key }} :</h6>
                   @foreach ($val['link'] as $k => $v)
-                  <a class="collapse-item" href="{{ $v }}">{{ $k }}</a>
+                    <a class="collapse-item {{ url()->current() == $v ? 'active' : ''}}" href="{{ $v }}">{{ $k }}</a>
                   @endforeach
                 </div>
               </div>

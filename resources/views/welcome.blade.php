@@ -91,18 +91,3 @@
   body {background-color: white}
 </style>
 @endpush
-
-@push('scripts')
-    <script>
-      var arr = [1, 2, 3];
-      console.log([...arr, 4, 9, 6]);
-      
-      const name = 'puri';
-      setTimeout(() => {
-        console.log(`i call her 
-        ${name} puri puri `);
-      }, 2000)
-
-      
-  </script>
-@endpush

@@ -9,37 +9,13 @@
 
 @section('content')
 <div class="row">
-  @for ($i = 0; $i < 2; $i++)
+  @for ($i = 0; $i < 4; $i++)
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 border-left-info shadow h-100 py-2">
+      <div class="card border-0 border-left-primary shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-              <div class="row no-gutters align-items-center">
-                <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                </div>
-                <div class="col">
-                  <div class="progress progress-sm mr-2">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 border-left-warning shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pending Requests</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
             </div>
             <div class="col-auto">
@@ -53,20 +29,18 @@
 </div>
 
 <div class="row">
-  <div class="col">
-    <div class="card border-0 shadow mb-4">
-      <a href="#collapseCardExample" class="d-block card-header py-3 border-0" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-        <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-      </a>
-      <div class="collapse show" id="collapseCardExample">
-        <div class="card-body">
-          This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-          This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-          This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-          This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-        </div>
+  @for ($i = 0; $i < 4; $i++)
+  <div class="col-6">
+    <div class="card shadow mb-4">
+      <div class="card-header">
+        <h6 class="m-0 font-weight-bold text-primary">Collapsable Card </h6>
+      </div>
+      <div class="card-body">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos corporis hic dolor vel, nam dolorum voluptatem consectetur dolorem cumque placeat, iure aliquid? Labore aliquam officia non velit illum sunt unde!
       </div>
     </div>
   </div>
+  @endfor
+
 </div>
 @endsection
