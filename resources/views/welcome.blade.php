@@ -6,18 +6,17 @@
 
 <header class="masthead">
   <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-heading row justify-content-center align-items-center" style="min-height: 100vh">
-          <div class="col">
-            <h1>
-              {{ count($articles) != null ? $articles->first()->title : 'Belum ada postingan ' }}
-            </h1>
-          </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+        @for ($i = 0; $i < 7; $i++)
+        <div class="swiper-slide text-center">
+          <img class="img-fluid" data-src="holder.js/1366x768?auto=yes&textmode=exact&random=yes" alt="" srcset="">
         </div>
-      </div>
+        @endfor
     </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
 </header>
 
@@ -68,14 +67,14 @@
   <div class="container" style="margin: 100px auto">
     <div class="row">
       <div class="col">
-        <div class="row">
+        <div class="row parent-container">
             <div class="col-12">
-                <span class="bg-primary text-light">Galeri Kegiatan</span>
-                <hr>
+              <span class="bg-primary text-light">Galeri Kegiatan</span>
+              <hr>
             </div>
             @for ($i = 0; $i < 7; $i++)
             <div class="col-6 col-sm-3 mb-4">
-              <img class="img-fluid rounded" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
+              <img class="img-fluid rounded"  href="{{ secure_url('images/IMG_3757.JPG') }}" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
             </div>
             @endfor
         </div>
@@ -87,7 +86,44 @@
 @endsection
 
 @push('styles')
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 <style>
   body {background-color: white}
 </style>
+@endpush
+
+@push('scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script>
+  <script src="https://unpkg.com/swiper/js/swiper.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script>
+
+    $('.parent-container').magnificPopup({
+      delegate: 'img', // child items selector, by clicking on it popup will open
+      type: 'image',
+      gallery:{
+        enabled:true
+      }
+    });
+
+    // swi
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+  </script>
 @endpush

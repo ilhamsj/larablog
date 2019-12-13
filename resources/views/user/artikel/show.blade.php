@@ -37,7 +37,7 @@
           <img class="img-fluid rounded" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
         </div>
         <div class="col-12">
-          {!! Str::limit($item->content, 100) !!}
+          {!! $item->content !!}
         </div>
         <div class="w-100"></div>
       </div>
