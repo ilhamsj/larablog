@@ -23,7 +23,7 @@
 
 <div class="container" style="margin: 100px auto">
   <div class="row">
-    <div class="col-8">
+    <div class="col-12 col-sm-9 pr-4">
       <div class="row">
         <div class="col">
           <h3><a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a></h3>

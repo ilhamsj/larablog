@@ -7,12 +7,10 @@
 <header class="masthead">
   <div class="overlay"></div>
   <div class="swiper-container">
-    <div class="swiper-wrapper">
-        @for ($i = 0; $i < 7; $i++)
-        <div class="swiper-slide text-center">
-          <img class="img-fluid" data-src="holder.js/1366x768?auto=yes&textmode=exact&random=yes" alt="" srcset="">
-        </div>
-        @endfor
+    <div class="swiper-wrapper" style="min-height: 50vh">
+      <div class="swiper-slide text-center">
+        <img class="img-fluid" data-src="holder.js/1366x768?auto=yes&textmode=exact&random=yes" alt="" srcset="">
+      </div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -22,17 +20,17 @@
 
 <div class="container" style="margin: 100px auto">
   <div class="row">
-    <div class="col-12 col-sm-8">
+    <div class="col-12 col-sm-9">
         <div class="row">
           <div class="col-12">
             <span class="btn-primary">Postingan Terbaru</span>
             <hr>
           </div>
           @foreach ($articles as $item)
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-6 mb-4">
             <img class="img-fluid" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
           </div>
-          <div class="col-12 col-sm-6">
+          <div class="col-12 col-sm-6 mb-4">
             <h3>
               <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
             </h3>

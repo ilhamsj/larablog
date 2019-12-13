@@ -34,12 +34,17 @@
               'icon'  => 'fas fa-newspaper',
               'link'  => route('admin.artikel')
             ],
-            'Dokumentasi' => [
+            'Dokumentasi Foto' => [
               'icon'  => 'fas fa-image',
               'link'  => [
-                'Dokumen'   => '',
-                'Foto Kegiatan'   => route('admin.foto'),
+                'Kegiatan'   => '',
+                'Postingan'   => route('admin.foto'),
+                'Slider'   => route('admin.foto'),
               ],
+            ],
+            'Dokumen' => [
+              'icon'  => 'fa fa-download',
+              'link'  => '#kritik',
             ],
             'Kritik dan Saran' => [
               'icon'  => 'fa fa-comments',

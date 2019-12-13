@@ -19,6 +19,10 @@
       bottom: 50vh;
       right: -55px;
     }
+    /* * {
+      font-family: 'poppins';
+      font-size: 1rem
+    } */
   </style>
   @stack('styles')
 </head>
