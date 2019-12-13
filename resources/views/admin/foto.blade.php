@@ -48,11 +48,11 @@
 @endpush
 
 @push('scripts')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script> --}}
   <script>
     $(document).ready(function () {
 
-      new ClipboardJS('.btnCopy');
+      // new ClipboardJS('.btnCopy');
 
       showImages()
 

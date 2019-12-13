@@ -23,17 +23,17 @@
 
 <div class="container" style="margin: 100px auto">
   <div class="row">
-    <div class="col-8">
+    <div class="col-12 col-sm-8">
         <div class="row">
           <div class="col-12">
             <span class="btn-primary">Postingan Terbaru</span>
             <hr>
           </div>
           @foreach ($articles as $item)
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <img class="img-fluid" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
           </div>
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <h3>
               <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
             </h3>
@@ -74,7 +74,7 @@
                 <hr>
             </div>
             @for ($i = 0; $i < 7; $i++)
-            <div class="col-3 mb-4">
+            <div class="col-6 col-sm-3 mb-4">
               <img class="img-fluid rounded" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
             </div>
             @endfor

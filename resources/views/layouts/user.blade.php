@@ -84,7 +84,7 @@
   
   @php
       $footer = [
-        env("APP_NAME") => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi voluptate dignissimos fuga in sit tenetur incidunt enim obcaecati perspiciatis quo nihil unde libero, laborum, explicabo accusantium quaerat aut. Dolorem, omnis?',
+        env("APP_NAME") => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. ',
         'Useful links' => [
           'Blog' => 'https://an-naba.test/',
           'Kegiatan' => 'https://an-naba.test/',
@@ -106,12 +106,14 @@
     <div class="container">
       <div class="row">
         @foreach ($footer as $key => $val)
-          <div class="col" id="{{ Str::slug($key) }}">
+          <div class="col mb-4" id="{{ Str::slug($key) }}">
             <h4>{{ Str::title($key) }}</h4>
             @if (is_array($val))
-            <ul>
+            <ul class="nav flex-column">
                 @foreach ($val as $k => $v)
-                  <li>{{ $k }}</li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link text-light pl-0">{{ $k }}</a>
+                  </li>
                 @endforeach
             </ul>
             @else
@@ -165,7 +167,7 @@
 
   <script src="{{ secure_url('js/app.js') }}"></script>
   <script>
-    $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-6');
+    $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-8');
     $('#copyright').toggleClass('col col-12 mt-4').find('h4').remove();
     $('#saran').click(function (e) { 
       e.preventDefault();

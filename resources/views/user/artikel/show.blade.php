@@ -47,9 +47,12 @@
         <div class="col-12">
           <span class="bg-primary text-light">Pengumuman Terbaru</span>
           <hr>
-          <p>
-            <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
-          </p>
+
+          @foreach ($articles as $item)
+            <p>
+              <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
+            </p>
+          @endforeach
         </div>
       </div>
     </div>

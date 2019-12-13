@@ -24,7 +24,8 @@ class PageController extends Controller
     public function artikel_show($id)
     {
         return view('user.artikel.show')->with([
-            'item' => \App\Article::find($id)
+            'item' => \App\Article::find($id),
+            'articles' => \App\Article::paginate(6)
         ]);
     }
 
