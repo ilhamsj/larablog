@@ -167,12 +167,23 @@
 
   <script src="{{ secure_url('js/app.js') }}"></script>
   <script>
+  $(document).ready(function () {
     $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-8');
     $('#copyright').toggleClass('col col-12 mt-4').find('h4').remove();
     $('#saran').click(function (e) { 
       e.preventDefault();
       $('#kritik_saran').modal('show')
     });
+    $(window).on('resize', function () {
+      var getSize = $(this);
+      if(getSize.width() < 576) {
+        console.log(getSize.width());
+        $('#mainNav').css('position', 'relative');
+      } else {
+        $('#mainNav').css('position', 'absolute');
+      }
+    }); 
+  });
   </script>
   @stack('scripts')
 </body>

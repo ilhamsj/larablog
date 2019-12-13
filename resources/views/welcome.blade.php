@@ -97,20 +97,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script>
   <script src="https://unpkg.com/swiper/js/swiper.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-  <script>
-
-  
-    $(window).on('resize', function () {
-      var getSize = $(this);
-      if(getSize.width() < 576) {
-        console.log(getSize.width());
-        $('#mainNav').css('position', 'relative');
-      } else {
-        // console.log(getSize.width());
-        $('#mainNav').css('position', 'absolute');
-      }
-    });
-    
+  <script>    
     // gallery
     $('.parent-container').magnificPopup({
       delegate: 'img', // child items selector, by clicking on it popup will open
