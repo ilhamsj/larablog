@@ -99,6 +99,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
   <script>
 
+  
+    $(window).on('resize', function () {
+      var getSize = $(this);
+      if(getSize.width() < 576) {
+        console.log(getSize.width());
+        $('#mainNav').css('position', 'relative');
+      } else {
+        // console.log(getSize.width());
+        $('#mainNav').css('position', 'absolute');
+      }
+    });
+    
+    // gallery
     $('.parent-container').magnificPopup({
       delegate: 'img', // child items selector, by clicking on it popup will open
       type: 'image',
