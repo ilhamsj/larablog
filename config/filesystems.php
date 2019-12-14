@@ -49,6 +49,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'public_uploads_v2' => [
+            'driver' => 'local',
+            'root' => public_path(),
+            'visibility' => 'public',
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

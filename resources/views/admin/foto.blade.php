@@ -42,6 +42,38 @@
   </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="modalDocuments" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="">Judul</label>
+            <input type="text" name="title" id="title" class="form-control" placeholder="" aria-describedby="helpId">
+          </div>
+
+          <div class="form-group">
+            <label for="">Dokumen</label>
+            <input type="file" class="form-control-file" name="file" id="file" placeholder="" aria-describedby="fileHelpId">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 @push('styles')
@@ -91,7 +123,30 @@
           success: function (response) {
             showMessage(response + ' Berhasil dihapus')
             $('#foto > div').not(':first-child').remove();
-            showImages()
+            showImages();
+          }
+        });
+      });
+
+      $('#tambah_data').click(function (e) { 
+        e.preventDefault();
+        $('#modalDocuments').modal('show');
+      });
+
+      $('#modalDocuments').find('button:last-child').click(function (e) { 
+        e.preventDefault();
+        var form = $('#modalDocuments').find('form')[0];
+        var data = new FormData(form);
+        
+        $.ajax({
+          type: "POST",
+          url: '{{ route("v2.file.store") }}',
+          data: data,
+          contentType: false,
+          processData: false,
+          cache: false,
+          success: function (response) {
+            console.log(response);
           }
         });
       });

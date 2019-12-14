@@ -25,6 +25,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/file/destroy', 'TestController@file_delete')->name('file.delete');
 });
 
-Route::group(['prefix' => 'v2'], function () {
-    Route::resource('files', 'FileController');
-});
+Route::resource('v2/file', 'DocumentController', [
+    'as' => 'v2'
+]);
