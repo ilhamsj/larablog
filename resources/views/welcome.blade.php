@@ -7,9 +7,9 @@
 <header class="masthead">
   <div class="overlay"></div>
   <div class="swiper-container">
-    <div class="swiper-wrapper" style="min-height: 50vh">
+    <div class="swiper-wrapper">
       <div class="swiper-slide text-center">
-        <img class="img-fluid" data-src="holder.js/1366x768?auto=yes&textmode=exact&random=yes" alt="" srcset="">
+        <img class="img-fluid" data-src="holder.js/1349x699?auto=yes&textmode=exact&random=yes" alt="" srcset="">
       </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -72,7 +72,7 @@
             </div>
             @for ($i = 0; $i < 7; $i++)
             <div class="col-6 col-sm-3 mb-4">
-              <img class="img-fluid rounded"  href="{{ secure_url('images/IMG_3757.JPG') }}" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
+              <img style="cursor: pointer" class="img-fluid rounded"  href="{{ secure_url('images/IMG_3757.JPG') }}" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
             </div>
             @endfor
         </div>

@@ -178,16 +178,25 @@
       e.preventDefault();
       $('#kritik_saran').modal('show')
     });
+
     $(window).on('resize', function () {
       var getSize = $(this);
-      if(getSize.width() < 576) {
-        console.log(getSize.width());
+      responsiveX(getSize.width())
+    });
+
+    responsiveX($(window).width())
+
+    function responsiveX(widthSize) {
+      if(widthSize < 576) {
+        console.log(widthSize);
         $('#mainNav').css('position', 'relative');
       } else {
         $('#mainNav').css('position', 'absolute');
       }
-    }); 
+    }
+
   });
+
   </script>
   @stack('scripts')
 </body>
