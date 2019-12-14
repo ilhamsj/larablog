@@ -11,6 +11,8 @@ class PageController extends Controller
         $article = \App\Article::paginate(6);
         return view('welcome')->with([
             'articles' => $article,
+            'photos' => \App\Document::where('category', 'kegiatan')->get(),
+            'slider' => \App\Document::where('category', 'slider')->get(),
         ]);
     }
 

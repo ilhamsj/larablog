@@ -8,9 +8,12 @@
   <div class="overlay"></div>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide text-center">
-        <img class="img-fluid" data-src="holder.js/1349x699?auto=yes&textmode=exact&random=yes" alt="" srcset="">
+      @foreach ($slider as $item)
+      <div class="swiper-slide text-center" style="max-height:100vh">
+        {{-- <img class="img-fluid" data-src="holder.js/1349x699?auto=yes&textmode=exact&random=yes" alt="" srcset=""> --}}
+        <img class="img-fluid" src="{{$item->file}}" alt="" srcset="">
       </div>
+      @endforeach
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -34,7 +37,7 @@
             <h3>
               <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
             </h3>
-            {!! Str::limit($item->content, 100) !!} 
+            {!! strip_tags(Str::limit($item->content, 100)) !!} 
             <p>
                 <span style="font-size: medium">
                   {{ $item->created_at->format('d F Y') }} / <a href=""> {{ $item->category}}</a>
@@ -70,11 +73,11 @@
               <span class="bg-primary text-light">Galeri Kegiatan</span>
               <hr>
             </div>
-            @for ($i = 0; $i < 7; $i++)
+            @foreach ($photos as $item)
             <div class="col-6 col-sm-3 mb-4">
-              <img style="cursor: pointer" class="img-fluid rounded"  href="{{ secure_url('images/IMG_3757.JPG') }}" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
+              <img style="cursor: pointer" class="img-fluid rounded"  href="{{ secure_url($item->file) }}" src="{{ secure_url($item->file) }}" alt="" srcset="">
             </div>
-            @endfor
+            @endforeach
         </div>
       </div>
     </div>
@@ -84,17 +87,17 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+<link rel="stylesheet" href="vendor/swiper.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"> --}}
 <style>
   body {background-color: white}
 </style>
 @endpush
 
 @push('scripts')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script>
-  <script src="https://unpkg.com/swiper/js/swiper.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script src="vendor/swiper.min.js"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script> --}}
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script> --}}
   <script>    
     // gallery
     $('.parent-container').magnificPopup({
