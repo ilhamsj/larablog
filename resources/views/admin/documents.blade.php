@@ -60,7 +60,7 @@
             <select class="form-control" name="category" id="category">
               <option value="Slider">Slider</option>
               <option value="Kegiatan">Kegiatan</option>
-              <option value="Postingan">Postingan</option>
+              <option value="Postingan">Dokumen</option>
             </select>
           </div>
 
@@ -88,7 +88,7 @@
 
       // read
       var table = $('table').DataTable({
-        order : [[4,'desc']],
+        order : [[0,'desc'], [4,'desc']],
         responsive: true,
         processing: true,
         serverSide: true,

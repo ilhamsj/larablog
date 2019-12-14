@@ -31,7 +31,8 @@
           </div>
           @foreach ($articles as $item)
           <div class="col-12 col-sm-6 mb-4">
-            <img class="img-fluid" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
+            <img class="img-fluid rounded" data-src="holder.js/500x300?auto=yes&textmode=exact&random=yes" alt="" srcset="">
+            {{-- <img class="img-fluid" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset=""> --}}
           </div>
           <div class="col-12 col-sm-6 mb-4">
             <h3>
@@ -50,12 +51,22 @@
     </div>
     <div class="col">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 mb-4">
             <span class="bg-primary text-light">Pengumuman Terbaru</span>
             <hr>
-            @foreach ($articles as $item)
+            @foreach ($news as $item)
             <p>
                 <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
+            </p>
+            @endforeach
+        </div>
+        <div class="col-12">
+            <span class="bg-primary text-light"> Download dokumen</span>
+            <hr>
+            @foreach ($documents as $item)
+            <p>
+                {{ $item->title}}
+                <a target="_blank" href="{{ $item->file }}">Download</a>
             </p>
             @endforeach
         </div>
@@ -97,11 +108,11 @@
 @push('scripts')
   <script src="vendor/swiper.min.js"></script>
   {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script> --}}
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.js"></script> --}}
+  <script src="vendor/holder.js"></script>
   <script>    
     // gallery
     $('.parent-container').magnificPopup({
-      delegate: 'img', // child items selector, by clicking on it popup will open
+      delegate: 'img',
       type: 'image',
       gallery:{
         enabled:true

@@ -210,7 +210,7 @@
       // summernote
       $('form') .find('#content').summernote({
           tabsize: 2,
-          height: 200,
+          height: 1000,
           followingToolbar: false,
           callbacks: {
             onMediaDelete : function(files) {

@@ -23,7 +23,7 @@ class DocumentController extends Controller
             ';
         })
         ->editColumn('file', function ($items) {
-            return '<img style="max-width:100px" class="rounded" src="../'.$items->file.'"/>';
+            return '<img style="" class="rounded img-fluid" src="../'.$items->file.'"/>';
         })
         ->rawColumns(['file', 'action'])
         ->toJson();

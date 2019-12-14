@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\Document;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function welcome()
     {
-        $article = \App\Article::paginate(6);
         return view('welcome')->with([
-            'articles' => $article,
-            'photos' => \App\Document::where('category', 'kegiatan')->get(),
-            'slider' => \App\Document::where('category', 'slider')->get(),
+            'articles'  => Article::whereIn('category', ['kegiatan', 'blog'])->orderBy('updated_at', 'desc')->get(),
+            'news'      => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->get(),
+            'documents' => Document::whereIn('category', ['Postingan', 'Postingan'])->orderBy('updated_at', 'desc')->get(),
+            'photos'    => Document::where('category', 'kegiatan')->get(),
+            'slider'    => Document::where('category', 'slider')->get(),
         ]);
     }
 
