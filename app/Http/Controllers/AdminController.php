@@ -23,4 +23,9 @@ class AdminController extends Controller
     {
         return view('admin.foto');
     }
+  
+    public function document()
+    {
+        return view('admin.documents');
+    }
 }
