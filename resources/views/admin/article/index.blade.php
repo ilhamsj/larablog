@@ -24,7 +24,8 @@
                 <tr>
                   <th>Title</th>
                   <th>Kategori</th>
-                  <th>Tanggal Publish</th>
+                  <th>Update</th>
+                  <th>Publish</th>
                   <th>ِِAksi</th>
                 </tr>
               </thead>
@@ -100,7 +101,7 @@
 
       // read
       var table = $('table').DataTable({
-          order : [[1,'desc']],
+          order : [[3,'desc']],
           responsive: true,
           processing: true,
           serverSide: true,
@@ -108,6 +109,7 @@
           columns: [
               { data: 'title', name: 'title' },
               { data: 'category', name: 'category' },
+              { data: 'updated_at', name: 'updated_at' },
               { data: 'created_at', name: 'created_at' },
               { data: 'action', name: 'action' }
           ]

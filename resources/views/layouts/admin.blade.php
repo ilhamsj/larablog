@@ -34,11 +34,11 @@
               'icon'  => 'fas fa-newspaper',
               'link'  => route('admin.artikel')
             ],
-            'Dokumentasi Foto' => [
+            'Galeri' => [
               'icon'  => 'fas fa-image',
               'link'  => [
-                'Kegiatan'   => '',
                 'Postingan'   => route('admin.foto'),
+                'Kegiatan'   => '',
                 'Slider'   => route('admin.foto'),
               ],
             ],

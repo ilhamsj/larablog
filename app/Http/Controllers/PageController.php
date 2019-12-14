@@ -16,14 +16,14 @@ class PageController extends Controller
 
     public function artikel_index()
     {
-        return view('user.artikel.index')->with([
+        return view('articles')->with([
             'articles' => \App\Article::paginate(6)
         ]);
     }
 
     public function artikel_show($id)
     {
-        return view('user.artikel.show')->with([
+        return view('article')->with([
             'item' => \App\Article::find($id),
             'articles' => \App\Article::paginate(6)
         ]);
@@ -31,6 +31,6 @@ class PageController extends Controller
 
     public function kontak()
     {
-        return view('kontak');
+        // return view('kontak');
     }
 }
