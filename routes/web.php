@@ -11,18 +11,21 @@
 |
 */
 
+// user - artikel
 Route::get('/', 'PageController@welcome')->name('welcome');
-Route::get('/artikel', 'PageController@artikel_index')->name('user.artikel.index');
-Route::get('/artikel/{id}', 'PageController@artikel_show')->name('user.artikel.show');
 
-Route::get('/kontak', 'PageController@kontak')->name('user.kontak.index');
+// user - artikel
+Route::group(['prefix' => 'artikel'], function () {
+  Route::get('/', 'PageController@artikel_index')->name('user.artikel.index');
+  Route::get('/{id}', 'PageController@artikel_show')->name('user.artikel.show');
+});
 
-Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
-Route::get('/admin/artikel', 'AdminController@artikel')->name('admin.artikel');
-Route::get('/admin/artikel/create', 'ArticleController@create')->name('admin.artikel.create');
-
-Route::get('/admin/foto', 'AdminController@foto')->name('admin.foto');
-Route::get('/admin/document', 'AdminController@document')->name('admin.document');
-Route::get('/admin/gallery', 'AdminController@gallery')->name('admin.gallery');
-
-Route::get('/admin/reviews', 'AdminController@reviews')->name('admin.review');
+// admin
+Route::group(['prefix' => 'admin'], function () {
+  Route::get('', 'AdminController@dashboard')->name('admin.dashboard');
+  Route::get('artikel', 'AdminController@artikel')->name('admin.artikel');
+  Route::get('foto', 'AdminController@foto')->name('admin.foto');
+  Route::get('dokumen', 'AdminController@document')->name('admin.document');
+  Route::get('galeri', 'AdminController@gallery')->name('admin.gallery');
+  Route::get('review', 'AdminController@reviews')->name('admin.review');
+});

@@ -2,122 +2,86 @@
 
 @section('title_page', 'Ini halaman title')
 
+@section('header')
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        @foreach ($slider as $item)
+        <div class="swiper-slide text-center" style="max-height:100vh">
+          <img class="img-fluid" src="{{$item->file}}" alt="" srcset="">
+        </div>
+        @endforeach
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </header>
+@endsection
+
 @section('content')
+<div class="row">
+  <div class="col-12" style="margin-bottom: 100px">
+    <strong class="">Tentang <span class="text-primary">{{env('APP_NAME')}}</span></strong>
+    <hr>
+    <h3>
+      <a href="{{ route('user.artikel.show', $articles->first()->id) }}">{{ $articles->first()->title }}</a>
+    </h3>
+    <span style="font-size: medium">
+      <i class="fas fa-calendar-alt"></i>
+      {{ $articles->first()->created_at->format('d F Y') }}
+      
+      <i class="fa fa-comments ml-4" aria-hidden="true"></i>
+      {{ count($articles->first()->Review)}} 
+      Komentar
 
-<header class="masthead">
-  <div class="overlay"></div>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      @foreach ($slider as $item)
-      <div class="swiper-slide text-center" style="max-height:100vh">
-        <img class="img-fluid" src="{{$item->file}}" alt="" srcset="">
-      </div>
-      @endforeach
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+      <i class="fa fa-tag ml-4"></i>
+      <a href="" class=""> {{ $articles->first()->category}}</a> 
+    </span>
+    <p>
+      <img class="img-fluid rounded" src="{{ file_exists($articles->first()->cover) ? $articles->first()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
+    </p>
+    {!! strip_tags(Str::limit($articles->first()->content, 100, '')) !!} 
+    <a href="{{ route('user.artikel.show', $articles->first()->id) }}">
+      <strong>Pelajari selengkapnya <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </strong>
+    </a>
   </div>
-</header>
 
-<div class="container" style="margin: 100px auto">
-  <div class="row">
-    <div class="col-12 col-sm-9 pr-4">
-        <div class="row">
-          <div class="col-12" style="margin-bottom: 100px">
-            <strong class="">Tentang <span class="text-primary">{{env('APP_NAME')}}</span></strong>
-            <hr>
-            <h3>
-              <a href="{{ route('user.artikel.show', $articles->first()->id) }}">{{ $articles->first()->title }}</a>
-            </h3>
-            <span style="font-size: medium">
-              <i class="fas fa-calendar-alt"></i>
-              {{ $articles->first()->created_at->format('d F Y') }}
-              
-              <i class="fa fa-comments ml-4" aria-hidden="true"></i>
-              {{ count($articles->first()->Review)}} 
-              Komentar
-
-              <i class="fa fa-tag ml-4"></i>
-              <a href="" class=""> {{ $articles->first()->category}}</a> 
-            </span>
-            <p>
-              <img class="img-fluid rounded" src="{{ file_exists($articles->first()->cover) ? $articles->first()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
-            </p>
-            {!! strip_tags(Str::limit($articles->first()->content, 100, '')) !!} 
-            <a href="{{ route('user.artikel.show', $articles->first()->id) }}">
-              <strong>Pelajari selengkapnya <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </strong>
-            </a>
-          </div>
-
-          {{-- Post --}}
-          <div class="col-12">
-            <strong class="">Postingan <span class="text-primary">Terbaru</span></strong>
-            <hr>
-          </div>
-          @foreach ($articles as $item)
-          <div class="col-12 col-sm-6 mb-4">
-            <img class="img-fluid" src="{{ file_exists($item->cover) ? $item->cover : 'holder.js/500x300?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
-          </div>
-          <div class="col-12 col-sm-6 mb-4">
-            <p>
-                <span style="font-size: medium">
-                  <i class="fas fa-calendar-alt"></i>
-                  {{ $item->created_at->format('d M Y') }}
-                  
-                  <i class="fa fa-comments ml-2" aria-hidden="true"></i>
-                  {{ count($item->Review)}} 
-                  Komentar
-    
-                  <i class="fa fa-tag ml-2"></i>
-                  <a href="" class=""> {{ $item->category}}</a> 
-                </span>
-            </p>
-            <h3>
-              <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
-            </h3>
-            {!! strip_tags(Str::limit($item->content, 100)) !!} 
-          </div>
-          <div class="w-100"></div>
-          @endforeach
-        </div>
-    </div>
-    <div class="col">
-      <div class="card mb-4 border-0">
-        <div class="card-body px-0">
-          <span class="btn btn-info btn-block">Pengumumuman</span>
-        </div>
-        <ul class="list-group list-group-flush">
-          @foreach ($news as $item)
-            <li class="list-group-item mb-4 px-0">
-              <span class="badge badge-light">{{ $item->created_at->format('d F Y') }}</span>
-              <a href="">{{ $item->title }}</a>
-            </li>
-          @endforeach
-        </ul>
-      </div>
-
-      <div class="card border-0">
-        <div class="card-body px-0">
-          <span class="btn btn-info btn-block">Dokumen</span>
-        </div>
-        <ul class="list-group list-group-flush">
-          @foreach ($documents as $item)
-            <li class="list-group-item mb-4 px-0">
-              {{ $item->title }}
-              <a href="../{{ $item->file }}" target="_blank">
-                <u> Download</u>
-                <i class="fa fa-download" aria-hidden="true"></i>
-              </a>
-            </li>
-          @endforeach
-          {{-- <li style="font-size: 3rem" class="list-group-item mb-4 px-0" id="clock"></li> --}}
-        </ul>
-      </div>
-    </div>
+  {{-- Post --}}
+  <div class="col-12">
+    <strong class="">Postingan <span class="text-primary">Terbaru</span></strong>
+    <hr>
   </div>
+  @foreach ($articles as $item)
+  <div class="col-12 col-sm-6 mb-4">
+    <img class="img-fluid" src="{{ file_exists($item->cover) ? $item->cover : 'holder.js/500x300?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
+  </div>
+  <div class="col-12 col-sm-6 mb-4">
+    <p>
+        <span style="font-size: medium">
+          <i class="fas fa-calendar-alt"></i>
+          {{ $item->created_at->format('d M Y') }}
+          
+          <i class="fa fa-comments ml-2" aria-hidden="true"></i>
+          {{ count($item->Review)}} 
+          Komentar
+
+          <i class="fa fa-tag ml-2"></i>
+          <a href="" class=""> {{ $item->category}}</a> 
+        </span>
+    </p>
+    <h3>
+      <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
+    </h3>
+    {!! strip_tags(Str::limit($item->content, 100)) !!} 
+  </div>
+  <div class="w-100"></div>
+  @endforeach
 </div>
+@endsection
 
+@section('gallery')
 <section>
   <div class="container" style="margin: 100px auto">
     <div class="row">
@@ -137,7 +101,6 @@
     </div>
   </div>
 </section>
-
 @endsection
 
 @push('styles')

@@ -49,16 +49,14 @@
               'icon'  => 'fa fa-comments',
               'link'  => route('admin.review'),
             ],
-            // 'Pengaturan' => [
-            //   'icon'  => 'fa fa-wrench',
-            //   'link'  => [
-            //     'Admin'   => '#linkb',
-            //     'Cover Halaman'   => '#linkb',
-            //   ],
-            // ],
+            'Pengaturan' => [
+              'icon'  => 'fa fa-wrench',
+              'link'  => [
+                'Pengguna'   => '#',
+              ],
+            ],
           ];
           @endphp
-          
         <hr class="sidebar-divider my-0">
         @foreach ($menu as $key => $val)
 

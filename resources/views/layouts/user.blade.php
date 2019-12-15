@@ -47,15 +47,15 @@
           ],
           'Profil' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  => '#linksadk',
+            'link'  => '#',
           ],
           'Kegiatan' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  => '#linksadk',
+            'link'  => '#',
           ],
           'Kontak' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  =>  route("user.kontak.index"),
+            'link'  =>  '#',
           ],
         ];
     @endphp
@@ -80,7 +80,51 @@
     </div>
   </nav>
 
-  @yield('content')
+  @yield('header')
+
+  <div class="container" style="margin: 100px auto">
+    <div class="row">
+      <div class="col-12 col-sm-9 pr-4">
+        @yield('content')
+      </div>
+      <div class="col">
+        <div class="card mb-4 border-0">
+          <div class="card-body px-0">
+            <span class="btn btn-info btn-block">Pengumumuman</span>
+          </div>
+          <ul class="list-group list-group-flush">
+            @foreach ($news as $item)
+              <li class="list-group-item mb-4 px-0">
+                <span class="badge badge-light">{{ $item->created_at->format('d F Y') }}</span>
+                <a href="">{{ $item->title }}</a>
+              </li>
+            @endforeach
+          </ul>
+        </div>
+
+        <div class="card border-0">
+          <div class="card-body px-0">
+            <span class="btn btn-info btn-block">Dokumen</span>
+          </div>
+          <ul class="list-group list-group-flush">
+            @foreach ($documents as $item)
+              <li class="list-group-item mb-4 px-0">
+                {{ $item->title }}
+                <a href="../{{ $item->file }}" target="_blank">
+                  <u> Download</u>
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                </a>
+              </li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  @yield('gallery')
   
   @php
       $footer = [

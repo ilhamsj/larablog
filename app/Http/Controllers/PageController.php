@@ -22,14 +22,16 @@ class PageController extends Controller
     public function artikel_index()
     {
         return view('articles')->with([
-            'articles' => \App\Article::paginate(6)
+            'articles'  => Article::whereIn('category', ['kegiatan', 'blog'])->orderBy('updated_at', 'desc')->get(),
+            'news'      => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->get(),
+            'documents' => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->get(),
         ]);
     }
 
     public function artikel_show($id)
     {
         return view('article')->with([
-            'item' => \App\Article::find($id),
+            'item'      => \App\Article::find($id),
             'news'      => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->get(),
             'documents' => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->get(),
         ]);

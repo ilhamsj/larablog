@@ -2,9 +2,7 @@
 
 @section('title_page', 'Ini halaman title')
 
-@section('content')
-
-<!-- Page Header -->
+@section('header')
 <header class="masthead" style="background-image: url('../{{$item->cover}}'); background-size: cover; background-position: center">
   <div class="overlay"></div>
   <div class="container">
@@ -13,7 +11,7 @@
         <div class="post-heading">
           <h1>{{ $item->title }}</h1>
           <span class="meta">
-            <i class="fas fa-people-carry"></i>
+            <i class="fas fa-user"></i>
             Posted by <a href="#">Admin</a>
             
             <i class="fas fa-calendar-alt ml-4"></i>
@@ -30,107 +28,70 @@
     </div>
   </div>
 </header>
+@endsection
 
-<article>
-  <div class="container" style="margin-bottom:50px">
-    <div class="row">
-      <div class="col-lg-9 pr-4 mx-auto">
-        <div class="card mb-4 p-0">
-          <div class="card-body">
-            <h1>{{ $item->title }}</h1>
-          </div>
-          <div class="card-body" id="content">
-            {!! $item->content !!}
-          </div>
-        </div>
-
-        <div class="card mb-4">
-          <div class="card-body">
-            <h2 class="card-title">
-              <i class="fa fa-comments" aria-hidden="true"></i>
-              {{ count($item->Review) }} Komentar
-            </h2>
-          </div>
-          <ul class="list-group list-group-flush">
-            @foreach ($item->Review as $key => $value)
-            <li class="list-group-item">
-              <h3>
-                <i class="fas fa-person-booth"></i>
-                {{ $value->name }}</h3>
-              <span class="badge badge-light"><i class="fas fa-calendar-alt"></i> {{ $value->created_at->format('F d, Y') }}</span>
-              <p>{{ strip_tags($value->content) }}</p>
-            </li>
-            @endforeach
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">
-              Tulis Komentar
-              <i class="fas fa-comment"></i>
-            </h2>
-          </div>
-          <div class="card-body">
-            <form action="" id="formKomentar">
-              @csrf
-              <input type="text" name="article_id" id="article_id" value="{{ $item->id }}" hidden>
-              <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Komentar" hidden>
-  
-              <div class="form-group">
-                <label for="">Nama</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
-              </div>
-    
-              <div class="form-group">
-                <label for="">Email</label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
-              </div>
-    
-              <div class="form-group">
-                <label for="">Kritik dan Saran</label>
-                <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
-              </div>
-  
-              <button type="submit" class="btn btn-primary">Komentari</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4">
-          <div class="card-body">
-            <span class="btn btn-info btn-block">Pengumumuman</span>
-          </div>
-          <ul class="list-group list-group-flush">
-            @foreach ($news as $item)
-              <li class="list-group-item mb-4">
-                <span class="badge badge-light">{{ $item->created_at->format('d F Y') }}</span>
-                <a href="">{{ $item->title }}</a>
-              </li>
-            @endforeach
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <span class="btn btn-info btn-block">Dokumen</span>
-          </div>
-          <ul class="list-group list-group-flush">
-            @foreach ($documents as $item)
-              <li class="list-group-item mb-4">
-                {{ $item->title }}
-                <a href="../{{ $item->file }}" target="_blank">
-                  <i class="fa fa-download" aria-hidden="true"></i>
-                </a>
-              </li>
-            @endforeach
-          </ul>
-        </div>
-      </div>
+@section('content')
+  <div class="card mb-4 p-0">
+    <div class="card-body">
+      <h1>{{ $item->title }}</h1>
+    </div>
+    <div class="card-body" id="content">
+      {!! $item->content !!}
     </div>
   </div>
-</article>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        {{ count($item->Review) }} Komentar
+      </h2>
+    </div>
+    <ul class="list-group list-group-flush">
+      @foreach ($item->Review as $key => $value)
+      <li class="list-group-item">
+        <h3>
+          <i class="fas fa-person-booth"></i>
+          {{ $value->name }}</h3>
+        <span class="badge badge-light"><i class="fas fa-calendar-alt"></i> {{ $value->created_at->format('F d, Y') }}</span>
+        <p>{{ strip_tags($value->content) }}</p>
+      </li>
+      @endforeach
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">
+        Tulis Komentar
+        <i class="fas fa-comment"></i>
+      </h2>
+    </div>
+    <div class="card-body">
+      <form action="" id="formKomentar">
+        @csrf
+        <input type="text" name="article_id" id="article_id" value="{{ $item->id }}" hidden>
+        <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Komentar" hidden>
+
+        <div class="form-group">
+          <label for="">Nama</label>
+          <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+        </div>
+
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
+        </div>
+
+        <div class="form-group">
+          <label for="">Kritik dan Saran</label>
+          <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Komentari</button>
+      </form>
+    </div>
+  </div>
 @endsection
 
 @push('styles')
@@ -168,9 +129,5 @@
       }
     });
   });
-
-  $('.card').toggleClass('mb-4 border-0');
-  $('.card-body').toggleClass('px-0');
-  $('.list-group-item').toggleClass('px-0');
 </script>
 @endpush
