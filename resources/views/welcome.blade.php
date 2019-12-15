@@ -41,7 +41,7 @@
             {!! strip_tags(Str::limit($item->content, 100)) !!} 
             <p>
                 <span style="font-size: medium">
-                  {{ $item->created_at->format('d F Y') }} / <a href=""> {{ $item->category}}</a>
+                  {{ $item->created_at->format('d F Y') }} / {{ count($item->Review)}} Komentar / <a href="" class=""> {{ $item->category}}</a> 
                 </span>
             </p>
           </div>

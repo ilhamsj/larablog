@@ -146,10 +146,15 @@
         <form action="">
           @csrf
           <div class="form-group">
+            <label for="">Kategori</label>
+            <input type="text" name="komentar" id="komentar" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+          </div>
+
+          <div class="form-group">
             <label for="">Nama</label>
             <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
           </div>
-
+          
           <div class="form-group">
             <label for="">Email</label>
             <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">

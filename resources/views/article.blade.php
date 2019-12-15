@@ -25,7 +25,7 @@
       <div class="row">
         <div class="col-12 mb-4">
           <h1>{{ $item->title }}</h1>
-          {{ $item->created_at->format('d F Y') }} / <a href="" class="badge badge-primary"> {{ $item->category}}</a>
+          {{ $item->created_at->format('d F Y') }} / {{ count($item->Review)}} Komentar / <a href="" class="badge badge-primary"> {{ $item->category}}</a> 
         </div>
         <div class="col-12 mb-4">
           <img src="{{ secure_url($item->cover) }}" class="img-fluid rounded" alt="" srcset="">
@@ -33,8 +33,20 @@
         <div class="col-12 mb-4" id="content">
           {!! $item->content !!}
         </div>
+        <div class="w-100"><hr></div>
+        <div class="col-12 mb-4">
+          <h3>{{ count($item->Review) }} Komentar</h3>
+        </div>
         <div class="col-12">
-          <h3>Komentar</h3>
+          @foreach ($item->Review as $key => $value)
+            <h5>{{ $value->name }}</h5>
+            {{ $value->created_at->format('F d, Y') }}
+            <p>{{ strip_tags($value->content) }}</p>
+          @endforeach
+        </div>
+
+        <div class="col-12">
+          <h3>Tulis Komentar</h3>
           <hr>
           <form action="">
             @csrf
@@ -58,21 +70,6 @@
         </div>
 
         <div class="w-100"></div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="row">
-        <div class="col-12">
-          <span class="badge badge-primary">Pengumuman Terbaru</span>
-          <hr>
-
-          @foreach ($articles as $item)
-            <p>
-              <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
-            </p>
-          @endforeach
-        </div>
       </div>
     </div>
   </div>
