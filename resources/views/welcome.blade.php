@@ -24,26 +24,33 @@
   <div class="row">
     <div class="col-12 col-sm-9 pr-4">
         <div class="row">
-          <div class="col-12 mb-4">
-            <span class="">Tentang {{env('APP_NAME')}}</span>
+          <div class="col-12" style="margin-bottom: 100px">
+            <strong class="">Tentang <span class="text-primary">{{env('APP_NAME')}}</span></strong>
             <hr>
             <h3>
               <a href="{{ route('user.artikel.show', $articles->first()->id) }}">{{ $articles->first()->title }}</a>
             </h3>
-            <p>
-              <span style="font-size: medium">
-                {{ $articles->first()->created_at->format('d F Y') }} / {{ count($articles->first()->Review)}} Komentar / <a href="" class=""> {{ $articles->first()->category}}</a> 
-              </span>
-            </p>
+            <span style="font-size: medium">
+              <i class="fas fa-calendar-alt"></i>
+              {{ $articles->first()->created_at->format('d F Y') }}
+              
+              <i class="fa fa-comments ml-4" aria-hidden="true"></i>
+              {{ count($articles->first()->Review)}} 
+              Komentar
+
+              <i class="fa fa-tag ml-4"></i>
+              <a href="" class=""> {{ $articles->first()->category}}</a> 
+            </span>
             <p>
               <img class="img-fluid rounded" src="{{ file_exists($articles->first()->cover) ? $articles->first()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
             </p>
-            {!! strip_tags($articles->first()->content) !!} 
+            {!! strip_tags(Str::limit($articles->first()->content)) !!} 
             <a href="{{ route('user.artikel.show', $articles->first()->id) }}"><u>Pelajari selengkapnya ...</u></a>
-
           </div>
+
+          {{-- Post --}}
           <div class="col-12">
-            <span class="btn-primary">Postingan Terbaru</span>
+            <strong class="">Postingan <span class="text-primary">Terbaru</span></strong>
             <hr>
           </div>
           @foreach ($articles as $item)
@@ -51,15 +58,23 @@
             <img class="img-fluid" src="{{ file_exists($item->cover) ? $item->cover : 'holder.js/500x300?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
           </div>
           <div class="col-12 col-sm-6 mb-4">
+            <p>
+                <span style="font-size: medium">
+                  <i class="fas fa-calendar-alt"></i>
+                  {{ $articles->first()->created_at->format('d F Y') }}
+                  
+                  <i class="fa fa-comments ml-2" aria-hidden="true"></i>
+                  {{ count($articles->first()->Review)}} 
+                  Komentar
+    
+                  <i class="fa fa-tag ml-2"></i>
+                  <a href="" class=""> {{ $articles->first()->category}}</a> 
+                </span>
+            </p>
             <h3>
               <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
             </h3>
             {!! strip_tags(Str::limit($item->content, 100)) !!} 
-            <p>
-                <span style="font-size: medium">
-                  {{ $item->created_at->format('d F Y') }} / {{ count($item->Review)}} Komentar / <a href="" class=""> {{ $item->category}}</a> 
-                </span>
-            </p>
           </div>
           <div class="w-100"></div>
           @endforeach
@@ -106,7 +121,7 @@
       <div class="col">
         <div class="row parent-container">
             <div class="col-12">
-              <span class="bg-primary text-light">Galeri Kegiatan</span>
+              <strong class="">Galeri <span class="text-primary">Kegiatan</span></strong>
               <hr>
             </div>
             @foreach ($photos as $item)

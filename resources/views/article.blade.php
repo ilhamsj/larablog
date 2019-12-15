@@ -13,9 +13,17 @@
         <div class="post-heading">
           <h1>{{ $item->title }}</h1>
           <span class="meta">
-            Posted by <a href="#">Admin</a> / 
-            on {{ $item->created_at->format('F d, Y') }} / 
+            <i class="fas fa-people-carry"></i>
+            Posted by <a href="#">Admin</a>
+            
+            <i class="fas fa-calendar-alt ml-4"></i>
+            on {{ $item->created_at->format('F d, Y') }}
+            
+            <i class="fa fa-tag ml-4"></i>
             at <a href="#">{{ $item->category}}</a>
+            
+            <i class="fa fa-comments ml-4" aria-hidden="true"></i>
+            {{ count($item->Review) }} Komentar
           </span>
         </div>
       </div>
@@ -39,15 +47,17 @@
         <div class="card mb-4">
           <div class="card-body">
             <h2 class="card-title">
+              <i class="fa fa-comments" aria-hidden="true"></i>
               {{ count($item->Review) }} Komentar
             </h2>
-            <p class="card-text">Baca komentar terlebih dahulu</p>
           </div>
           <ul class="list-group list-group-flush">
             @foreach ($item->Review as $key => $value)
             <li class="list-group-item">
-              <h3>{{ $value->name }}</h3>
-              {{ $value->created_at->format('F d, Y') }}
+              <h3>
+                <i class="fas fa-person-booth"></i>
+                {{ $value->name }}</h3>
+              <span class="badge badge-light"><i class="fas fa-calendar-alt"></i> {{ $value->created_at->format('F d, Y') }}</span>
               <p>{{ strip_tags($value->content) }}</p>
             </li>
             @endforeach
@@ -58,6 +68,7 @@
           <div class="card-body">
             <h2 class="card-title">
               Tulis Komentar
+              <i class="fas fa-comment"></i>
             </h2>
           </div>
           <div class="card-body">
@@ -109,9 +120,8 @@
             @foreach ($documents as $item)
               <li class="list-group-item mb-4">
                 {{ $item->title }}
-                <i class="fa fa-download" aria-hidden="true"></i>
                 <a href="../{{ $item->file }}" target="_blank">
-                  <u> Download</u>
+                  <i class="fa fa-download" aria-hidden="true"></i>
                 </a>
               </li>
             @endforeach
@@ -160,6 +170,6 @@
 
   $('.card').toggleClass('mb-4 border-0');
   $('.card-body').toggleClass('px-0');
-  $('.list-group-item').toggleClass('p-0');
+  $('.list-group-item').toggleClass('px-0');
 </script>
 @endpush

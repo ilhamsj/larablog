@@ -17,7 +17,7 @@
     .whatsapp {
       transform: rotate(-90deg);
       bottom: 50vh;
-      right: -55px;
+      right: -65px;
     }
   </style>
   @stack('styles')
