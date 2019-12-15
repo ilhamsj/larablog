@@ -48,8 +48,11 @@
         <div class="col-12">
           <h3>Tulis Komentar</h3>
           <hr>
-          <form action="">
+          <form action="" id="formKomentar">
             @csrf
+            <input type="text" name="article_id" id="article_id" value="{{ $item->id }}" hidden>
+            <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Komentar" hidden>
+
             <div class="form-group">
               <label for="">Nama</label>
               <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
@@ -90,7 +93,27 @@
 
   $('#content').find('span').removeAttr('style');
   $('#content').find('img').toggleClass('note-float-right rounded img-fluid').removeAttr('style');
-
   
+  $('#formKomentar').on('submit', function (e) {
+    e.preventDefault()
+
+    var data = $('#formKomentar').serialize()
+    // console.log(data);
+    
+    $.ajax({
+      type: "POST",
+      url: "{{ route('review') }}",
+      data: data,
+      success: function (response) {
+        $('#formKomentar').trigger('reset');
+        alert(response.status + ' Reload your browser')
+      },
+      error: function (xhr) {
+        $.each(xhr.responseJSON.errors, function (index, value) { 
+          alert(value[0])
+        });
+      }
+    });
+  });
 </script>
 @endpush

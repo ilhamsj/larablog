@@ -19,10 +19,6 @@
       bottom: 50vh;
       right: -55px;
     }
-    /* * {
-      font-family: 'poppins';
-      font-size: 1rem
-    } */
   </style>
   @stack('styles')
 </head>
@@ -147,7 +143,7 @@
           @csrf
           <div class="form-group">
             <label for="">Kategori</label>
-            <input type="text" name="komentar" id="komentar" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+            <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Review">
           </div>
 
           <div class="form-group">
