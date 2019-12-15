@@ -28,4 +28,9 @@ class AdminController extends Controller
     {
         return view('admin.documents');
     }
+  
+    public function reviews()
+    {
+        return view('admin.reviews');
+    }
 }

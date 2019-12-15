@@ -47,7 +47,7 @@
             ],
             'Kritik dan Saran' => [
               'icon'  => 'fa fa-comments',
-              'link'  => '#kritik',
+              'link'  => route('admin.review'),
             ],
             'Pengaturan' => [
               'icon'  => 'fa fa-wrench',

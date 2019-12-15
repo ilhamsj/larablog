@@ -10,8 +10,8 @@
   <meta name="author" content="">
 
   <title>{{ env('APP_NAME') }} - @yield('title_page')</title>
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='vendor/Lora.css' rel='stylesheet' type='text/css'>
+  <link href='vendor/Open-Sans.css' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
   <style>
     .whatsapp {
@@ -147,17 +147,17 @@
           @csrf
           <div class="form-group">
             <label for="">Nama</label>
-            <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+            <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
           </div>
 
           <div class="form-group">
             <label for="">Email</label>
-            <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+            <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
           </div>
 
           <div class="form-group">
             <label for="">Kritik dan Saran</label>
-            <textarea class="form-control" name="" id="" rows="3"></textarea>
+            <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
           </div>
         </form>
         </div>
@@ -172,6 +172,24 @@
   <script src="{{ secure_url('js/app.js') }}"></script>
   <script>
   $(document).ready(function () {
+
+    $('#kritik_saran').find('button:last-child').click(function (e) { 
+      e.preventDefault();
+      
+      var data = $('#kritik_saran').find('form').serialize()
+      $.ajax({
+        type: "POST",
+        url: "{{ route('review') }}",
+        data: data,
+        success: function (response) {
+          console.log(response);
+          $('#kritik_saran').find('form').trigger('reset');
+          $('#kritik_saran').modal('hide');
+          alert(response.status);
+        }
+      });
+    });
+
     $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-8');
     $('#copyright').toggleClass('col col-12 mt-4').find('h4').remove();
     $('#saran').click(function (e) { 

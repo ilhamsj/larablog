@@ -23,6 +23,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/file', 'TestController@file_upload')->name('file.upload');
     Route::delete('/file/{id}', 'TestController@file_destroy')->name('file.destroy');
     Route::post('/file/destroy', 'TestController@file_delete')->name('file.delete');
+    Route::get('/reviews', 'ReviewController@index')->name('review.index');
+    Route::post('/reviews', 'ReviewController@store')->name('review');
 });
 
 Route::resource('v2/file', 'DocumentController', [

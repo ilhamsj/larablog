@@ -35,4 +35,8 @@ class TestController extends Controller
         return response()->json('berhasil');
     }
 
+    public function review(Request $request) {
+        return response()->json($request->all());
+    }
+
 }
