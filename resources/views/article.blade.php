@@ -158,7 +158,8 @@
       data: data,
       success: function (response) {
         $('#formKomentar').trigger('reset');
-        alert(response.status + ' Reload your browser')
+        alert(response.status)
+        location.reload(true)
       },
       error: function (xhr) {
         $.each(xhr.responseJSON.errors, function (index, value) { 

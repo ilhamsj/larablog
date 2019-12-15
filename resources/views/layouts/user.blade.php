@@ -10,8 +10,8 @@
   <meta name="author" content="">
 
   <title>{{ env('APP_NAME') }} - @yield('title_page')</title>
-  <link href='vendor/Lora.css' rel='stylesheet' type='text/css'>
-  <link href='vendor/Open-Sans.css' rel='stylesheet' type='text/css'>
+  <link href='{{ secure_url('vendor/Lora.css') }}' rel='stylesheet' type='text/css'>
+  <link href='{{ secure_url('vendor/Open-Sans.css') }}' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
   <style>
     .whatsapp {
@@ -97,7 +97,7 @@
           'Halaman muka' => 'https://an-naba.test/',
           'Tentang kami' => 'https://an-naba.test/',
         ],
-        'Info' => [
+        'INFO' => [
           'Blog' => 'https://an-naba.test/',
           'Kegiatan' => 'https://an-naba.test/',
           'Halaman muka' => 'https://an-naba.test/',
@@ -108,12 +108,12 @@
   @endphp
 
   <!-- Footer -->
-  <footer class="bg-dark text-light">
+  <footer style="background-color: #1b4b72" class="text-light">
     <div class="container">
       <div class="row">
         @foreach ($footer as $key => $val)
           <div class="col mb-4" id="{{ Str::slug($key) }}">
-            <h4>{{ Str::title($key) }}</h4>
+            <h4>{{ strtoupper($key) }}</h4>
             @if (is_array($val))
             <ul class="nav flex-column">
                 @foreach ($val as $k => $v)
@@ -139,7 +139,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title">Kritik dan Saran <i class="fa fa-comment"></i> </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -148,8 +148,7 @@
         <form action="">
           @csrf
           <div class="form-group">
-            <label for="">Kategori</label>
-            <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Review">
+            <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Review" hidden>
           </div>
 
           <div class="form-group">

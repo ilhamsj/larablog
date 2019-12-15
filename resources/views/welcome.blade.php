@@ -44,8 +44,10 @@
             <p>
               <img class="img-fluid rounded" src="{{ file_exists($articles->first()->cover) ? $articles->first()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
             </p>
-            {!! strip_tags(Str::limit($articles->first()->content)) !!} 
-            <a href="{{ route('user.artikel.show', $articles->first()->id) }}"><u>Pelajari selengkapnya ...</u></a>
+            {!! strip_tags(Str::limit($articles->first()->content, 100, '')) !!} 
+            <a href="{{ route('user.artikel.show', $articles->first()->id) }}">
+              <strong>Pelajari selengkapnya <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </strong>
+            </a>
           </div>
 
           {{-- Post --}}
@@ -61,14 +63,14 @@
             <p>
                 <span style="font-size: medium">
                   <i class="fas fa-calendar-alt"></i>
-                  {{ $articles->first()->created_at->format('d F Y') }}
+                  {{ $item->created_at->format('d M Y') }}
                   
                   <i class="fa fa-comments ml-2" aria-hidden="true"></i>
-                  {{ count($articles->first()->Review)}} 
+                  {{ count($item->Review)}} 
                   Komentar
     
                   <i class="fa fa-tag ml-2"></i>
-                  <a href="" class=""> {{ $articles->first()->category}}</a> 
+                  <a href="" class=""> {{ $item->category}}</a> 
                 </span>
             </p>
             <h3>
@@ -139,7 +141,6 @@
 
 @push('styles')
 <link rel="stylesheet" href="vendor/swiper.min.css">
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"> --}}
 <style>
   body {background-color: white}
 </style>
@@ -147,9 +148,11 @@
 
 @push('scripts')
   <script src="vendor/swiper.min.js"></script>
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script> --}}
   <script src="vendor/holder.js"></script>
-  <script>    
+  <script>
+
+  $(document).ready(function () {
+      
     // gallery
     $('.parent-container').magnificPopup({
       delegate: 'img',
@@ -176,6 +179,6 @@
         prevEl: '.swiper-button-prev',
       },
     });
-
+  });
   </script>
 @endpush
