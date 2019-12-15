@@ -38925,8 +38925,7 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! startbootstrap-clean-blog/js/clean-blog */ "./node_modules/startbootstrap-clean-blog/js/clean-blog.js"); // require('swiper/js/swiper');
-
+__webpack_require__(/*! startbootstrap-clean-blog/js/clean-blog */ "./node_modules/startbootstrap-clean-blog/js/clean-blog.js");
 
 __webpack_require__(/*! magnific-popup */ "./node_modules/magnific-popup/dist/jquery.magnific-popup.js");
 

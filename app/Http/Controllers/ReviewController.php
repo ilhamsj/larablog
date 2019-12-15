@@ -11,7 +11,7 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $items = Review::all();
+        $items = Review::where('category', 'Review');
         return datatables($items)
             ->toJson();
     }

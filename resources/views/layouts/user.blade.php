@@ -85,19 +85,25 @@
   @php
       $footer = [
         env("APP_NAME") => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. ',
-        'Useful links' => [
+        'Support' => [
           'Blog' => 'https://an-naba.test/',
           'Kegiatan' => 'https://an-naba.test/',
           'Halaman muka' => 'https://an-naba.test/',
           'Tentang kami' => 'https://an-naba.test/',
         ],
-        'di dukung oleh' => [
+        'Link' => [
           'Blog' => 'https://an-naba.test/',
           'Kegiatan' => 'https://an-naba.test/',
           'Halaman muka' => 'https://an-naba.test/',
           'Tentang kami' => 'https://an-naba.test/',
         ],
-        'Copyright'  => '©' . date(' Y ') . env('APP_NAME').' 2019 All Rights Reserved'
+        'Info' => [
+          'Blog' => 'https://an-naba.test/',
+          'Kegiatan' => 'https://an-naba.test/',
+          'Halaman muka' => 'https://an-naba.test/',
+          'Tentang kami' => 'https://an-naba.test/',
+        ],
+        'Copyright'  => '© '.env('APP_NAME').date(' Y ').'All Rights Reserved'
       ];
   @endphp
 
@@ -191,7 +197,7 @@
       });
     });
 
-    $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-8');
+    $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-6');
     $('#copyright').toggleClass('col col-12 mt-4').find('h4').remove();
     $('#saran').click(function (e) { 
       e.preventDefault();

@@ -30,7 +30,8 @@ class PageController extends Controller
     {
         return view('article')->with([
             'item' => \App\Article::find($id),
-            'articles' => \App\Article::paginate(6)
+            'news'      => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->get(),
+            'documents' => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->get(),
         ]);
     }
 

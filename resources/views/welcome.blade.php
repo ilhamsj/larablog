@@ -10,7 +10,6 @@
     <div class="swiper-wrapper">
       @foreach ($slider as $item)
       <div class="swiper-slide text-center" style="max-height:100vh">
-        {{-- <img class="img-fluid" data-src="holder.js/1349x699?auto=yes&textmode=exact&random=yes" alt="" srcset=""> --}}
         <img class="img-fluid" src="{{$item->file}}" alt="" srcset="">
       </div>
       @endforeach
@@ -23,14 +22,32 @@
 
 <div class="container" style="margin: 100px auto">
   <div class="row">
-    <div class="col-12 col-sm-9">
+    <div class="col-12 col-sm-9 pr-4">
         <div class="row">
+          <div class="col-12 mb-4">
+            <span class="">Tentang {{env('APP_NAME')}}</span>
+            <hr>
+            <h3>
+              <a href="{{ route('user.artikel.show', $articles->first()->id) }}">{{ $articles->first()->title }}</a>
+            </h3>
+            <p>
+              <span style="font-size: medium">
+                {{ $articles->first()->created_at->format('d F Y') }} / {{ count($articles->first()->Review)}} Komentar / <a href="" class=""> {{ $articles->first()->category}}</a> 
+              </span>
+            </p>
+            <p>
+              <img class="img-fluid rounded" src="{{ file_exists($articles->first()->cover) ? $articles->first()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
+            </p>
+            {!! strip_tags($articles->first()->content) !!} 
+            <a href="{{ route('user.artikel.show', $articles->first()->id) }}"><u>Pelajari selengkapnya ...</u></a>
+
+          </div>
           <div class="col-12">
             <span class="btn-primary">Postingan Terbaru</span>
             <hr>
           </div>
           @foreach ($articles as $item)
-          <div class="col-12 col-sm-6 mb-4">            
+          <div class="col-12 col-sm-6 mb-4">
             <img class="img-fluid" src="{{ file_exists($item->cover) ? $item->cover : 'holder.js/500x300?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
           </div>
           <div class="col-12 col-sm-6 mb-4">
@@ -49,26 +66,35 @@
         </div>
     </div>
     <div class="col">
-      <div class="row">
-        <div class="col-12 mb-4">
-            <span class="bg-primary text-light">Pengumuman Terbaru</span>
-            <hr>
-            @foreach ($news as $item)
-            <p>
-                <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
-            </p>
-            @endforeach
+      <div class="card mb-4 border-0">
+        <div class="card-body px-0">
+          <span class="btn btn-info btn-block">Pengumumuman</span>
         </div>
-        <div class="col-12">
-            <span class="bg-primary text-light"> Download dokumen</span>
-            <hr>
-            @foreach ($documents as $item)
-            <p>
-                {{ $item->title}}
-                <a target="_blank" href="{{ $item->file }}">Download</a>
-            </p>
-            @endforeach
+        <ul class="list-group list-group-flush">
+          @foreach ($news as $item)
+            <li class="list-group-item mb-4 px-0">
+              <span class="badge badge-light">{{ $item->created_at->format('d F Y') }}</span>
+              <a href="">{{ $item->title }}</a>
+            </li>
+          @endforeach
+        </ul>
+      </div>
+
+      <div class="card border-0">
+        <div class="card-body px-0">
+          <span class="btn btn-info btn-block">Dokumen</span>
         </div>
+        <ul class="list-group list-group-flush">
+          @foreach ($documents as $item)
+            <li class="list-group-item mb-4 px-0">
+              {{ $item->title }}
+              <a href="../{{ $item->file }}" target="_blank">
+                <u> Download</u>
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </a>
+            </li>
+          @endforeach
+        </ul>
       </div>
     </div>
   </div>
