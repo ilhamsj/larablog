@@ -22,6 +22,7 @@
 
 @section('content')
 <div class="row">
+  @if (count($articles) > 0)
   <div class="col-12" style="margin-bottom: 100px">
     <strong class="">Tentang <span class="text-primary">{{env('APP_NAME')}}</span></strong>
     <hr>
@@ -47,7 +48,7 @@
       <strong>Pelajari selengkapnya <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </strong>
     </a>
   </div>
-
+  @endif
   {{-- Post --}}
   <div class="col-12">
     <strong class="">Postingan <span class="text-primary">Terbaru</span></strong>
