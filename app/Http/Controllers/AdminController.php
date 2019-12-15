@@ -14,7 +14,7 @@ class AdminController extends Controller
   
     public function artikel()
     {
-        return view('admin.article.index')->with([
+        return view('admin.article')->with([
             'items' => \App\Article::paginate()
         ]);
     }

@@ -10,12 +10,8 @@
     <div class="row">
       <div class="col">
         <div class="post-heading row justify-content-center align-items-center">
-          <div class="col">
-            <h1>
-              {{ $item->title }}
-            </h1>
-            {{ $item->created_at->format('d F Y') }} / <a href="" class="text-light"> {{ $item->category}}</a>
-
+          <div class="col text-center">
+            <h1>{{ $item->title }}</h1>
           </div>
         </div>
       </div>
@@ -27,9 +23,12 @@
   <div class="row">
     <div class="col-12 col-sm-12 col-md-9 pr-4">
       <div class="row">
-
         <div class="col-12 mb-4">
-          <img class="img-fluid rounded" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset="">
+          <h1>{{ $item->title }}</h1>
+          {{ $item->created_at->format('d F Y') }} / <a href="" class="badge badge-primary"> {{ $item->category}}</a>
+        </div>
+        <div class="col-12 mb-4">
+          <img src="{{ secure_url($item->cover) }}" class="img-fluid rounded" alt="" srcset="">
         </div>
         <div class="col-12" id="content">
           {!! $item->content !!}

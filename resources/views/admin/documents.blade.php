@@ -94,12 +94,12 @@
         serverSide: true,
         ajax: "{{route('v2.file.create')}}",
         columns: [
-          { data: 'action', name: 'action'},
+          { data: 'file', name: 'file' },
           { data: 'title', name: 'title' },
           { data: 'category', name: 'category' },
-          { data: 'file', name: 'file' },
           { data: 'created_at', name: 'created_at' },
           { data: 'updated_at', name: 'updated_at' },
+          { data: 'action', name: 'action'},
         ]
       });
 

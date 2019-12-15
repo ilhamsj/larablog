@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ArticleController extends Controller
 {
@@ -20,6 +22,10 @@ class ArticleController extends Controller
                     <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-url="'.route('artikel.destroy', $items->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>
                 ';
             })
+            ->editColumn('cover', function ($items) {
+                return '<img style="" class="rounded img-fluid" src="../'.$items->cover.'"/>';
+            })
+            ->rawColumns(['action', 'cover'])
             ->toJson();
     }
 
@@ -32,13 +38,21 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title'     => 'required|min:20|max:50',
-            'content'   => 'required|min:200'
+            'content'   => 'required|min:200',
+            'category'  => 'required',
+            'cover'     => 'required',
         ]);
 
-        $artikel = Article::create($request->all());
+        $name = \Str::slug($request->title).'-'.Carbon::now()->format('dmYhis').'.'.$request->file('cover')->getClientOriginalExtension();
+        $img = $request->file('cover')->storeAs('images', $name, 'public_uploads_v2');
+
+        $item = Article::create($request->all());
+        $item->cover = $img;
+        $item->save();
         
         return response()->json([
-            'status' => $request->title . ' Berhasil ditambahkan'
+            'item'  => $item,
+            'status' => 'Store Success'
         ]);
     }
 
@@ -54,15 +68,46 @@ class ArticleController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title'     => Rule::requiredIf($request->has('title')),
+            'content'   => Rule::requiredIf($request->has('content')),
+            'category'  => Rule::requiredIf($request->has('category')),
+            'cover'     => Rule::requiredIf($request->has('cover')),
+        ]);
+
         $item = Article::find($id);
-        $item->update($request->all());
-        return response()->json($item->title . ' Berhasil di Update');
+
+        if($request->hasFile('cover')):
+
+            file_exists($item->cover) ? unlink($item->cover) : '';
+
+            $name = \Str::slug($request->title).'-'.Carbon::now()->format('dmYhis').'.'.$request->file('cover')->getClientOriginalExtension();
+            $img = $request->file('cover')->storeAs('images', $name, 'public_uploads_v2');
+
+            $item->update($request->except('cover'));
+            $item->update([
+                'cover' => $img
+            ]);
+        else:
+            $item->update($request->all());
+        endif;
+
+        return response()->json([
+            'data'      => $item,
+            'status'    => 'Update Success',
+        ]);
     }
 
     public function destroy($id)
     {
         $item = Article::find($id);
-        $item->delete($item);
-        return response()->json($item->title . ' Berhasil dihapus');
+        
+        file_exists($item->cover) ? unlink($item->cover) : '';
+        $item->delete();
+
+        return response()->json([
+            'item'      => $item,
+            'status'    => 'Delete Success'
+        ]);
     }
 }

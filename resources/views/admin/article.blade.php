@@ -22,6 +22,7 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
+                  <th>Cover</th>
                   <th>Title</th>
                   <th>Kategori</th>
                   <th>Update</th>
@@ -75,6 +76,17 @@
             <textarea class="form-control" name="content" id="content"
               rows="10">{{ old('content') ? old('content') : \Faker\Factory::create()->realText(500, 2) }}</textarea>
           </div>
+
+        <div class="row">  
+          <div class="form-group col">
+            <img class="img-fluid rounded" data-src="holder.js/500x300?auto=yes&textmode=exact&random=yes" alt="" srcset="">
+          </div>
+          <div class="form-group col">
+            <label for="">Cover</label>
+            <input type="file" class="form-control-file" name="cover" id="cover" placeholder="" aria-describedby="fileHelpId">
+          </div>
+        </div>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -107,6 +119,7 @@
           serverSide: true,
           ajax: "/api/v1/artikel",
           columns: [
+              { data: 'cover', name: 'cover' },
               { data: 'title', name: 'title' },
               { data: 'category', name: 'category' },
               { data: 'updated_at', name: 'updated_at' },
@@ -135,6 +148,8 @@
       $('table').on('click', '.btnEdit', function (e) {
         e.preventDefault()
 
+        hapusError()
+
         var url   = $(this).attr('href')
         var modal = $('#modelId').modal('show');
 
@@ -146,10 +161,12 @@
           success: function (response) {
             $.each(response, function (index, value) {
               console.log(index + ' :' + value);
-              if(index != 'content') {
-                $('#'+index).val(value)
-              } else {
+              if(index == 'content') {
                 $('form').find('.note-editor > .note-editing-area > .note-editable').html(value);
+              } else if(index == 'cover') {
+                $('#modelId').find('img').attr('src', '../'+value)
+              } else {
+                $('#'+index).val(value)
               }
             });
           }
@@ -158,18 +175,30 @@
 
       // update
       $('#modelId').on('click', '#updateContent', function (e) {
+
+        hapusError()
+
         var url = $(this).attr('data-url');
-        var data = $('form').serialize();
+        var form = $('#modelId').find('form')[0];
+        var data = new FormData(form);
+        data.append('_method', 'PUT');
 
         $.ajax({
-          type: "PUT",
+          type: "POST",
           url: url,
           data: data,
+          contentType: false,
+          processData: false,
+          cache: false,
           success: function (response) {
             console.log(response);
             table.draw();
             $('#modelId').modal('hide');
-          }
+          },
+          error: function (xhr) {
+                displayError(xhr.responseJSON);
+                console.log(xhr.responseText);
+            }
         });
       });
 
@@ -178,39 +207,44 @@
       $('#tambah_data').click(function (e) { 
         e.preventDefault();
         $('#modelId').modal('show');
+        $('#modelId').find('img').attr('src', '{{ secure_url("asset/cover.svg") }}');
         $('#modelId').find('.modal-footer > button:nth-child(2)').text('publishContent').attr('id', 'publishContent');
       });
 
       // store data
       $('#modelId').on('click', '#publishContent', function (e) {
-        e.preventDefault();
+          e.preventDefault();
 
-        var x = $('form').serialize();
+          var form = $('#modelId').find('form')[0];
+          var data = new FormData(form);
 
-        hapusError()
+          hapusError()
 
-        $.ajax({
-          type: "POST",
-          url: "/api/v1/artikel",
-          data: x,
-          success: function (response) {
-            console.log(response);
-            table.draw();
-            $('#modelId').modal('hide');
-            showMessage(response.status)
-          },
-          error: function (xhr) {
-              displayError(xhr.responseJSON);
-              console.log(xhr.responseText);
-          }
+          $.ajax({
+            type: "POST",
+            url: "/api/v1/artikel",
+            data: data,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (response) {
+              console.log(response);
+              table.draw();
+              $('#modelId').modal('hide');
+              showMessage(response.status)
+            },
+            error: function (xhr) {
+                displayError(xhr.responseJSON);
+                console.log(xhr.responseText);
+            }
+          });
         });
-      });
 
 
       // summernote
       $('form') .find('#content').summernote({
           tabsize: 2,
-          height: 1000,
+          height: 100,
           followingToolbar: false,
           callbacks: {
             onMediaDelete : function(files) {

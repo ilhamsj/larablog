@@ -31,8 +31,8 @@
           </div>
           @foreach ($articles as $item)
           <div class="col-12 col-sm-6 mb-4">
-            <img class="img-fluid rounded" data-src="holder.js/500x300?auto=yes&textmode=exact&random=yes" alt="" srcset="">
-            {{-- <img class="img-fluid" src="{{ secure_url('images/IMG_3757.JPG') }}" alt="" srcset=""> --}}
+            {{-- <img class="img-fluid rounded" data-src="holder.js/500x300?auto=yes&textmode=exact&random=yes" alt="" srcset=""> --}}
+            <img class="img-fluid" src="{{ secure_url($item->cover) }}" alt="" srcset="">
           </div>
           <div class="col-12 col-sm-6 mb-4">
             <h3>
