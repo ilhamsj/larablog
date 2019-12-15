@@ -37,8 +37,8 @@
             'Galeri' => [
               'icon'  => 'fas fa-image',
               'link'  => [
-                'Postingan'           => route('admin.foto'),
                 'Kegiatan & Slider'   => route('admin.document'),
+                'Postingan'           => route('admin.foto'),
               ],
             ],
             'Dokumen' => [
@@ -49,13 +49,13 @@
               'icon'  => 'fa fa-comments',
               'link'  => route('admin.review'),
             ],
-            'Pengaturan' => [
-              'icon'  => 'fa fa-wrench',
-              'link'  => [
-                'Admin'   => '#linkb',
-                'Cover Halaman'   => '#linkb',
-              ],
-            ],
+            // 'Pengaturan' => [
+            //   'icon'  => 'fa fa-wrench',
+            //   'link'  => [
+            //     'Admin'   => '#linkb',
+            //     'Cover Halaman'   => '#linkb',
+            //   ],
+            // ],
           ];
           @endphp
           
