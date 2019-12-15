@@ -92,7 +92,7 @@
         responsive: true,
         processing: true,
         serverSide: true,
-        ajax: "{{route('v2.file.create')}}",
+        ajax: "{{route('v2.file.index')}}",
         columns: [
           { data: 'action', name: 'action'},
           { data: 'title', name: 'title' },

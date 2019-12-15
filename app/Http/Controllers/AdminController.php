@@ -29,6 +29,11 @@ class AdminController extends Controller
         return view('admin.documents');
     }
   
+    public function gallery()
+    {
+        return view('admin.gallery');
+    }
+  
     public function reviews()
     {
         return view('admin.reviews');

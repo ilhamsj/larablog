@@ -1,11 +1,5 @@
 @extends('layouts.admin')
 
-@section('title_content')
-  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="tambah_data">
-    <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>
-    Tambah Data
-  </a>
-@endsection
 @section('content')
 
 <div class="row" id="foto">
@@ -124,29 +118,6 @@
             showMessage(response + ' Berhasil dihapus')
             $('#foto > div').not(':first-child').remove();
             showImages();
-          }
-        });
-      });
-
-      $('#tambah_data').click(function (e) { 
-        e.preventDefault();
-        $('#modalDocuments').modal('show');
-      });
-
-      $('#modalDocuments').find('button:last-child').click(function (e) { 
-        e.preventDefault();
-        var form = $('#modalDocuments').find('form')[0];
-        var data = new FormData(form);
-        
-        $.ajax({
-          type: "POST",
-          url: '{{ route("v2.file.store") }}',
-          data: data,
-          contentType: false,
-          processData: false,
-          cache: false,
-          success: function (response) {
-            console.log(response);
           }
         });
       });

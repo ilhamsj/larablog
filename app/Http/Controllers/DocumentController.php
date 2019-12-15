@@ -12,7 +12,7 @@ class DocumentController extends Controller
 {
     public function index()
     {
-        $items = Document::all();
+        $items = Document::whereIn('category', ['Kegiatan', 'Slider'])->get();
         return datatables($items)
         ->addColumn('action', function ($items) {
             return 
@@ -31,7 +31,20 @@ class DocumentController extends Controller
 
     public function create()
     {
-        
+        $items = Document::whereIn('category', ['Dokumen', 'Postingan'])->get();
+        return datatables($items)
+        ->addColumn('action', function ($items) {
+            return 
+            '
+                <a href="" class="btnEdit mb-1 mx-0 btn btn-secondary btn-sm btn-icon-split" data-url="'.route('v2.file.show', $items->id).'"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                <a href="" class="btnDelete mb-1 btnDelete btn btn-danger btn-icon-split btn-sm" data-url="'.route('v2.file.destroy', $items->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>
+            ';
+        })
+        ->editColumn('file', function ($items) {
+            return '<a href="'.env('APP_URL').$items->file.'" class="mb-1 mx-0 btn btn-info btn-sm btn-icon-split" target="_blank"> <span class="icon text-white-50"> <i class="fa fa-eye"></i> </span> </a>';
+        })
+        ->rawColumns(['file', 'action'])
+        ->toJson();
     }
 
     public function store(Request $request)

@@ -23,5 +23,6 @@ Route::get('/admin/artikel/create', 'ArticleController@create')->name('admin.art
 
 Route::get('/admin/foto', 'AdminController@foto')->name('admin.foto');
 Route::get('/admin/document', 'AdminController@document')->name('admin.document');
+Route::get('/admin/gallery', 'AdminController@gallery')->name('admin.gallery');
 
 Route::get('/admin/reviews', 'AdminController@reviews')->name('admin.review');

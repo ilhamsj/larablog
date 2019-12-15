@@ -37,13 +37,13 @@
             'Galeri' => [
               'icon'  => 'fas fa-image',
               'link'  => [
-                'Kegiatan & Slider'   => route('admin.document'),
+                'Kegiatan & Slider'   => route('admin.gallery'),
                 'Postingan'           => route('admin.foto'),
               ],
             ],
             'Dokumen' => [
               'icon'  => 'fa fa-download',
-              'link'  => '#kritik',
+              'link'  => route('admin.document'),
             ],
             'Kritik dan Saran' => [
               'icon'  => 'fa fa-comments',
