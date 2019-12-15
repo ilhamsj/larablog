@@ -19,7 +19,6 @@ Route::group(['prefix' => 'artikel'], function () {
   Route::get('/', 'PageController@artikel_index')->name('user.artikel.index');
   Route::get('/{id}', 'PageController@artikel_show')->name('user.artikel.show');
 });
-
 // admin
 Route::group(['prefix' => 'admin'], function () {
   Route::get('', 'AdminController@dashboard')->name('admin.dashboard');

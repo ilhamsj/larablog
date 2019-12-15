@@ -96,7 +96,7 @@
             @foreach ($news as $item)
               <li class="list-group-item mb-4 px-0">
                 <span class="badge badge-light">{{ $item->created_at->format('d F Y') }}</span>
-                <a href="">{{ $item->title }}</a>
+                <a href="{{ route('user.artikel.show', $item->slug) }}">{{ $item->title }}</a>
               </li>
             @endforeach
           </ul>
@@ -121,8 +121,6 @@
       </div>
     </div>
   </div>
-
-
 
   @yield('gallery')
   

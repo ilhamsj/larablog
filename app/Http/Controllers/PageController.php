@@ -31,10 +31,20 @@ class PageController extends Controller
         ]);
     }
 
-    public function artikel_show($id)
+    public function artikel_show($slug)
     {
         return view('article')->with([
-            'item'      => \App\Article::find($id),
+            'item'      => \App\Article::where('slug', $slug)->first(),
+            'news'       => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
+            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),    
+        ]);
+    }
+
+    public function artikel_blog($slug)
+    {
+        $item = \App\Article::where('slug', $slug)->first();
+        return view('article')->with([
+            'item'      => $item,
             'news'       => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
             'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),    
         ]);

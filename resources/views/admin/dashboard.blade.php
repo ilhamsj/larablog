@@ -28,9 +28,15 @@
       ],
       'kritik dan saran' => [
         'jumlah'  => 1990,
-        'color'   => 'danger',
+        'color'   => 'success',
         'icon'    => '',
         'size'    => 'col-xl-3 col-md-6'
+      ],
+      'review pengguna' => [
+        'jumlah'  => 1990,
+        'color'   => 'info',
+        'icon'    => '',
+        'size'    => 'col-12'
       ],
     ];
 @endphp

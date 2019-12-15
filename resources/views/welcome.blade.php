@@ -26,7 +26,7 @@
     <strong class="">Tentang <span class="text-primary">{{env('APP_NAME')}}</span></strong>
     <hr>
     <h3>
-      <a href="{{ route('user.artikel.show', $articles->first()->id) }}">{{ $articles->first()->title }}</a>
+      <a href="{{ route('user.artikel.show', $articles->first()->slug) }}">{{ $articles->first()->title }}</a>
     </h3>
     <span style="font-size: medium">
       <i class="fas fa-calendar-alt"></i>
@@ -43,7 +43,7 @@
       <img class="img-fluid rounded" src="{{ file_exists($articles->first()->cover) ? $articles->first()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
     </p>
     {!! strip_tags(Str::limit($articles->first()->content, 100, '')) !!} 
-    <a href="{{ route('user.artikel.show', $articles->first()->id) }}">
+    <a href="{{ route('user.artikel.show', $articles->first()->slug) }}">
       <strong>Pelajari selengkapnya <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </strong>
     </a>
   </div>
@@ -72,7 +72,7 @@
         </span>
     </p>
     <h3>
-      <a href="{{ route('user.artikel.show', $item->id) }}">{{ $item->title }}</a>
+      <a href="{{ route('user.artikel.show', $item->slug) }}">{{ $item->title }}</a>
     </h3>
     {!! strip_tags(Str::limit($item->content, 100)) !!} 
   </div>

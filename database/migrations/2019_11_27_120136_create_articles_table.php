@@ -16,6 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('cover', 100);
+            $table->string('slug', 100)->nullable()->unique();
             $table->string('title', 100);
             $table->text('content');
             $table->string('category', 100)->default('blog');

@@ -30,7 +30,7 @@
               'icon'  => 'fas fa-fw fa-tachometer-alt',
               'link'  => route('admin.dashboard'),
             ],
-            'Postingan' => [
+            'Blog' => [
               'icon'  => 'fas fa-newspaper',
               'link'  => route('admin.artikel')
             ],
@@ -38,7 +38,7 @@
               'icon'  => 'fas fa-image',
               'link'  => [
                 'Kegiatan & Slider'   => route('admin.gallery'),
-                'Postingan'           => route('admin.foto'),
+                'Blog'           => route('admin.foto'),
               ],
             ],
             'Dokumen' => [

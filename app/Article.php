@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $fillable = [
-        'title', 'content', 'category', 'cover'
+        'title', 'content', 'category', 'cover', 'slug'
     ];
 
     public function Review()
