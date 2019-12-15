@@ -111,6 +111,7 @@
               </a>
             </li>
           @endforeach
+          {{-- <li style="font-size: 3rem" class="list-group-item mb-4 px-0" id="clock"></li> --}}
         </ul>
       </div>
     </div>
@@ -150,9 +151,8 @@
   <script src="vendor/swiper.min.js"></script>
   <script src="vendor/holder.js"></script>
   <script>
-
   $(document).ready(function () {
-      
+    
     // gallery
     $('.parent-container').magnificPopup({
       delegate: 'img',

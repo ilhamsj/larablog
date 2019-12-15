@@ -179,6 +179,24 @@
   <script>
   $(document).ready(function () {
 
+    // startTime()
+    
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('clock').innerHTML =
+      h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+    }
+
     $('#kritik_saran').find('button:last-child').click(function (e) { 
       e.preventDefault();
       
@@ -195,7 +213,7 @@
         }
       });
     });
-
+    
     $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-6');
     $('#copyright').toggleClass('col col-12 mt-4').find('h4').remove();
     $('#saran').click(function (e) { 
