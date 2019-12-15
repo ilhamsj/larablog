@@ -13,7 +13,7 @@ class PageController extends Controller
         return view('welcome')->with([
             'articles'  => Article::whereIn('category', ['kegiatan', 'blog'])->orderBy('updated_at', 'desc')->get(),
             'news'      => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->get(),
-            'documents' => Document::whereIn('category', ['Postingan', 'Postingan'])->orderBy('updated_at', 'desc')->get(),
+            'documents' => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->get(),
             'photos'    => Document::where('category', 'kegiatan')->get(),
             'slider'    => Document::where('category', 'slider')->get(),
         ]);

@@ -30,12 +30,37 @@
         <div class="col-12 mb-4">
           <img src="{{ secure_url($item->cover) }}" class="img-fluid rounded" alt="" srcset="">
         </div>
-        <div class="col-12" id="content">
+        <div class="col-12 mb-4" id="content">
           {!! $item->content !!}
         </div>
+        <div class="col-12">
+          <h3>Komentar</h3>
+          <hr>
+          <form action="">
+            @csrf
+            <div class="form-group">
+              <label for="">Nama</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+            </div>
+  
+            <div class="form-group">
+              <label for="">Email</label>
+              <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
+            </div>
+  
+            <div class="form-group">
+              <label for="">Kritik dan Saran</label>
+              <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Komentari</button>
+          </form>
+        </div>
+
         <div class="w-100"></div>
       </div>
     </div>
+
     <div class="col">
       <div class="row">
         <div class="col-12">

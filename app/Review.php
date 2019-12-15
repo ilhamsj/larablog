@@ -10,5 +10,6 @@ class Review extends Model
         'name',
         'email',
         'content',
+        'category',
     ];
 }
