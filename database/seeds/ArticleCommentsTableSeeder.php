@@ -11,6 +11,6 @@ class ArticleCommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\ArticleComment', 20)->create();
+        factory('App\ArticleComment', 100)->create();
     }
 }
