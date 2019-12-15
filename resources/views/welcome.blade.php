@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title_page', 'Ini halaman title')
+@section('title_page', 'Welcome')
 
 @section('header')
   <header class="masthead">
@@ -27,24 +27,24 @@
     <strong class="">Tentang <span class="text-primary">{{env('APP_NAME')}}</span></strong>
     <hr>
     <h3>
-      <a href="{{ route('user.artikel.show', $articles->first()->slug) }}">{{ $articles->first()->title }}</a>
+      <a href="{{ route('user.artikel.show', $articles->last()->slug) }}">{{ $articles->last()->title }}</a>
     </h3>
     <span style="font-size: medium">
       <i class="fas fa-calendar-alt"></i>
-      {{ $articles->first()->created_at->format('d F Y') }}
+      {{ $articles->last()->created_at->format('d F Y') }}
       
       <i class="fa fa-comments ml-4" aria-hidden="true"></i>
-      {{ count($articles->first()->Review)}} 
+      {{ count($articles->last()->Review)}} 
       Komentar
 
       <i class="fa fa-tag ml-4"></i>
-      <a href="" class=""> {{ $articles->first()->category}}</a> 
+      <a href="" class=""> {{ $articles->last()->category}}</a> 
     </span>
     <p>
-      <img class="img-fluid rounded" src="{{ file_exists($articles->first()->cover) ? $articles->first()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
+      <img class="img-fluid rounded" src="{{ file_exists($articles->last()->cover) ? $articles->last()->cover : 'holder.js/1200x800?auto=yes&text=Image Not Found&random=yes' }}" alt="" srcset="">
     </p>
-    {!! strip_tags(Str::limit($articles->first()->content, 100, '')) !!} 
-    <a href="{{ route('user.artikel.show', $articles->first()->slug) }}">
+    {!! strip_tags(Str::limit($articles->last()->content, 100, '')) !!} 
+    <a href="{{ route('user.artikel.show', $articles->last()->slug) }}">
       <strong>Pelajari selengkapnya <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </strong>
     </a>
   </div>

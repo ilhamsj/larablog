@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title_page', 'Ini halaman title')
+@section('title_page', $item->title)
 
 @section('header')
 <header class="masthead" style="background-image: url('../{{$item->cover}}'); background-size: cover; background-position: center">

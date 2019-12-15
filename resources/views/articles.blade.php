@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title_page', 'Ini halaman title')
+@section('title_page', 'Artikel')
 
 @section('header')
 <header class="masthead">

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>{{ env('APP_NAME') }} - @yield('title_page')</title>
+  <title>@yield('title_page') | {{ env('APP_NAME') }}</title>
   <link href='{{ secure_url('vendor/Lora.css') }}' rel='stylesheet' type='text/css'>
   <link href='{{ secure_url('vendor/Open-Sans.css') }}' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
@@ -257,7 +257,7 @@
     });
     
     $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-6');
-    $('#copyright').toggleClass('col col-12 mt-4').find('h4').remove();
+    $('#copyright').toggleClass('col col-12 mb-4').find('h4').remove();
     $('#saran').click(function (e) { 
       e.preventDefault();
       $('#kritik_saran').modal('show')
