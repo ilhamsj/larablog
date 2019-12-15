@@ -82,7 +82,7 @@
 
   @yield('header')
 
-  <div class="container" style="margin: 100px auto">
+  <div class="container" style="margin: 10vh auto">
     <div class="row">
       <div class="col-12 col-sm-9 pr-4">
         @yield('content')

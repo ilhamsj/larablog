@@ -73,16 +73,18 @@
         <input type="text" name="article_id" id="article_id" value="{{ $item->id }}" hidden>
         <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Komentar" hidden>
 
-        <div class="form-group">
-          <label for="">Nama</label>
-          <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+        <div class="row">
+          <div class="form-group col">
+            <label for="">Nama</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+          </div>
+  
+          <div class="form-group col">
+            <label for="">Email</label>
+            <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
+          </div>  
         </div>
-
-        <div class="form-group">
-          <label for="">Email</label>
-          <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
-        </div>
-
+        
         <div class="form-group">
           <label for="">Kritik dan Saran</label>
           <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
