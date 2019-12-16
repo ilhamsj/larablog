@@ -15,18 +15,17 @@ $factory->define(Article::class, function (Faker $faker) {
         'content'   => $faker->realText($maxNbChars = 1000, $indexSize = 5),
         'category'  => $faker->randomElement(['Blog', 'Kegiatan', 'Pengumuman']),
         'cover'     => $faker->randomElement([
-            'images/but-she-went-round-the-court-and-got-behind-him-15122019012826.JPG',
-            'images/dormouse-was-just-missed-her-she-soon-began-15122019012053.JPG',
-            'images/hehe-14122019032249.JPG',
-            'images/instalasi-laravel-15122019020154.jpg',
-            'images/is-a-natural-way-i-beg-for-such-a-very-15122019013210.png',
-            'images/jasa-p-14122019032349.JPG',
-            'images/jasa-pembuatan-website-14122019102039.JPG',
-            'images/mock-turtle-suddenly-upon-their-arguments-to-15122019011742.JPG',
-            'images/quod-impedit-recusandae-laboriosam-earum-facere-14122019102024.JPG',
-            'images/rerum-quo-voluptas-est-fugit-sit-15122019013133.JPG',
-            'images/voluptatem-14122019032325.JPG',
-
+            'images/2f7a1731-0edf-4b20-86eb-80ff6bc24f4f.jpg',
+            'images/24f710eba204453c8365f9a15b1834dc.png',
+            'images/alice-again-for-its-voice-same-as-yet-a-15122019115136.png',
+            'images/alice-thats-right-shouted-the-sands-are-15122019044420.png',
+            'images/alices-shoulder-with-a-hint-to-feel-with-a-15122019045028.png',
+            'images/barang-barang-berguna-15122019045531.JPG',
+            'images/jasa-pembuatan-website-15122019045317.jpg',
+            'images/kegiatan-taman-lansia-15122019045500.JPG',
+            'images/makan-bareng-dirumah-masing-masing-15122019045141.png',
+            'images/rerum-quo-voluptas-est-fugit-sit-15122019045346.JPG',
+            'images/she-carried-it-happens-and-the-little-alice-15122019115017.png',
         ])
     ];
 });

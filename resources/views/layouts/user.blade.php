@@ -12,7 +12,7 @@
   <title>@yield('title_page') | {{ env('APP_NAME') }}</title>
   <link href='{{ secure_url('vendor/Lora.css') }}' rel='stylesheet' type='text/css'>
   <link href='{{ secure_url('vendor/Open-Sans.css') }}' rel='stylesheet' type='text/css'>
-  <link href='{{ secure_url('vendor/holder.jd') }}' rel='stylesheet' type='text/css'>
+  <link href='{{ secure_url('vendor/holder.js') }}' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
   <style>
     .whatsapp {
@@ -85,7 +85,7 @@
 
   <div class="container" style="margin: 10vh auto">
     <div class="row">
-      <div class="col-12 col-sm-9 pr-4">
+      <div class="col-12 col-sm-9 pr-4" id="ini_content">
         @yield('content')
       </div>
       <div class="col">

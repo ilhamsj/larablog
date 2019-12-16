@@ -10,6 +10,7 @@ $factory->define(Document::class, function (Faker $faker) {
         'title'     => $faker->realText($maxNbChars = 50, $indexSize = 1),
         'category'  => $faker->randomElement(['Slider', 'Kegiatan', 'Dokumen']),
         'file'      => $faker->randomElement([
+            'images/2f7a1731-0edf-4b20-86eb-80ff6bc24f4f.jpg',
             'images/24f710eba204453c8365f9a15b1834dc.png',
             'images/alice-again-for-its-voice-same-as-yet-a-15122019115136.png',
             'images/alice-thats-right-shouted-the-sands-are-15122019044420.png',

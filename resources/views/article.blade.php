@@ -101,6 +101,11 @@
   body {
     background-color: white
   }
+
+  #ini_content {
+    top: -155px;
+    position: relative;
+  }
 </style>
 @endpush
 
