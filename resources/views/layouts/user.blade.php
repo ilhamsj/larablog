@@ -12,6 +12,7 @@
   <title>@yield('title_page') | {{ env('APP_NAME') }}</title>
   <link href='{{ secure_url('vendor/Lora.css') }}' rel='stylesheet' type='text/css'>
   <link href='{{ secure_url('vendor/Open-Sans.css') }}' rel='stylesheet' type='text/css'>
+  <link href='{{ secure_url('vendor/holder.jd') }}' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
   <style>
     .whatsapp {
@@ -126,41 +127,40 @@
   
   @php
       $footer = [
-        env("APP_NAME") => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. ',
-        'Support' => [
-          'Blog' => 'https://an-naba.test/',
-          'Kegiatan' => 'https://an-naba.test/',
-          'Halaman muka' => 'https://an-naba.test/',
-          'Tentang kami' => 'https://an-naba.test/',
+        env("APP_NAME") => [
+          '<i class="fa fa-home"></i> Tanggulangin, Genjahan, Ponjong, Gunungkidul Yogyakarta Indonesia'  => '#',
+          '<i class="fa fa-envelope"></i> tmlansia.annaba@gmail.com'                                      => '#',
+          '<i class="fa fa-phone-alt"></i> +628129801782'                                                 => '#',
+        ],
+        'Tentang Kami' => [
+          'Tujuan'              => '#',
+          'Perkenalan'          => '#',
+          'Motto dan Motivasi'  => '#',
+          'Sasaran'             => '#',
+          'Standar Pengasuhan'  => '#',
+          'Target'              => '#',
         ],
         'Link' => [
-          'Blog' => 'https://an-naba.test/',
-          'Kegiatan' => 'https://an-naba.test/',
-          'Halaman muka' => 'https://an-naba.test/',
-          'Tentang kami' => 'https://an-naba.test/',
+          'Blog'        => '#',
+          'Kegiatan'    => '#',
+          'Pengumuman'  => '#',
         ],
-        'INFO' => [
-          'Blog' => 'https://an-naba.test/',
-          'Kegiatan' => 'https://an-naba.test/',
-          'Halaman muka' => 'https://an-naba.test/',
-          'Tentang kami' => 'https://an-naba.test/',
-        ],
-        'Copyright'  => '© '.env('APP_NAME').date(' Y ').'All Rights Reserved'
+        'Copyright' => '© '.env('APP_NAME').date(' Y ').'All Rights Reserved'
       ];
   @endphp
-
   <!-- Footer -->
   <footer style="background-color: #1b4b72" class="text-light">
     <div class="container">
       <div class="row">
         @foreach ($footer as $key => $val)
           <div class="col mb-4" id="{{ Str::slug($key) }}">
-            <h4>{{ strtoupper($key) }}</h4>
+
+            <h4>{!! strtoupper($key) !!}</h4>
             @if (is_array($val))
             <ul class="nav flex-column">
                 @foreach ($val as $k => $v)
                   <li class="nav-item">
-                    <a href="" class="nav-link text-light pl-0">{{ $k }}</a>
+                    <a href="#" class="nav-link text-light pl-0">{!! $k !!}</a>
                   </li>
                 @endforeach
             </ul>
@@ -256,8 +256,9 @@
       });
     });
     
-    $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-6');
-    $('#copyright').toggleClass('col col-12 mb-4').find('h4').remove();
+    $('#{{ Str::slug(env("APP_NAME")) }}').toggleClass('col col-12 col-sm-7');
+    $('#copyright').toggleClass('col col-12 mb-4');
+    $('#copyright > h4').remove();
     $('#saran').click(function (e) { 
       e.preventDefault();
       $('#kritik_saran').modal('show')
