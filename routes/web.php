@@ -27,4 +27,5 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('dokumen', 'AdminController@documents')->name('admin.document');
   Route::get('galeri', 'AdminController@galleries')->name('admin.gallery');
   Route::get('review', 'AdminController@reviews')->name('admin.review');
+  Route::get('user', 'AdminController@users')->name('admin.user');
 });

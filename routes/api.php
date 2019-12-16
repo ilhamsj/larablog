@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::resource('/artikel', 'ArticleController');
+    Route::resource('/user', 'UserController');
     Route::get('/file', 'TestController@file_index')->name('file.index');
     Route::post('/file', 'TestController@file_upload')->name('file.upload');
     Route::delete('/file/{id}', 'TestController@file_destroy')->name('file.destroy');

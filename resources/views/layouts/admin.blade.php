@@ -37,8 +37,8 @@
             'Galeri' => [
               'icon'  => 'fas fa-image',
               'link'  => [
-                'Kegiatan & Slider'   => route('admin.gallery'),
-                'Blog'           => route('admin.foto'),
+                'Kegiatan & Slider' => route('admin.gallery'),
+                'Blog' => route('admin.foto'),
               ],
             ],
             'Dokumen' => [
@@ -52,7 +52,7 @@
             'Pengaturan' => [
               'icon'  => 'fa fa-wrench',
               'link'  => [
-                'Pengguna'   => '#',
+                'Pengguna'   => route('admin.user'),
               ],
             ],
           ];
