@@ -22,9 +22,9 @@ Route::group(['prefix' => 'artikel'], function () {
 // admin
 Route::group(['prefix' => 'admin'], function () {
   Route::get('', 'AdminController@dashboard')->name('admin.dashboard');
-  Route::get('artikel', 'AdminController@artikel')->name('admin.artikel');
-  Route::get('foto', 'AdminController@foto')->name('admin.foto');
-  Route::get('dokumen', 'AdminController@document')->name('admin.document');
-  Route::get('galeri', 'AdminController@gallery')->name('admin.gallery');
+  Route::get('artikel', 'AdminController@articles')->name('admin.artikel');
+  Route::get('foto', 'AdminController@files')->name('admin.foto');
+  Route::get('dokumen', 'AdminController@documents')->name('admin.document');
+  Route::get('galeri', 'AdminController@galleries')->name('admin.gallery');
   Route::get('review', 'AdminController@reviews')->name('admin.review');
 });

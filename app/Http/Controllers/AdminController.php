@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use League\Flysystem\File;
-
 class AdminController extends Controller
 {
     public function dashboard()
@@ -12,30 +9,33 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
   
-    public function artikel()
+    public function articles()
     {
-        return view('admin.article')->with([
-            'items' => \App\Article::paginate()
-        ]);
+        return view('admin.articles');
     }
   
-    public function foto()
+    public function files()
     {
-        return view('admin.foto');
+        return view('admin.files');
     }
   
-    public function document()
+    public function documents()
     {
         return view('admin.documents');
     }
   
-    public function gallery()
+    public function galleries()
     {
-        return view('admin.gallery');
+        return view('admin.galleries');
     }
   
     public function reviews()
     {
         return view('admin.reviews');
+    }
+  
+    public function users()
+    {
+        return view('admin.users');
     }
 }
