@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>{{ env('app_name') }}</title>
+  <title>@yield('title_page') | {{ env('APP_NAME') }}</title>
   <link rel="stylesheet" href="{{ secure_url('css/admin.css') }}">
   @stack('styles')
 </head>

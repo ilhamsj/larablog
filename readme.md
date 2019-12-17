@@ -1,6 +1,20 @@
-1. Cara menambah postingan blog
-2. Cara menambah info kegiatan
-3. Cara menambah pengumuman
-4. Cara mengatur slider
-5. Cara menambah galeri foto kegiatan
-6. Cara upload dokumen agar bisa di download
+# Blog System
+
+## Untuk Developer
+* [Rest API](#link)
+
+## Untuk Pengguna
+* [Tambah postingan blog](#Menambahkan%20Postingan-Blog)
+* [Tambah info kegiatan](#link)
+* [Tambah pengumuman](#link)
+* [Upload gambar slider](#link)
+* [Upload gambar kegiatan](#link)
+* [Upload dokumen](#link)
+* [Mengatur pengguna](#link)
+* [Sistem Komentar](#link)
+
+## Buku Panduan
+### Menambahkan Postingan Blog
+
+
+## FaQ
