@@ -6,8 +6,14 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        // return view('admin.dashboard');
-        return view('admin.articles');
+        return view('admin.dashboard')->with([
+            'articles'      => \App\Article::whereIn('category', ['kegiatan', 'blog'])->orderBy('updated_at', 'desc')->get(),
+            'photos'        => \App\Document::where('category', 'kegiatan')->get(),
+            'sliders'       => \App\Document::where('category', 'slider')->get(),
+            'news'          => \App\Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
+            'documents'     => \App\Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),    
+            'users'         => \App\User::all(),    
+        ]);
     }
   
     public function articles()

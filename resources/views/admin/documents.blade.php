@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title_page', 'Publikasi')
+@section('title_page', 'Dokumen')
 @section('title_content')
 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="tambah_data">
   <i class="fa fa-plus-circle fa-sm text-white-50" aria-hidden="true"></i>

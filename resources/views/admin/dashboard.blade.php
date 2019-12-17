@@ -1,42 +1,43 @@
 @extends('layouts.admin')
 
 @section('title_page', 'Dashboard')
-@section('title_content')
-  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-  </a>
-@endsection
 @php
     $info = [
-      'pengumumuman' => [
-        'jumlah'  => 100,
+      'Blog' => [
+        'jumlah'  => count($articles),
         'color'   => 'primary',
-        'icon'    => '',
+        'icon'    => 'fas fa-newspaper',
         'size'    => 'col-xl-3 col-md-6 '
       ],
-      'kegiatan' => [
-        'jumlah'  => 200,
-        'color'   => 'success',
-        'icon'    => '',
-        'size'    => 'col-xl-3 col-md-6 '
+      'Berita' => [
+        'jumlah'  => count($news),
+        'color'   => 'primary',
+        'icon'    => 'fas fa-newspaper',
+        'size'    => 'col-xl-3 col-md-6'
       ],
-      'postingan' => [
-        'jumlah'  => 200,
-        'color'   => 'info',
-        'icon'    => '',
-        'size'    => 'col-xl-3 col-md-6 '
+      'Pengguna' => [
+        'jumlah'  => count($users),
+        'color'   => 'primary',
+        'icon'    => 'fa fa-user',
+        'size'    => 'col-xl-3 col-md-6'
       ],
-      'kritik dan saran' => [
-        'jumlah'  => 1990,
-        'color'   => 'success',
+      'Dokumen' => [
+        'jumlah'  => count($documents),
+        'color'   => 'primary',
         'icon'    => '',
         'size'    => 'col-xl-3 col-md-6'
       ],
-      'review pengguna' => [
-        'jumlah'  => 1990,
-        'color'   => 'info',
+      'Foto Kegiatan' => [
+        'jumlah'  => count($photos),
+        'color'   => 'primary',
+        'icon'    => 'fas fa-image',
+        'size'    => 'col-xl-3 col-md-6 '
+      ],
+      'Slider' => [
+        'jumlah'  => count($sliders),
+        'color'   => 'primary',
         'icon'    => '',
-        'size'    => 'col-12'
+        'size'    => 'col-xl-3 col-md-6 '
       ],
     ];
 @endphp
@@ -52,7 +53,7 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $val['jumlah'] }}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-comments fa-2x text-gray-300"></i>
+              <i class="{{ $val['icon'] }} fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>

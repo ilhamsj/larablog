@@ -8,3 +8,6 @@ require('startbootstrap-sb-admin-2/vendor/datatables/dataTables.bootstrap4');
 
 // require('summernote/src/js/summernote')
 require('summernote/dist/summernote-bs4')
+
+// 
+require('sweetalert2')

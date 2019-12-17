@@ -11,6 +11,7 @@ class PageController extends Controller
     public function __construct()
     {
     }
+    
     public function welcome()
     {
         return view('welcome')->with([

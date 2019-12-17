@@ -287,15 +287,14 @@
   <script src="{{ secure_url('js/admin.js') }}"></script>
   <script src="{{ secure_url('js/holder.js') }}"></script>
   <script>  
-  function showMessage(message) {
-    $('.alert').show()
-    $('.alert').find('strong').text(message);
+    function showMessage(message) {
+      $('.alert').show()
+      $('.alert').find('strong').text(message);
 
-    $(".alert").delay(2500).slideUp(200, function() {
-        $(this).hide()
-    });
-
-  }
+      $(".alert").delay(2500).slideUp(200, function() {
+          $(this).hide()
+      });
+    }
   </script>
   @stack('scripts')
 </body>
