@@ -96,8 +96,8 @@
           <ul class="list-group list-group-flush">
             @foreach ($news as $item)
               <li class="list-group-item mb-4 px-0">
+                <a href="{{ route('user.artikel.show', $item->slug) }}">{{ $item->title }}</a> <br/>
                 <span class="badge badge-light">{{ $item->created_at->format('d F Y') }}</span>
-                <a href="{{ route('user.artikel.show', $item->slug) }}">{{ $item->title }}</a>
               </li>
             @endforeach
           </ul>
@@ -110,9 +110,9 @@
           <ul class="list-group list-group-flush">
             @foreach ($documents as $item)
               <li class="list-group-item mb-4 px-0">
-                {{ $item->title }}
                 <a href="../{{ $item->file }}" target="_blank">
-                  <u> Download</u>
+                  {{ $item->title }}
+                  Download
                   <i class="fa fa-download" aria-hidden="true"></i>
                 </a>
               </li>
@@ -130,7 +130,7 @@
         env("APP_NAME") => [
           '<i class="fa fa-home"></i> Tanggulangin, Genjahan, Ponjong, Gunungkidul Yogyakarta Indonesia'  => '#',
           '<i class="fa fa-envelope"></i> tmlansia.annaba@gmail.com'                                      => '#',
-          '<i class="fa fa-phone-alt"></i> +628129801782'                                                 => '#',
+          '<i class="fa fa-phone-alt"></i> 628129801782'                                                 => '#',
         ],
         'Tentang Kami' => [
           'Tujuan'              => '#',
