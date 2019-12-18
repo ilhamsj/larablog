@@ -6,7 +6,7 @@
   <div class="col-6 col-sm-6 col-md-4">
     <div class="card shadow mb-4">
       <div class="card-header">
-          <h6 class="m-0 font-weight-bold text-primary">Foto</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data</h6>
       </div>
       <div class="card-body">
         <img class="img-fluid rounded" src=""/>
