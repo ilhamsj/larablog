@@ -178,9 +178,9 @@
 
         hapusError()
 
-        var url = $(this).attr('data-url');
-        var form = $('#modelId').find('form')[0];
-        var data = new FormData(form);
+        var url   = $(this).attr('data-url');
+        var form  = $('#modelId').find('form')[0];
+        var data  = new FormData(form);
         data.append('_method', 'PUT');
 
         $.ajax({
@@ -197,12 +197,11 @@
             showMessage(response.status)
           },
           error: function (xhr) {
-                displayError(xhr.responseJSON);
-                console.log(xhr.responseText);
-            }
+            displayError(xhr.responseJSON);
+            console.log(xhr.responseText);
+          }
         });
       });
-
 
       // modal show
       $('#tambah_data').click(function (e) { 
@@ -237,10 +236,9 @@
             error: function (xhr) {
                 displayError(xhr.responseJSON);
                 console.log(xhr.responseText);
-            }
-          });
+          }
         });
-
+      });
 
       // summernote
       $('form') .find('#content').summernote({
