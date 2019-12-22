@@ -144,6 +144,7 @@
           'Blog'        => '#',
           'Kegiatan'    => '#',
           'Pengumuman'  => '#',
+          'Dokumen'  => '#',
         ],
         'Copyright' => '© '.env('APP_NAME').date(' Y ').'All Rights Reserved'
       ];

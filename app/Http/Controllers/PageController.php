@@ -11,7 +11,7 @@ class PageController extends Controller
     public function __construct()
     {
     }
-    
+
     public function welcome()
     {
         return view('welcome')->with([
@@ -19,7 +19,7 @@ class PageController extends Controller
             'photos'    => Document::where('category', 'kegiatan')->get(),
             'slider'    => Document::where('category', 'slider')->get(),
             'news'       => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
-            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),    
+            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),
         ]);
     }
 
@@ -28,7 +28,7 @@ class PageController extends Controller
         return view('articles')->with([
             'articles'  => Article::whereIn('category', ['kegiatan', 'blog'])->orderBy('updated_at', 'desc')->get(),
             'news'       => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
-            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),    
+            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),
         ]);
     }
 
@@ -37,7 +37,7 @@ class PageController extends Controller
         return view('article')->with([
             'item'      => \App\Article::where('slug', $slug)->first(),
             'news'       => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
-            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),    
+            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),
         ]);
     }
 
@@ -47,7 +47,7 @@ class PageController extends Controller
         return view('article')->with([
             'item'      => $item,
             'news'       => Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
-            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),    
+            'documents'  => Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),
         ]);
     }
 }

@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')->with([
+            'news'       => \App\Article::whereIn('category', ['pengumuman'])->orderBy('updated_at', 'desc')->paginate(5),
+            'documents'  => \App\Document::whereIn('category', ['Postingan', 'Dokumen'])->orderBy('updated_at', 'desc')->paginate(5),
+        ]);
     }
 }

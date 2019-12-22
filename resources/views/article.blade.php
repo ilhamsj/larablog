@@ -3,7 +3,7 @@
 @section('title_page', $item->title)
 
 @section('header')
-<header class="masthead" style="background-image: url('../{{$item->cover}}'); background-size: cover; background-position: center">
+<header class="masthead" style="background-color: #32373D">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -32,9 +32,7 @@
 
 @section('content')
   <div class="card mb-4 p-0">
-    <div class="card-body">
-      <h1>{{ $item->title }}</h1>
-    </div>
+    <img class="card-img-top img-fluid" src="../{{$item->cover}}" alt="" srcset="">
     <div class="card-body" id="content">
       {!! $item->content !!}
     </div>
@@ -67,32 +65,43 @@
         <i class="fas fa-comment"></i>
       </h2>
     </div>
+
+    @guest
     <div class="card-body">
-      <form action="" id="formKomentar">
-        @csrf
-        <input type="text" name="article_id" id="article_id" value="{{ $item->id }}" hidden>
-        <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Komentar" hidden>
-
-        <div class="row">
-          <div class="form-group col">
-            <label for="">Nama</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
-          </div>
-  
-          <div class="form-group col">
-            <label for="">Email</label>
-            <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
-          </div>  
-        </div>
-        
-        <div class="form-group">
-          <label for="">Kritik dan Saran</label>
-          <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Komentari</button>
-      </form>
+      Silahkan Login ! untuk dapat komentar
     </div>
+    <div class="card-body">
+      <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+      <a class="btn btn-secondary" href="{{ route('register') }}">Register</a>
+    </div>
+    @else
+      <div class="card-body">
+        <form action="" id="formKomentar">
+          @csrf
+          <input type="text" name="article_id" id="article_id" value="{{ $item->id }}" hidden>
+          <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Komentar" hidden>
+
+          <div class="row">
+            <div class="form-group col">
+              <label for="">Nama</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+            </div>
+    
+            <div class="form-group col">
+              <label for="">Email</label>
+              <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
+            </div>  
+          </div>
+          
+          <div class="form-group">
+            <label for="">Kritik dan Saran</label>
+            <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Komentari</button>
+        </form>
+      </div>
+    @endguest
   </div>
 @endsection
 
@@ -113,6 +122,7 @@
 <script>
 
   $('#content').find('span').removeAttr('style');
+  $('#content').find('p').removeAttr('style');
   $('#content').find('img').toggleClass('note-float-right rounded img-fluid').removeAttr('style');
   
   $('#formKomentar').on('submit', function (e) {

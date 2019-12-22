@@ -113,7 +113,6 @@
             @else
             <img style="cursor: pointer" class="img-fluid rounded" href="{{ secure_url($item->file) }}" src="{{ secure_url($item->file) }}" alt="" srcset="">
             @endif
-
           </div>
           @endforeach
         </div>
