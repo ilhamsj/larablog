@@ -89,6 +89,28 @@
         @yield('content')
       </div>
       <div class="col">
+        @guest
+          <a href="{{ route('login') }}">Login</a>
+          <a href="{{ route('register') }}">register</a>
+        @else            
+        <div class="card mb-4 border-0">
+          <div class="card-body px-0">
+            <span class="btn btn-info btn-block">Profil</span>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item mb-4 px-0"><a href="{{ route('home') }}">{{ Auth::user()->name }}</a></li>
+              <li class="list-group-item mb-4 px-0">
+                <a class="" href="{{ route('logout') }}" id="logout">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+              </li>
+          </ul>
+        </div>
+        @endguest
         <div class="card mb-4 border-0">
           <div class="card-body px-0">
             <span class="btn btn-info btn-block">Pengumumuman</span>
@@ -222,8 +244,13 @@
   <script>
   $(document).ready(function () {
 
-    // startTime()
+    $('#logout').click(function (e) { 
+      e.preventDefault();
+      alert();
+      document.getElementById('logout-form').submit();
+    });
     
+    // startTime()
     function startTime() {
       var today = new Date();
       var h = today.getHours();

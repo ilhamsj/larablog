@@ -17,19 +17,20 @@ class CreateArticleCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('article_id')->unsigned()->index();
             $table->bigInteger('review_id')->unsigned()->index();
-            $table->timestamps();
-
+            
             $table->foreign('article_id')
-                    ->references('id')
-                    ->on('articles')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
-
+                ->references('id')
+                ->on('articles')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            
             $table->foreign('review_id')
-                    ->references('id')
-                    ->on('reviews')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('reviews')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+                
+            $table->timestamps();
         });
     }
 

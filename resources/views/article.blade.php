@@ -50,7 +50,7 @@
       <li class="list-group-item">
         <h3>
           <i class="fas fa-person-booth"></i>
-          {{ $value->name }}</h3>
+          {{ $value->user->name }}</h3>
         <span class="badge badge-light"><i class="fas fa-calendar-alt"></i> {{ $value->created_at->format('F d, Y') }}</span>
         <p>{{ strip_tags($value->content) }}</p>
       </li>
@@ -80,16 +80,17 @@
           @csrf
           <input type="text" name="article_id" id="article_id" value="{{ $item->id }}" hidden>
           <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Komentar" hidden>
+          <input type="number" name="user_id" id="user_id" class="form-control" placeholder="" aria-describedby="helpId" value="{{ Auth::user()->id }}" hidden>
 
           <div class="row">
             <div class="form-group col">
               <label for="">Nama</label>
-              <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
+              <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ Auth::user()->name }}" disabled>
             </div>
     
             <div class="form-group col">
               <label for="">Email</label>
-              <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
+              <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ Auth::user()->email }}" disabled>
             </div>  
           </div>
           

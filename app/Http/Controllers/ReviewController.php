@@ -11,16 +11,22 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $items = Review::where('category', 'Review');
+        $items = Review::where('category', 'Review')->get();
         return datatables($items)
+            ->addColumn('name', function($items) {
+                return $items->user->name;
+            })
+            ->addColumn('email', function($items) {
+                return $items->user->email;
+            })
+            ->rawColumns(['user_id', 'name', 'email'])
             ->toJson();
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name'          => 'required',
-            'email'         => 'required',
+            'user_id'       => 'required',
             'content'       => 'required',
             'category'      => 'required',
             'article_id'    => Rule::requiredIf($request->category == 'Komentar'),
