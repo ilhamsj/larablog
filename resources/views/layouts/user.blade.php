@@ -210,27 +210,21 @@
             </button>
         </div>
         <div class="modal-body">
-        <form action="">
-          @csrf
-          <div class="form-group">
+          @auth
+          <form action="">
+            @csrf
             <input type="text" name="category" id="category" class="form-control" placeholder="" aria-describedby="helpId" value="Review" hidden>
-          </div>
-
-          <div class="form-group">
-            <label for="">Nama</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->name}}">
-          </div>
-          
-          <div class="form-group">
-            <label for="">Email</label>
-            <input type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId" value="{{ \Faker\Factory::create()->email}}">
-          </div>
-
-          <div class="form-group">
-            <label for="">Kritik dan Saran</label>
-            <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
-          </div>
-        </form>
+            <input type="text" name="user_id" id="user_id" class="form-control" placeholder="" aria-describedby="helpId" value="{{ Auth::user()->id }}" hidden>
+  
+            <div class="form-group">
+              <label for="">Kritik dan Saran</label>
+              <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
+            </div>
+          </form>
+          @else
+            <a href="{{ route('login') }}" style="text-decoration: underline">Login</a> atau
+            <a href="{{ route('register') }}" style="text-decoration: underline">register</a> terlebih dahulu
+          @endauth
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

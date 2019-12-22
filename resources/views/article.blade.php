@@ -68,7 +68,7 @@
 
     @guest
     <div class="card-body">
-      Silahkan Login ! untuk dapat komentar
+      Silahkan <u>Login</u> ! untuk dapat komentar
     </div>
     <div class="card-body">
       <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
