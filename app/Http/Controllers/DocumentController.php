@@ -31,7 +31,7 @@ class DocumentController extends Controller
 
     public function create()
     {
-        $items = Document::whereIn('category', ['Dokumen', 'Postingan'])->get();
+        $items = Document::whereIn('category', ['Dokumen'])->get();
         return datatables($items)
         ->addColumn('action', function ($items) {
             return 

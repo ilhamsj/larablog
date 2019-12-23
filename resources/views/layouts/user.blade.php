@@ -134,6 +134,7 @@
               <li class="list-group-item mb-4 px-0">
                 <a href="../{{ $item->file }}" target="_blank">
                   {{ $item->title }}
+                  {{ $item->category }}
                   Download
                   <i class="fa fa-download" aria-hidden="true"></i>
                 </a>

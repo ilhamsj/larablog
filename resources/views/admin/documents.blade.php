@@ -60,7 +60,7 @@
             <select class="form-control" name="category" id="category">
               <option value="Slider">Slider</option>
               <option value="Kegiatan">Kegiatan</option>
-              <option value="Postingan">Dokumen</option>
+              <option value="Dokumen">Dokumen</option>
             </select>
           </div>
 
