@@ -164,10 +164,10 @@
           'Target'              => '#',
         ],
         'Link' => [
-          'Blog'        => '#',
+          'Blog'        => route('user.artikel.index'),
           'Kegiatan'    => '#',
           'Pengumuman'  => '#',
-          'Dokumen'  => '#',
+          'Dokumen'     => '#',
         ],
         'Copyright' => '© '.env('APP_NAME').date(' Y ').'All Rights Reserved'
       ];
