@@ -85,7 +85,7 @@
 
   <div class="container" style="margin: 10vh auto">
     <div class="row">
-      <div class="col-12 col-sm-9 pr-4" id="ini_content">
+      <div class="col-12 col-sm-9" id="ini_content">
         @yield('content')
       </div>
       <div class="col">
