@@ -73,7 +73,7 @@
         <ul class="navbar-nav ml-auto">
           @foreach ($menu as $key => $val)
           <li class="nav-item">
-            <a class="nav-link {{ $val['link'] == URL::current() ? 'bg-secondary' : '' }}" href="{{ $val['link'] }}">
+            <a class="nav-link {{ $val['link'] == URL::current() ? '' : '' }}" href="{{ $val['link'] }}">
             {!! $val['link'] == URL::current() ? '<i class="fa fa-circle"></i>' : '' !!} {{ $key }}
             </a>
           </li>

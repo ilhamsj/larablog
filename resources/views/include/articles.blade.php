@@ -9,9 +9,9 @@
     <p>
       <h3>
         @if (URL::current() == route('user.pengumuman.index'))
-          <a href="{{ route('user.pengumuman.show', $item->slug) }}">{{ $item->title }}</a>
+          <a href="{{ route('user.pengumuman.show', $item->slug) }}">{{ Str::title($item->title) }}</a>
         @else
-          <a href="{{ route('user.artikel.show', $item->slug) }}">{{ $item->title }}</a>
+          <a href="{{ route('user.artikel.show', $item->slug) }}">{{ Str::title($item->title) }}</a>
         @endif
       </h3>
       <span style="font-size: medium">
