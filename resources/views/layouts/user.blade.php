@@ -226,6 +226,11 @@
             <div class="form-group">
               <label for="">Kritik dan Saran</label>
               <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+              {{-- <span class="invalid-feedback" role="alert">
+                <strong>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, dolor dolorum repudiandae consequuntur laudantium nam dolores temporibus fugiat deserunt at possimus et tempore eligendi modi provident, doloremque pariatur aliquam! Dolorem?
+                </strong>
+              </span> --}}
             </div>
           </form>
           @else
@@ -244,6 +249,25 @@
   <script src="{{ secure_url('js/app.js') }}"></script>
   <script>
   $(document).ready(function () {
+
+      // show error
+      function displayError(res, target) {
+        if ($.isEmptyObject(res) == false)
+        {
+          $.each(res.errors, function (key, value) {
+              $(target).find('#'+key)
+                .addClass("is-invalid")  
+                .closest('.form-group')
+                .append('<span class="invalid-feedback" role="alert"> <strong>'+ value +'</strong> </span>')
+          })
+        }
+      }
+
+      function hapusError()
+      {
+        $('.invalid-feedback').remove();
+        $('.form-group').find('textarea').removeClass("is-invalid");
+      }
 
     $('#logout').click(function (e) { 
       e.preventDefault();
@@ -277,10 +301,12 @@
         url: "{{ route('review') }}",
         data: data,
         success: function (response) {
-          console.log(response);
           $('#kritik_saran').find('form').trigger('reset');
           $('#kritik_saran').modal('hide');
           alert(response.status);
+        },
+        error: function (xhr) {
+          displayError(xhr.responseJSON, '#kritik_saran');
         }
       });
     });
