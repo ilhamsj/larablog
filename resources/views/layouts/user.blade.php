@@ -89,37 +89,41 @@
         @yield('content')
       </div>
       <div class="col">
-        @guest
-          <a href="{{ route('login') }}">Login</a>
-          <a href="{{ route('register') }}">register</a>
-        @else            
-        <div class="card mb-4 border-0">
+        <div class="card border-0">
           <div class="card-body px-0">
             <span class="btn btn-info btn-block">Profil</span>
           </div>
           <ul class="list-group list-group-flush">
-              <li class="list-group-item mb-4 px-0"><a href="{{ route('home') }}">{{ Auth::user()->name }}</a></li>
-              <li class="list-group-item mb-4 px-0">
-                <a class="" href="{{ route('logout') }}" id="logout">
-                    Logout
-                </a>
+            @guest
+            <li class="list-group-item px-0">
+              <a href="{{ route('login') }}">Login</a>
+            </li>
+            <li class="list-group-item px-0">
+              <a href="{{ route('register') }}">Register</a>
+            </li>
+            @else            
+            <li class="list-group-item mb-4 px-0"><a href="{{ route('home') }}">{{ Auth::user()->name }}</a></li>
+            <li class="list-group-item mb-4 px-0">
+              <a class="" href="{{ route('logout') }}" id="logout">
+                  Logout
+              </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-              </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+            </li>
+            @endguest
           </ul>
         </div>
-        @endguest
         <div class="card mb-4 border-0">
           <div class="card-body px-0">
             <span class="btn btn-info btn-block">Pengumumuman</span>
           </div>
           <ul class="list-group list-group-flush">
             @foreach ($news as $item)
-              <li class="list-group-item mb-4 px-0">
+              <li class="list-group-item px-0">
+                <span class="" style="font-size: small">{{ $item->created_at->format('d F Y') }}</span> <br/>
                 <a href="{{ route('user.artikel.show', $item->slug) }}">{{ $item->title }}</a> <br/>
-                <span class="badge badge-light">{{ $item->created_at->format('d F Y') }}</span>
               </li>
             @endforeach
           </ul>

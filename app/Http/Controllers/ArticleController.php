@@ -15,15 +15,15 @@ class ArticleController extends Controller
         return datatables($items)
             ->addIndexColumn()
             ->addColumn('action', function ($items) {
-                return 
-                '
-                    <a href="'.route('user.artikel.show', $items->slug).'" class="mx-0 btn btn-info btn-sm btn-icon-split" target="_blank"> <span class="icon text-white-50"> <i class="fa fa-eye"></i> </span> </a>
-                    <a href="'.route('artikel.show', $items->id).'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
-                    <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-url="'.route('artikel.destroy', $items->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>
+                return
+                    '
+                    <a href="' . route('user.artikel.show', $items->slug) . '" class="mx-0 btn btn-info btn-sm btn-icon-split" target="_blank"> <span class="icon text-white-50"> <i class="fa fa-eye"></i> </span> </a>
+                    <a href="' . route('artikel.show', $items->id) . '" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                    <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-url="' . route('artikel.destroy', $items->id) . '"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>
                 ';
             })
             ->editColumn('cover', function ($items) {
-                return '<img style="" class="rounded img-fluid" src="../'.$items->cover.'"/>';
+                return '<img style="" class="rounded img-fluid" src="../' . $items->cover . '"/>';
             })
             ->rawColumns(['action', 'cover'])
             ->toJson();
@@ -44,14 +44,14 @@ class ArticleController extends Controller
         ]);
 
         $slug = \Str::slug($request->title);
-        $name = $slug.'-'.Carbon::now()->format('dmYhis').'.'.$request->file('cover')->getClientOriginalExtension();
+        $name = $slug . '-' . Carbon::now()->format('dmYhis') . '.' . $request->file('cover')->getClientOriginalExtension();
         $img = $request->file('cover')->storeAs('images', $name, 'public_uploads_v2');
 
         $item = Article::create($request->all());
         $item->cover    = $img;
         $item->slug     = $slug;
         $item->save();
-        
+
         return response()->json([
             'item'  => $item,
             'status' => 'Store Success'
@@ -65,7 +65,6 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-
     }
 
     public function update(Request $request, $id)
@@ -80,11 +79,11 @@ class ArticleController extends Controller
         $item = Article::find($id);
         $slug = \Str::slug($request->title);
 
-        if($request->hasFile('cover')):
+        if ($request->hasFile('cover')) :
 
             file_exists($item->cover) ? unlink($item->cover) : '';
 
-            $name = $slug.'-'.Carbon::now()->format('dmYhis').'.'.$request->file('cover')->getClientOriginalExtension();
+            $name = $slug . '-' . Carbon::now()->format('dmYhis') . '.' . $request->file('cover')->getClientOriginalExtension();
             $img = $request->file('cover')->storeAs('images', $name, 'public_uploads_v2');
 
             $item->update($request->all());
@@ -92,7 +91,7 @@ class ArticleController extends Controller
                 'cover' => $img,
                 'slug' => $slug,
             ]);
-        else:
+        else :
             $item->update($request->all());
             $item->update([
                 'slug' => $slug,
@@ -108,7 +107,7 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $item = Article::find($id);
-        
+
         file_exists($item->cover) ? unlink($item->cover) : '';
         $item->delete();
 
