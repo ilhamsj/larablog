@@ -8,7 +8,6 @@
 </a>
 @endsection
 @section('content')
-
 <div class="row">
   <div class="col">
     <div class="card border-0 shadow mb-4">
@@ -68,22 +67,22 @@
           <div class="form-group">
             <label for="">Title</label>
             <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
-              placeholder="" value="{{ old('email') ? old('email') : \Faker\Factory::create()->realText(50, 1) }}">
+              placeholder="" value="{{ old('email') ? old('email') : '' }}">
           </div>
 
           <div class="form-group">
             <label for="content">Content</label>
             <textarea class="form-control" name="content" id="content"
-              rows="10">{{ old('content') ? old('content') : \Faker\Factory::create()->realText(500, 2) }}</textarea>
+              rows="10">{{ old('content') ? old('content') : '' }}</textarea>
           </div>
 
         <div class="row">  
           <div class="form-group col">
-            <img class="img-fluid rounded" data-src="holder.js/500x300?auto=yes&textmode=exact&random=yes" alt="" srcset="">
+            <img data-src="holder.js/500x300?auto=yes&textmode=exact&random=yes" class="img-fluid rounded" id="output_image"/>
           </div>
           <div class="form-group col">
             <label for="">Cover</label>
-            <input type="file" class="form-control-file" name="cover" id="cover" placeholder="" aria-describedby="fileHelpId">
+            <input onchange="preview_image(event)" type="file" class="form-control-file" name="cover" id="cover" placeholder="" aria-describedby="fileHelpId">
           </div>
         </div>
 
@@ -99,16 +98,17 @@
 
 @endsection
 
-@push('styles')
-{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"> --}}
-{{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet"> --}}
-@endpush
-
 @push('scripts')
-{{-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>  --}}
-{{-- <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>  --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script> --}}
 <script>
+  preview_image = (event) => {
+    var reader = new FileReader();
+    reader.onload = function()
+    {
+      var output = document.getElementById('output_image');
+      output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
   $(document).ready(function () {
 
       // read
@@ -208,7 +208,7 @@
         e.preventDefault();
         $('#modelId').modal('show');
         $('#modelId').find('img').attr('src', '{{ secure_url("asset/cover.svg") }}');
-        $('#modelId').find('.modal-footer > button:nth-child(2)').text('publishContent').attr('id', 'publishContent');
+        $('#modelId').find('.modal-footer > button:nth-child(2)').text('Simpan').attr('id', 'publishContent');
       });
 
       // store data
