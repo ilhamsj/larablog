@@ -225,7 +225,7 @@
   
             <div class="form-group">
               <label for="">Kritik dan Saran</label>
-              <textarea class="form-control" name="content" id="content" rows="3">{{ \Faker\Factory::create()->realText()}}</textarea>
+              <textarea class="form-control" name="content" id="content" rows="3"></textarea>
             </div>
           </form>
           @else

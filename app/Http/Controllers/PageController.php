@@ -49,7 +49,7 @@ class PageController extends Controller
                 'documents' => $this->documents,
             ]);
         else :
-            return 'Halaman tidak ditemukan';
+            return view('404');
         endif;
     }
 
@@ -62,19 +62,19 @@ class PageController extends Controller
         ]);
     }
 
-    public function artikel_kegiatan()
+    public function artikel_pengumuman()
     {
         return view('articles')->with([
-            'articles'  => $this->articles,
+            'articles'  => $this->news,
             'news'      => $this->news,
             'documents' => $this->documents,
         ]);
     }
 
-    public function artikel_pengumuman()
+    public function artikel_kegiatan()
     {
-        return view('articles')->with([
-            'articles'  => $this->articles,
+        return view('documents')->with([
+            'articles'    => Document::where('category', 'kegiatan')->get(),
             'news'      => $this->news,
             'documents' => $this->documents,
         ]);
@@ -82,8 +82,9 @@ class PageController extends Controller
 
     public function artikel_dokumen()
     {
-        return view('articles')->with([
-            'articles'  => $this->articles,
+        // dd($this->news);
+        return view('documents')->with([
+            'articles'  => $this->documents,
             'news'      => $this->news,
             'documents' => $this->documents,
         ]);

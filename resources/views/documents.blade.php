@@ -28,7 +28,26 @@
     <hr>
   </div>
   @foreach ($articles as $item)
-    @include('include.articles')
+  <div class="col-12 col-sm-6 mb-4">
+    @if (URL::current() == route('user.kegiatan.index'))
+      @if (env('APP_ENV') == 'local')
+      <img class="img-fluid rounded mb-4" data-src="holder.js/800x600?auto=yes&random=yes&textmode=exact" alt="" srcset="">
+      @else
+      <img class="img-fluid rounded mb-4" src="{{ $item->file }}" alt="" srcset="">
+      @endif
+    @endif
+    <h3>
+      <a href="#">{{ $item->title }}</a>
+    </h3>
+    <span style="font-size: medium">
+      <i class="fas fa-calendar-alt"></i>
+      {{ $item->created_at->format('d M Y h:i:s') }}
+
+      <i class="fa fa-tag ml-2"></i>
+      <a href="" class=""> {{ $item->category}}</a>
+    </span>
+    <hr>
+  </div>
   @endforeach
 </div>
 @endsection
