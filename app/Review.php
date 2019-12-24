@@ -16,4 +16,9 @@ class Review extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function Article()
+    {
+        return $this->belongsToMany('App\Article', 'article_comments');
+    }
 }

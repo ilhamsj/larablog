@@ -20,12 +20,24 @@
 </header>
 @endsection
 
-{{-- @section('content')
+@section('content')
   <div class="card mb-4 p-0">
     <div class="card-body" id="content">
+      <strong>Disukusi</strong>
+      @foreach (Auth::user()->Review as $item)
+        @foreach ($item->Article as $i)
+        <p>
+          <h3>
+            <a href="{{ route('user.artikel.show', $i->slug) }}">{{ $i->title }}</a>
+          </h3>
+          <span class="badge badge-primary">{{ $item->created_at->format('F, d Y h:i:s') }}</span>
+          {{ $item->content }}
+        </p>
+        @endforeach
+      @endforeach
     </div>
   </div>
-@endsection --}}
+@endsection
 
 @push('styles')
 <style>
