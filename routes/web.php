@@ -11,16 +11,10 @@
 |
 */
 
-// user - artikel
+Auth::routes();
 Route::get('/', 'PageController@welcome')->name('welcome');
+Route::get('/home', 'HomeController@index')->name('home');
 
-// user - artikel
-Route::group(['prefix' => 'artikel'], function () {
-  Route::get('/', 'PageController@artikel_index')->name('user.artikel.index');
-  Route::get('/{id}', 'PageController@artikel_show')->name('user.artikel.show');
-});
-
-// admin
 Route::group(['prefix' => 'admin'], function () {
   Route::get('', 'AdminController@dashboard')->name('admin.dashboard');
   Route::get('artikel', 'AdminController@articles')->name('admin.artikel');
@@ -30,6 +24,12 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('review', 'AdminController@reviews')->name('admin.review');
   Route::get('user', 'AdminController@users')->name('admin.user');
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'artikel'], function () {
+  Route::get('/', 'PageController@artikel_index')->name('user.artikel.index');
+  Route::get('/{id}', 'PageController@artikel_show')->name('user.artikel.show');
+});
+
+Route::get('/kegiatan', 'PageController@artikel_kegiatan')->name('user.kegiatan.index');
+Route::get('/pengumuman', 'PageController@artikel_pengumuman')->name('user.pengumuman.index');
+Route::get('/dokumen', 'PageController@artikel_dokumen')->name('user.dokumen.index');

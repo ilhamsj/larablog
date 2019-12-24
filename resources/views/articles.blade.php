@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-lg col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>Blog Post</h1>
+          <h1>{{ Str::title(Str::after(URL::current(), env('APP_URL'))) }}</h1>
         </div>
       </div>
     </div>
@@ -21,7 +21,10 @@
 <div class="row">
   {{-- Post --}}
   <div class="col-12">
-    <strong class="">Postingan <span class="text-primary">Terbaru</span></strong>
+    <strong class="">
+      {{ Str::title(Str::after(URL::current(), env('APP_URL'))) }}
+      <span class="text-primary">Terbaru</span>
+    </strong>
     <hr>
   </div>
   @foreach ($articles as $item)

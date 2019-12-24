@@ -44,19 +44,19 @@
         $menu = [
           'Home' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  => '/',
+            'link'  => route('welcome'),
           ],
           'Profil' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  => '#',
+            'link'  => route('user.artikel.show', 'tentang-kami'),
           ],
           'Kegiatan' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  => '#',
+            'link'  => route('user.kegiatan.index'),
           ],
           'Kontak' => [
             'icon'  => 'fas fa-fw fa-tachometer-alt',
-            'link'  =>  '#',
+            'link'  => route('user.artikel.show', 'kontak'),
           ],
         ];
     @endphp
@@ -73,7 +73,9 @@
         <ul class="navbar-nav ml-auto">
           @foreach ($menu as $key => $val)
           <li class="nav-item">
-            <a class="nav-link" href="{{ $val['link'] }}">{{ $key }}</a>
+            <a class="nav-link {{ $val['link'] == URL::current() ? 'bg-secondary' : '' }}" href="{{ $val['link'] }}">
+            {!! $val['link'] == URL::current() ? '<i class="fa fa-circle"></i>' : '' !!} {{ $key }}
+            </a>
           </li>
           @endforeach
         </ul>
@@ -160,18 +162,18 @@
           '<i class="fa fa-phone-alt"></i> 628129801782'                                                 => '#',
         ],
         'Tentang Kami' => [
-          'Tujuan'              => '#',
-          'Perkenalan'          => '#',
-          'Motto dan Motivasi'  => '#',
-          'Sasaran'             => '#',
-          'Standar Pengasuhan'  => '#',
-          'Target'              => '#',
+          'Tujuan'              => route('user.artikel.show', 'tentang-kami'),
+          'Perkenalan'          => route('user.artikel.show', 'tentang-kami'),
+          'Motto dan Motivasi'  => route('user.artikel.show', 'tentang-kami'),
+          'Sasaran'             => route('user.artikel.show', 'tentang-kami'),
+          'Standar Pengasuhan'  => route('user.artikel.show', 'tentang-kami'),
+          'Target'              => route('user.artikel.show', 'tentang-kami'),
         ],
         'Link' => [
-          'Blog'        => route('user.artikel.index'),
-          'Kegiatan'    => '#',
-          'Pengumuman'  => '#',
-          'Dokumen'     => '#',
+          'Artikel'        => route('user.artikel.index'),
+          'Kegiatan'    => route('user.kegiatan.index'),
+          'Pengumuman'  => route('user.pengumuman.index'),
+          'Dokumen'     => route('user.dokumen.index'),
         ],
         'Copyright' => '© '.env('APP_NAME').date(' Y ').'All Rights Reserved'
       ];
@@ -188,7 +190,7 @@
             <ul class="nav flex-column">
                 @foreach ($val as $k => $v)
                   <li class="nav-item">
-                    <a href="#" class="nav-link text-light pl-0">{!! $k !!}</a>
+                    <a href="{{ $v }}" class="nav-link text-light pl-0">{!! $k !!}</a>
                   </li>
                 @endforeach
             </ul>

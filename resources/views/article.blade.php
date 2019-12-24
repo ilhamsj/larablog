@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title_page', $item->title)
+@section('title_page', Str::title($item->title))
 
 @section('header')
 <header class="masthead" style="background-color: #32373D">
@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-lg col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>{{ $item->title }}</h1>
+          <h1>{{ Str::title($item->title) }}</h1>
           <span class="meta">
             <i class="fas fa-user"></i>
             Posted by <a href="#">Admin</a>

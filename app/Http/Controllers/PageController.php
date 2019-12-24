@@ -40,6 +40,21 @@ class PageController extends Controller
 
     public function artikel_show($slug)
     {
+        $item = Article::where('slug', $slug);
+
+        if ($item->count() > 0) :
+            return view('article')->with([
+                'item'      => $item->first(),
+                'news'      => $this->news,
+                'documents' => $this->documents,
+            ]);
+        else :
+            return 'Halaman tidak ditemukan';
+        endif;
+    }
+
+    public function artikel_blog($slug)
+    {
         return view('article')->with([
             'item'      => Article::where('slug', $slug)->first(),
             'news'      => $this->news,
@@ -47,10 +62,28 @@ class PageController extends Controller
         ]);
     }
 
-    public function artikel_blog($slug)
+    public function artikel_kegiatan()
     {
-        return view('article')->with([
-            'item'      => Article::where('slug', $slug)->first(),
+        return view('articles')->with([
+            'articles'  => $this->articles,
+            'news'      => $this->news,
+            'documents' => $this->documents,
+        ]);
+    }
+
+    public function artikel_pengumuman()
+    {
+        return view('articles')->with([
+            'articles'  => $this->articles,
+            'news'      => $this->news,
+            'documents' => $this->documents,
+        ]);
+    }
+
+    public function artikel_dokumen()
+    {
+        return view('articles')->with([
+            'articles'  => $this->articles,
             'news'      => $this->news,
             'documents' => $this->documents,
         ]);
