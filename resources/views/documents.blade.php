@@ -37,7 +37,7 @@
       @endif
     @endif
     <h3>
-      <a href="#">{{ $item->title }}</a>
+      {{ $item->title }}
     </h3>
     <span style="font-size: medium">
       <i class="fas fa-calendar-alt"></i>
@@ -46,6 +46,11 @@
       <i class="fa fa-tag ml-2"></i>
       <a href="" class=""> {{ $item->category}}</a>
     </span>
+    @if (URL::current() != route('user.kegiatan.index'))
+    <p>
+      <a target="_blank" href="{{ secure_url($item->file) }}">Download</a>
+    </p>
+    @endif
     <hr>
   </div>
   @endforeach

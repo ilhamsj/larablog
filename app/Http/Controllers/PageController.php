@@ -71,20 +71,19 @@ class PageController extends Controller
         ]);
     }
 
-    public function artikel_kegiatan()
+    public function dokumen_index()
     {
         return view('documents')->with([
-            'articles'    => Document::where('category', 'kegiatan')->get(),
+            'articles'  => $this->documents,
             'news'      => $this->news,
             'documents' => $this->documents,
         ]);
     }
 
-    public function artikel_dokumen()
+    public function dokumen_kegiatan()
     {
-        // dd($this->news);
         return view('documents')->with([
-            'articles'  => $this->documents,
+            'articles'    => Document::where('category', 'kegiatan')->get(),
             'news'      => $this->news,
             'documents' => $this->documents,
         ]);

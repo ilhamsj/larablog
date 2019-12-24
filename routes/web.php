@@ -35,5 +35,5 @@ Route::group(['prefix' => 'pengumuman'], function () {
   Route::get('/{id}', 'PageController@artikel_show')->name('user.pengumuman.show');
 });
 
-Route::get('/kegiatan', 'PageController@artikel_kegiatan')->name('user.kegiatan.index');
-Route::get('/dokumen', 'PageController@artikel_dokumen')->name('user.dokumen.index');
+Route::get('/dokumen', 'PageController@dokumen_index')->name('user.dokumen.index');
+Route::get('/kegiatan', 'PageController@dokumen_kegiatan')->name('user.kegiatan.index');
