@@ -41,7 +41,7 @@
             'Galeri' => [
               'icon'  => 'fas fa-image',
               'link'  => [
-                'Slider'    => '#',
+                'Slider'    => route('admin.gallery'),
                 'Kegiatan'  => route('admin.gallery'),
                 'Dokumen'   => route('admin.document'),
               ],

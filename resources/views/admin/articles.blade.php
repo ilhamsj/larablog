@@ -163,6 +163,7 @@
               console.log(index + ' :' + value);
               if(index == 'content') {
                 $('form').find('.note-editor > .note-editing-area > .note-editable').html(value);
+                $('textarea').val(value);
               } else if(index == 'cover') {
                 $('#modelId').find('img').attr('src', '../'+value)
               } else {

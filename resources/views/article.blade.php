@@ -122,7 +122,7 @@
 @push('scripts')
 <script>
 
-  $('#content').find('span').removeAttr('style');
+  // $('#content').find('span').removeAttr('style');
   $('#content').find('p').removeAttr('style');
   $('#content').find('img').toggleClass('note-float-right rounded img-fluid').removeAttr('style');
   

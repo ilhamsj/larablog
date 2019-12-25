@@ -14,6 +14,8 @@
   <link href='{{ secure_url('vendor/Open-Sans.css') }}' rel='stylesheet' type='text/css'>
   <link href='{{ secure_url('vendor/holder.js') }}' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ secure_url('css/app.css') }}">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
   <style>
     .whatsapp {
       transform: rotate(-90deg);
@@ -84,13 +86,18 @@
   </nav>
 
   @yield('header')
-
   <div class="container" style="margin: 10vh auto">
     <div class="row">
       <div class="col-12 col-sm-9" id="ini_content">
         @yield('content')
       </div>
       <div class="col">
+        <div class="card">
+          <div class="card-body">
+            {{ date('F, d Y') }}
+            <strong id="clock"></strong>
+          </div>
+        </div>
         <div class="card border-0">
           <div class="card-body px-0">
             <span class="btn btn-info btn-block">Profil</span>
@@ -119,11 +126,11 @@
         </div>
         <div class="card mb-4 border-0">
           <div class="card-body px-0">
-            <span class="btn btn-info btn-block">Pengumumuman</span>
+            <span class="btn btn-info btn-block" >Pengumumuman</span>
           </div>
           <ul class="list-group list-group-flush">
             @foreach ($news as $item)
-              <li class="list-group-item px-0">
+              <li class="list-group-item px-0 mb-1">
                 <span class="" style="font-size: small">{{ $item->created_at->format('d F Y') }}</span> <br/>
                 <a href="{{ route('user.artikel.show', $item->slug) }}">{{ $item->title }}</a> <br/>
               </li>
@@ -137,7 +144,7 @@
           </div>
           <ul class="list-group list-group-flush">
             @foreach ($documents as $item)
-              <li class="list-group-item mb-4 px-0">
+              <li class="list-group-item mb-1 px-0">
                 <a href="../{{ $item->file }}" target="_blank">
                   {{ $item->title }}
                   {{ $item->category }}
@@ -178,6 +185,9 @@
         'Copyright' => '© '.env('APP_NAME').date(' Y ').'All Rights Reserved'
       ];
   @endphp
+  <section>
+    <div id='mapid' style='width: 100%; height: 50vh'></div>
+  </section>
   <!-- Footer -->
   <footer style="background-color: #1b4b72" class="text-light">
     <div class="container">
@@ -226,11 +236,6 @@
             <div class="form-group">
               <label for="">Kritik dan Saran</label>
               <textarea class="form-control" name="content" id="content" rows="3"></textarea>
-              {{-- <span class="invalid-feedback" role="alert">
-                <strong>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, dolor dolorum repudiandae consequuntur laudantium nam dolores temporibus fugiat deserunt at possimus et tempore eligendi modi provident, doloremque pariatur aliquam! Dolorem?
-                </strong>
-              </span> --}}
             </div>
           </form>
           @else
@@ -247,6 +252,9 @@
   </div>
 
   <script src="{{ secure_url('js/app.js') }}"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+  <script src="{{ secure_url('js/map.js') }}"></script>
   <script>
   $(document).ready(function () {
 
@@ -275,7 +283,7 @@
       document.getElementById('logout-form').submit();
     });
     
-    // startTime()
+    startTime()
     function startTime() {
       var today = new Date();
       var h = today.getHours();

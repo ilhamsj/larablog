@@ -6,6 +6,7 @@ use App\Article;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -43,7 +44,7 @@ class ArticleController extends Controller
             'cover'     => 'required',
         ]);
 
-        $slug = \Str::slug($request->title);
+        $slug = Str::slug($request->title);
         $name = $slug . '-' . Carbon::now()->format('dmYhis') . '.' . $request->file('cover')->getClientOriginalExtension();
         $img = $request->file('cover')->storeAs('images', $name, 'public_uploads_v2');
 
@@ -77,7 +78,7 @@ class ArticleController extends Controller
         ]);
 
         $item = Article::find($id);
-        $slug = \Str::slug($request->title);
+        $slug = Str::slug($request->title);
 
         if ($request->hasFile('cover')) :
 
